@@ -1,8 +1,26 @@
-import React from "react";
+import React, { Component } from 'react'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Navigation from './components/Navigation'
+import Homepage from './pages/Homepage'
+import Dashboard from './pages/Dashboard'
+import NoMatch from './pages/NoMatch'
 
-export default () => (
-  <>
-    <h1>Welcome to React Parcel Micro App!</h1>
-    <p>Hard to get more minimal than this React app.</p>
-  </>
-);
+
+export class App extends Component {
+  render() {
+    return (
+      <Router>
+        <div>
+          <Navigation />
+          <Switch>
+            <Route exact path={["/dashboard"]} component={Dashboard} />
+            <Route exact path={["/", "/home"]} component={Homepage} />
+            <Route component={NoMatch} />
+          </Switch>
+        </div>
+      </Router>
+    )
+  }
+}
+
+export default App
