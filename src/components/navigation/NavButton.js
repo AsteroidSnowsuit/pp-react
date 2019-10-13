@@ -6,7 +6,9 @@ export class NavLink extends Component {
     render() {
         return (
             <div className="navbar-item">
-                <Link to={this.props.to}>{this.props.children}</Link>
+                <div className="button is-primary">
+                    <Link to={this.props.to}>{this.props.children}</Link>
+                </div>
             </div>
         )
     }

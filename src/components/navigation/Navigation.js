@@ -5,12 +5,16 @@ import { NavLogo } from './NavLogo';
 export class Navigation extends Component {
     render() {
         return (
-            <div>
-                <NavLogo />
-                <div id="links">
-                    {this.props.children}
+            <nav className="navbar">
+                <div className="navbar-brand">
+                    <NavLogo />
                 </div>
-            </div>
+                <div className="navbar-menu">
+                    <div className="navbar-end">
+                        {this.props.children}  
+                    </div>
+                </div>
+            </nav>
         )
     }
 }
