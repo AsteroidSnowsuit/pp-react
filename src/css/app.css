@@ -1,0 +1,84 @@
+@import "../../node_modules/bulma/css/bulma.css";
+@font-face {
+    font-family: 'SF Pro Bold';
+    src: url(../fonts/SF-Pro-Display-Bold.otf)
+}
+
+@font-face {
+    font-family: 'ProximaNova';
+    src: url(../fonts/ProximaNova-Regular.otf)
+}
+
+
+body {
+    background-color: #0375B4;
+    color: white;
+}
+
+.title, .subtitle {
+    color: white;
+}
+
+.title {
+    font-family: 'SF Pro Bold', Arial;
+}
+
+.subtitle {
+    font-family: 'Proxima Nova', Arial;
+}
+a {
+    color: white;
+    text-decoration: underline;
+}
+.navbar {
+    background-color: transparent;
+    color: white;
+}
+
+.navbar-item a {
+    color: white;
+    text-decoration: none;
+}
+
+.is-primary {
+    background-color: #ff9a00!important;
+}
+
+.is-secondary {
+    background-color : transparent!important;
+    border: 5px solid #ff9a00;
+    color: white;
+    padding:0;
+}
+
+.is-secondary:hover {
+    border: 5px solid #ff9a00;
+    color: white;
+}
+
+.is-secondary:focus {
+    border: 5px solid #ff9a00;
+    color: black;
+    background-color: white!important;
+}
+
+.column.is-vcentered {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+.nav-logo {
+    box-sizing: content-box;  
+    height: 30px;
+}
+
+@media screen and (max-width: 769px) {
+    .reverse-column-order {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
+
+.donation-buttons {
+    margin-top: 20px;
+}
