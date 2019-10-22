@@ -12,8 +12,10 @@ export class InformationRow extends Component {
         var title = this.props.title;
         var subtitle = this.props.subtitle;
         var imageSrc = this.props.image;
+        var button = this.props.button;
+        var destination = this.props.destination;
         var image = <InformationImage image={imageSrc} />
-        var description = <InformationDescription title={title} subtitle={subtitle} />
+        var description = <InformationDescription title={title} subtitle={subtitle} button={button} destination={destination} />
 
         return (
             // image right

@@ -7,10 +7,10 @@ export class DashboardNavigation extends Component {
         return (
             <Navigation>
                 <NavLink to="/">Accueil</NavLink>
-                <NavLink to="/search">Recherche</NavLink>
-                <NavLink to="/groups">Groupes</NavLink>
-                <NavLink to="/me">Mon profil</NavLink>
-                <NavLink to="/logoff">Se déconnecter</NavLink>
+                <NavLink to="/recherche">Recherche</NavLink>
+                <NavLink to="/groupes">Groupes</NavLink>
+                <NavLink to="/profil">Mon profil</NavLink>
+                <NavLink to="/deconnexion">Se déconnecter</NavLink>
             </Navigation>
         )
     }

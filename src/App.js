@@ -13,7 +13,7 @@ export class App extends Component {
         <div>
           <Switch>
             <Route exact path={["/dashboard"]} component={Dashboard} />
-            <Route exact path={["/", "/home"]} component={Homepage} />
+            <Route exact path={["/", "/accueil"]} component={Homepage} />
             <Route component={NoMatch} />
           </Switch>
         </div>

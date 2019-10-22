@@ -40,8 +40,19 @@ a {
     text-decoration: none;
 }
 
+.button > a {
+    text-decoration: none;
+    color: white;
+}
+
+.link-button {
+    text-decoration: none;
+    color: white;
+}
+
 .is-primary {
     background-color: #ff9a00!important;
+    text-decoration: none;
 }
 
 .is-secondary {

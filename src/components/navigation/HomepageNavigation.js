@@ -8,10 +8,10 @@ export class HomepageNavigation extends Component {
         return (
             <Navigation>
                 <NavLink to="/">Accueil</NavLink>
-                <NavLink to="/about">À propos</NavLink>
-                <NavLink to="/donations">Dons</NavLink>
-                <NavLink to="/login">Se connecter</NavLink>
-                <NavButton to="/register">S'inscrire</NavButton>
+                <NavLink to="/apropos">À propos</NavLink>
+                <NavLink to="/dons">Dons</NavLink>
+                <NavLink to="/connexion">Se connecter</NavLink>
+                <NavButton to="/inscription">S'inscrire</NavButton>
             </Navigation>
         )
     }

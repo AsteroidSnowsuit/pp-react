@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { HomepageNavigation } from './../components/navigation/HomepageNavigation';
 import InformationRow from '../components/homepage/InformationRow';
+import LinkButton from '../components/LinkButton';
 
 
 export class Homepage extends Component {
@@ -14,6 +15,8 @@ export class Homepage extends Component {
                             imageSide="right" 
                             title="La nouvelle ère du bénévolat"
                             subtitle="TogetherProject révolutionne l'offre et la demande de bénévolat."
+                            button="Commencer"
+                            destination="/inscription"
                             image={require('../img/new_era.svg')} /> 
                         <InformationRow 
                             imageSide="left" 
@@ -37,8 +40,8 @@ export class Homepage extends Component {
                                 <p>Le meilleur moyen de nous soutenir est de faire un don.</p>
                                 <p>TogetherProject s'engage à publier le montant d'argent reçu à chaque mois et la façon dont il est utilisé pour soutenir le site.</p>
                                 <div className="buttons is-centered donation-buttons">
-                                    <button className="button is-medium is-rounded is-primary">Faire un don</button>
-                                    <button className="button is-medium is-rounded is-secondary">Informations sur les dons</button>
+                                    <LinkButton size="medium" shape="rounded" type="primary" destination="/dons">Faire un don</LinkButton>
+                                    <LinkButton size="medium" shape="rounded" type="secondary" destination="/dons">Informations sur les dons</LinkButton>
                                 </div>
                             </div>
                         </div>
