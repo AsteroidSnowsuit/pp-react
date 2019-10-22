@@ -50,6 +50,9 @@ a {
     color: white;
 }
 
+.fullheight {
+    height: 100vh;
+}
 .is-primary {
     background-color: #ff9a00!important;
     text-decoration: none;
@@ -93,3 +96,16 @@ a {
 .donation-buttons {
     margin-top: 20px;
 }
+
+/* Register Page */
+
+.register-columns > .column {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.register-columns > .column > a:hover {
+    text-decoration: none;
+}
+
