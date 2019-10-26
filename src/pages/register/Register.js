@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import HomepageNavigation from '../components/navigation/HomepageNavigation';
+import HomepageNavigation from '../../components/navigation/HomepageNavigation';
 import {Link} from 'react-router-dom'
 
 export class Register extends Component {
@@ -12,13 +12,13 @@ export class Register extends Component {
                     <div className="columns register-columns">
                         <div className="column is-5 is-offset-1">
                             <Link to="/inscription/benevole">
-                                    <img src={require('../img/volunteer.svg')}></img>
+                                    <img src={require('../../img/volunteer.svg')}></img>
                                     <h2 className="subtitle is-size-2 ">bénévole</h2>
                             </Link> 
                         </div>
                         <div className="column is-5">
                             <Link to="/inscription/organisme">
-                                    <img src={require('../img/organism.svg')}></img>
+                                    <img src={require('../../img/organism.svg')}></img>
                                     <h2 className="subtitle is-size-2 ">organisme</h2>
                             </Link>
                         </div>
