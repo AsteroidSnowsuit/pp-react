@@ -1,4 +1,7 @@
+/* General Styles */
+
 @import "../../node_modules/bulma/css/bulma.css";
+
 @font-face {
     font-family: 'SF Pro Bold';
     src: url(../fonts/SF-Pro-Display-Bold.otf)
@@ -9,14 +12,12 @@
     src: url(../fonts/ProximaNova-Regular.otf)
 }
 
-
-body {
-    background-color: #0375B4;
-    color: white;
+html {
+    height: 100%;
 }
 
-.title, .subtitle {
-    color: white;
+body {
+    min-height: 100%;
 }
 
 .title {
@@ -26,10 +27,68 @@ body {
 .subtitle {
     font-family: 'Proxima Nova', Arial;
 }
+
+.is-primary {
+    background-color: #ff9a00 !important;
+    text-decoration: none;
+}
+
+.is-secondary {
+    background-color: transparent !important;
+    border: 5px solid #ff9a00;
+    color: white;
+    padding: 0;
+}
+
+.is-secondary:hover {
+    border: 5px solid #ff9a00;
+    color: white;
+}
+
+.is-secondary:focus {
+    border: 5px solid #ff9a00;
+    color: black;
+    background-color: white !important;
+}
+
+.column.is-vcentered {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.nav-logo {
+    box-sizing: content-box;
+    height: 30px;
+}
+
+@media screen and (max-width: 769px) {
+    .reverse-column-order {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
+
+/* Homepage Section Specific */
+
+body {
+    background-color: #0375B4;
+    color: white;
+
+}
+
+.title,
+.subtitle {
+    color: white;
+}
+
 a {
     color: white;
     text-decoration: underline;
 }
+
+/* Homepage Navigation */
+
 .navbar {
     background-color: transparent;
     color: white;
@@ -50,62 +109,70 @@ a {
     color: white;
 }
 
-.fullheight {
-    height: 100vh;
-}
-.is-primary {
-    background-color: #ff9a00!important;
-    text-decoration: none;
-}
-
-.is-secondary {
-    background-color : transparent!important;
-    border: 5px solid #ff9a00;
-    color: white;
-    padding:0;
-}
-
-.is-secondary:hover {
-    border: 5px solid #ff9a00;
-    color: white;
-}
-
-.is-secondary:focus {
-    border: 5px solid #ff9a00;
-    color: black;
-    background-color: white!important;
-}
-
-.column.is-vcentered {
-    margin-top: auto;
-    margin-bottom: auto;
-  }
-
-.nav-logo {
-    box-sizing: content-box;  
-    height: 30px;
-}
-
-@media screen and (max-width: 769px) {
-    .reverse-column-order {
-      display: flex;
-      flex-direction: column-reverse;
-    }
-  }
-
 .donation-buttons {
     margin-top: 20px;
 }
 
 /* Register Page */
 
-.register-columns > .column {
+.register-columns >.column {
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
 }
 
-.register-columns > .column > a:hover {
+.register-columns > .column>a:hover {
     text-decoration: none;
 }
 
+.register-form {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: left;
+}
+.register-form input{
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.register-form input::placeholder{
+    color: white;
+    text-align: center;
+}
+
+.register-title {
+    margin-bottom: 10px!important;
+}
+
+.register-columns {
+    height: 100px;
+    background-color: red;
+}
+
+.interest-box {
+    position: relative;
+    border: 10px solid white;
+}
+
+.interest-box-content {
+    padding-top: 100%;
+}
+
+
+@media screen and (max-width: 769px) {
+    .register-form {
+        text-align: center;
+    }
+
+    .register-form p {
+        margin-bottom: 20px;
+    }
+
+    .register-form input{
+        background-color: rgba(255, 255, 255, 0.1);
+        margin-bottom: 10px;
+    }
+}
