@@ -68,6 +68,9 @@ body {
     }
 }
 
+span.underlined {
+    text-decoration: underline;
+}
 
 /* Homepage Section Specific */
 
@@ -128,7 +131,6 @@ a {
 .register-form {
     margin-top: 40px;
     margin-bottom: 40px;
-    text-align: left;
 }
 .register-form input{
     background-color: transparent;
@@ -136,6 +138,14 @@ a {
     border-bottom: 2px solid white;
     color: white;
     font-size: 1.5rem;
+}
+
+.register-form input[type=password] {
+    border: 6px solid white;
+    height: 50px;
+    width: 40%;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 .register-form input::placeholder{
@@ -164,6 +174,7 @@ a {
     right: 0;
 }
 
+
 .interest-box-content .interest-icon {
     font-size: 600%;
     position: absolute;
@@ -178,12 +189,14 @@ a {
     background-color: white;
 }
 
-
+.interest-box-activated .activated-icon{
+    color: #0375B4;
+}
 
 .activated-icon {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 0;
+    right: 0;
     color: transparent;
 }
 
@@ -199,6 +212,19 @@ a {
 
     .register-form input{
         background-color: rgba(255, 255, 255, 0.1);
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .register-form input[type=date] {
+        width: 100%;
+    }
+
+    .register-form input[type=password] {
+        border: 6px solid white;
+        height: 50px;
+        width: 100%;
+        margin-top: 5px;
         margin-bottom: 10px;
     }
 }

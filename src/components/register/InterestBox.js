@@ -18,7 +18,7 @@ export class InterestBox extends Component {
             <div className="column is-one-fifth-desktop is-half-touch">
                 <div className="interest-box">
                     <div className="interest-box-adjuster " >
-                        <div className={"interest-box-content " + this.state.activated == true ? 'interest-box-activated' : ''} onClick={this.handleClick}>
+                        <div className={"interest-box-content " + (this.state.activated == true ? 'interest-box-activated' : '')} onClick={this.handleClick}>
                             <i className={"interest-icon fas " + this.props.icon}></i>
                             <i className="activated-icon fas fa-check"></i>
                         </div>
