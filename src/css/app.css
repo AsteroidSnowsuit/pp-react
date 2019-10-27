@@ -147,18 +147,44 @@ a {
     margin-bottom: 10px!important;
 }
 
-.register-columns {
-    height: 100px;
-    background-color: red;
-}
-
 .interest-box {
     position: relative;
     border: 10px solid white;
 }
 
-.interest-box-content {
+.interest-box-adjuster {
     padding-top: 100%;
+}
+
+.interest-box-content {
+    position: absolute;
+    top: 0;
+    bottom:0;
+    left: 0;
+    right: 0;
+}
+
+.interest-box-content .interest-icon {
+    font-size: 600%;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+    transform: translateX(-50%, -50%);
+}
+
+.interest-box-activated {
+    color: #0375B4;
+    background-color: white;
+}
+
+
+
+.activated-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: transparent;
 }
 
 
