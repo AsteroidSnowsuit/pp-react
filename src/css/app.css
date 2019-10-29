@@ -146,6 +146,7 @@ a {
     width: 40%;
     margin-top: 5px;
     margin-bottom: 10px;
+    padding-left: 15px;
 }
 
 .register-form input::placeholder{
@@ -176,7 +177,7 @@ a {
 
 
 .interest-box-content .interest-icon {
-    font-size: 600%;
+    font-size: 100px;
     position: absolute;
     top: 10%;
     left: 0;
@@ -200,7 +201,12 @@ a {
     color: transparent;
 }
 
-
+.interest-text {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+}
 @media screen and (max-width: 769px) {
     .register-form {
         text-align: center;
@@ -226,5 +232,15 @@ a {
         width: 100%;
         margin-top: 5px;
         margin-bottom: 10px;
+    }
+
+    
+    .interest-box-content .interest-icon {
+        font-size: 55px;
+        position: absolute;
+        top: 10%;
+        left: 0;
+        right: 0;
+        transform: translateX(-50%, -50%);
     }
 }

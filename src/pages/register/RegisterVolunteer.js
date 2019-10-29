@@ -56,7 +56,7 @@ export class RegisterVolunteer extends Component {
                             </div>
                             {(1==1) ? 
                             <div><h2 className="register-title subtitle is-size-3 has-text-centered">Vérifions vos informations</h2>
-                            <p class="has-text-centered">Si une information n'est pas correcte, remonte et rectifie-la.</p>
+                            <p className="has-text-centered">Si une information n'est pas correcte, remonte et rectifie-la.</p>
                             <div className="has-text-left">
                             <p className="is-size-4">Votre nom est <span className="underlined">{this.state.firstname}</span> <span className="underlined">{this.state.lastname}</span>, vous êtes né le <span className="underlined">{this.state.dateofbirth}</span>.</p>
                             <p className="is-size-4">Votre adresse email est le <span className="underlined">{this.state.email}</span>.</p>
