@@ -158,6 +158,12 @@ a {
     margin-bottom: 10px!important;
 }
 
+.register-section {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+}
+
 .interest-box {
     position: relative;
     border: 10px solid white;
@@ -168,23 +174,26 @@ a {
 }
 
 .interest-box-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
     position: absolute;
     top: 0;
     bottom:0;
     left: 0;
     right: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;;
 }
 
-
-.interest-box-content .interest-icon {
-    font-size: 100px;
-    position: absolute;
-    top: 10%;
-    left: 0;
-    right: 0;
-    transform: translateX(-50%, -50%);
+.interest-icon {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(273deg) brightness(104%) contrast(102%);
 }
 
+.interest-box-activated .interest-icon {
+    filter: invert(33%) sepia(73%) saturate(1048%) hue-rotate(169deg) brightness(95%) contrast(99%);
+}
 .interest-box-activated {
     color: #0375B4;
     background-color: white;
@@ -202,10 +211,7 @@ a {
 }
 
 .interest-text {
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    right: 0;
+    font-size: 2vw;
 }
 @media screen and (max-width: 769px) {
     .register-form {
@@ -234,13 +240,14 @@ a {
         margin-bottom: 10px;
     }
 
+    .interest-text {
+        font-size: 6vw!important;
+    }
+}
+
+@media screen and (max-width: 1023px) {
     
-    .interest-box-content .interest-icon {
-        font-size: 55px;
-        position: absolute;
-        top: 10%;
-        left: 0;
-        right: 0;
-        transform: translateX(-50%, -50%);
+    .interest-text {
+        font-size: 6vw!important;
     }
 }

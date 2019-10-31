@@ -6,23 +6,29 @@ export class InterestBox extends Component {
         super(props);
         this.state = {activated: false};
         this.interest_box_content = React.createRef();
-        this.interest_icon = React.createRef();
+        this.interest_text = React.createRef();
         this.handleClick = this.handleClick.bind(this);
         this.updateDimensions = this.updateDimensions.bind(this);
     }
 
     handleClick() {
+        this.props.handleClick(this.props.id, this.props.title);
         this.setState(prevState => ({
             activated: !prevState.activated
         }))        
     }
 
     componentDidMount() {
-        window.addEventListener("resize", this.updateDimensions);
+       /* if((window.getComputedStyle(this.refs.interest_text).width) > (window.getComputedStyle(this.refs.interest_box_content).width)) {
+            console.log((window.getComputedStyle(this.refs.interest_text).width));
+            console.log((window.getComputedStyle(this.refs.interest_box_content).width));
+            this.refs.interest_text.style.fontSize = '1.5vw';
+        }*/
     }
 
     updateDimensions() {
-        this.refs.interest_icon = (window.getComputedStyle(this.refs.interest_box_content).width/10*4)
+        console.log((window.getComputedStyle(this.refs.interest_box_content).width))
+        this.refs.interest_text = (window.getComputedStyle(this.refs.interest_box_content).width)
     }
 
     render() {
@@ -31,9 +37,9 @@ export class InterestBox extends Component {
                 <div className="interest-box">
                     <div className="interest-box-adjuster">
                         <div ref={"interest_box_content"} className={"interest-box-content " + (this.state.activated == true ? 'interest-box-activated' : '')} onClick={this.handleClick}>
-                            <i ref={"interest_icon"} className={"interest-icon fas " + this.props.icon}></i>
+                            <img className="interest-icon" src={this.props.icon} style={{'height': '50%'}}></img>
                             <i className="activated-icon fas fa-check"></i>
-                            <span className="interest-text is-size-3 is-size-4-mobile">Sports</span>
+                            <span ref={"interest_text"} className="interest-text">{this.props.title}</span>
                         </div>
                     </div>
                 </div>
