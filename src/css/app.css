@@ -40,6 +40,10 @@ body {
     padding: 0;
 }
 
+.is-fullheight {
+    min-height: 100vh;
+}
+
 .is-secondary:hover {
     border: 5px solid #ff9a00;
     color: white;
@@ -124,6 +128,10 @@ a {
     flex-direction: column;
 }
 
+.organism-register {
+    padding: 0;
+}
+
 .register-columns > .column>a:hover {
     text-decoration: none;
 }
@@ -152,6 +160,21 @@ a {
 .register-form input::placeholder{
     color: white;
     text-align: center;
+}
+
+.organism-form div{
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+}
+
+.organism-form input{
+    border: 6px solid rgb(253, 255, 255);
+    height: 50px;
+    width: 40%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-left: 15px;
 }
 
 .register-title {
@@ -212,6 +235,16 @@ a {
 
 .interest-text {
     font-size: 2vw;
+}
+
+.interest-names {
+    text-decoration: underline;
+}
+
+
+/* Email Confirmation */
+.email-confirmation {
+    margin-top: 30px;
 }
 @media screen and (max-width: 769px) {
     .register-form {

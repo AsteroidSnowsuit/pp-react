@@ -9,10 +9,33 @@ export class RegisterVolunteer extends Component {
         this.state = {interests: {}}
         this.handleChange = this.handleChange.bind(this);
         this.addInterest = this.addInterest.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     addInterest(id, name) {
-        this.setState({interest:  })
+        var mid = 'm' + id;
+        console.log(this.state.interests[mid] == undefined)
+        if(this.state.interests[mid] == undefined) {
+            this.setState((state) => {
+                state.interests[mid] = name;
+                return {interests: state.interests}
+            })
+        } else {
+            var newInterest = this.state.interests;
+            delete newInterest[mid]
+            this.setState(newInterest)
+        }
+        console.log(this.state.interests)
+    }
+
+    getInterests() {
+        var interests = (Object.keys(this.state.interests).map((key) => {
+            return (<span className="interest-names" key={key}>{this.state.interests[key]}</span>)
+        }))
+        interests = interests.length > 0
+        ? interests.reduce((prev, curr) => <>{prev}{', '}{curr}</>)
+        : null;
+        return interests
     }
 
     checkInfoFilled() {
@@ -34,13 +57,17 @@ export class RegisterVolunteer extends Component {
         });
       }
 
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.history.push('/inscription/verifier-email')
+    }
     render() {
         return (
             <div className="container">
                 <HomepageNavigation />
                 <section className="section has-text-centered">
                     <div className="column is-offset-1 is-10">
-                    <form className="register-form">
+                    <form className="register-form" method="POST" onSubmit={this.handleSubmit}>
                         <h1 className="title is-size-1 register-title">Je suis un bénévole</h1>
                         <section className="section register-section">
                             <p>Clique sur les lignes pour y ajouter tes informations.</p>
@@ -66,13 +93,13 @@ export class RegisterVolunteer extends Component {
                             </div>
                         </section>
                         <section className="section register-section">
-                            {(1==1) ? 
+                            {this.checkInfoFilled() ? 
                             <div><h2 className="register-title subtitle is-size-3 has-text-centered">Vérifions vos informations</h2>
                             <p className="has-text-centered">Si une information n'est pas correcte, remonte et rectifie-la.</p>
                             <div className="has-text-left">
                             <p className="is-size-4">Votre nom est <span className="underlined">{this.state.firstname}</span> <span className="underlined">{this.state.lastname}</span>, vous êtes né le <span className="underlined">{this.state.dateofbirth}</span>.</p>
                             <p className="is-size-4">Votre adresse email est le <span className="underlined">{this.state.email}</span>.</p>
-                            <p className="is-size-4">Vous êtes interessé par les animaux, le sport et le travail de bureau.</p>
+                            <p className="is-size-4">Vous êtes interessé par : {this.getInterests()}</p>
                             <p className="is-size-4">Veuillez entrer votre mot de passe pour confirmer votre inscription.</p>
                             <input type="password" name="password" placeholder="Mot de passe"></input><br />
                             <input type="password" name="c_password" placeholder="Confirmation de mot de passe"></input><br />
