@@ -9,6 +9,7 @@ import RegisterVolunteer from './pages/register/RegisterVolunteer'
 import RegisterOrganism from './pages/register/RegisterOrganism'
 import EmailConfirmation from './pages/register/EmailConfirmation';
 import EmailConfirmed from './pages/register/EmailConfirmed';
+import Login from './pages/login/Login'
 
 
 export class App extends Component {
@@ -23,6 +24,7 @@ export class App extends Component {
             <Route exact path={["/inscription/email-confirme"]} component={EmailConfirmed} />
             <Route exact path={["/inscription/organisme"]} component={RegisterOrganism} />
             <Route exact path={["/inscription"]} component={Register} />
+            <Route exact path={["/connexion"]} component={Login} />
             <Route exact path={["/", "/accueil"]} component={Homepage} />
             <Route component={NoMatch} />
           </Switch>
