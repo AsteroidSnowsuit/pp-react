@@ -69,7 +69,7 @@ export class RegisterOrganism extends Component {
                     <div className="column is-offset-1 is-10">
                     <h1 className="title is-size-1 register-title">Inscription des organismes</h1>
                         <section className="section organism-register">
-                    <form className="register-form organism-form" method="POST" onSubmit={this.handleSubmit}>
+                    <form className="user-form fullbox-form" method="POST" onSubmit={this.handleSubmit}>
                             <div className="has-text-left">
                             <label className="is-size-4">Prénom : </label><input type="text" name="firstname" placeholder="Prénom" value={this.state.firstname} onChange={this.handleChange}/>
                             <label className="is-size-4">Nom de famille : </label><input type="text" name="lastname" placeholder="Nom de famille" value={this.state.lastname} onChange={this.handleChange}/>

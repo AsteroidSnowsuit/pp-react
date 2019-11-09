@@ -67,7 +67,7 @@ export class RegisterVolunteer extends Component {
                 <HomepageNavigation />
                 <section className="section has-text-centered">
                     <div className="column is-offset-1 is-10">
-                    <form className="register-form" method="POST" onSubmit={this.handleSubmit}>
+                    <form className="user-form" method="POST" onSubmit={this.handleSubmit}>
                         <h1 className="title is-size-1 register-title">Je suis un bénévole</h1>
                         <section className="section register-section">
                             <p>Clique sur les lignes pour y ajouter tes informations.</p>
