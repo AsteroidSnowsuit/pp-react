@@ -39,7 +39,7 @@ export class RegisterVolunteer extends Component {
     }
 
     checkInfoFilled() {
-        if(this.state.firstname != undefined && this.state.lastname != undefined & this.state.dateofbirth != undefined && this.state.email != undefined && this.state.address != undefined) {
+        if(this.state.firstname != undefined && this.state.lastname != undefined && this.state.email != undefined) {
             return true;
         }
         else {
@@ -73,7 +73,7 @@ export class RegisterVolunteer extends Component {
                             <p>Clique sur les lignes pour y ajouter tes informations.</p>
                             <div className="has-text-left">
                             <p className="is-size-4">Je m'appelle <input type="text" name="firstname" placeholder="prénom" value={this.state.firstname} onChange={this.handleChange}/> <input type="text" name="lastname" placeholder="nom de famille" value={this.state.lastname} onChange={this.handleChange}/></p>
-                            <p className="is-size-4">Je suis né le <input type="date" name="dateofbirth" value={this.state.dateofbirth} onChange={this.handleChange}></input> et mon adresse est <input type="text" name="address" placeholder="adresse" value={this.state.address} onChange={this.handleChange}/></p>
+                            {/* <p className="is-size-4">Je suis né le <input type="date" name="dateofbirth" value={this.state.dateofbirth} onChange={this.handleChange}></input> et mon adresse est <input type="text" name="address" placeholder="adresse" value={this.state.address} onChange={this.handleChange}/></p> */}
                             <p className="is-size-4">Mon adresse email est le <input type="email" name="email" placeholder="adresse email" value={this.state.email} onChange={this.handleChange} /></p>
                             </div>
                         </section>
@@ -97,7 +97,7 @@ export class RegisterVolunteer extends Component {
                             <div><h2 className="register-title subtitle is-size-3 has-text-centered">Vérifions vos informations</h2>
                             <p className="has-text-centered">Si une information n'est pas correcte, remonte et rectifie-la.</p>
                             <div className="has-text-left">
-                            <p className="is-size-4">Votre nom est <span className="underlined">{this.state.firstname}</span> <span className="underlined">{this.state.lastname}</span>, vous êtes né le <span className="underlined">{this.state.dateofbirth}</span>.</p>
+                            <p className="is-size-4">Votre nom est <span className="underlined">{this.state.firstname}</span> <span className="underlined">{this.state.lastname}</span></p>
                             <p className="is-size-4">Votre adresse email est le <span className="underlined">{this.state.email}</span>.</p>
                             <p className="is-size-4">Vous êtes interessé par : {this.getInterests()}</p>
                             <p className="is-size-4">Veuillez entrer votre mot de passe pour confirmer votre inscription.</p>
