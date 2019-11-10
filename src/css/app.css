@@ -60,9 +60,26 @@ body {
     margin-bottom: auto;
 }
 
+nav {
+    margin-bottom: 20px;
+}
+
 .nav-logo {
     box-sizing: content-box;
     height: 30px;
+}
+
+.navbar-burger {
+    color: white!important;
+}
+
+@media screen and (max-width: 1023px){ 
+    .navbar-menu {
+        text-align: center;
+        background-color: initial;
+        box-shadow: 0 8px 16px rgba(10, 10, 10, 0.1);
+        padding: 0.5rem 0;
+        }
 }
 
 @media screen and (max-width: 769px) {

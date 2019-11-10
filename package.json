@@ -9,6 +9,7 @@
   "license": "MIT",
   "dependencies": {
     "bulma": "^0.7.5",
+    "jquery": "^3.4.1",
     "normalize.css": "^8.0.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
