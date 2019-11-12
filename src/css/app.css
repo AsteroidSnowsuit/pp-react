@@ -1,4 +1,7 @@
+/* General Styles */
+
 @import "../../node_modules/bulma/css/bulma.css";
+
 @font-face {
     font-family: 'SF Pro Bold';
     src: url(../fonts/SF-Pro-Display-Bold.otf)
@@ -9,14 +12,12 @@
     src: url(../fonts/ProximaNova-Regular.otf)
 }
 
-
-body {
-    background-color: #0375B4;
-    color: white;
+html {
+    height: 100%;
 }
 
-.title, .subtitle {
-    color: white;
+body {
+    min-height: 100%;
 }
 
 .title {
@@ -26,10 +27,92 @@ body {
 .subtitle {
     font-family: 'Proxima Nova', Arial;
 }
+
+.is-primary {
+    background-color: #ff9a00 !important;
+    text-decoration: none;
+}
+
+.is-secondary {
+    background-color: transparent !important;
+    border: 5px solid #ff9a00;
+    color: white;
+    padding: 0;
+}
+
+.is-fullheight {
+    min-height: 100vh;
+}
+
+.is-secondary:hover {
+    border: 5px solid #ff9a00;
+    color: white;
+}
+
+.is-secondary:focus {
+    border: 5px solid #ff9a00;
+    color: black;
+    background-color: white !important;
+}
+
+.column.is-vcentered {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+nav {
+    margin-bottom: 20px;
+}
+
+.nav-logo {
+    box-sizing: content-box;
+    height: 30px;
+}
+
+.navbar-burger {
+    color: white!important;
+}
+
+@media screen and (max-width: 1023px){ 
+    .navbar-menu {
+        text-align: center;
+        background-color: initial;
+        box-shadow: 0 8px 16px rgba(10, 10, 10, 0.1);
+        padding: 0.5rem 0;
+        }
+}
+
+@media screen and (max-width: 769px) {
+    .reverse-column-order {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
+span.underlined {
+    text-decoration: underline;
+}
+
+/* Homepage Section Specific */
+
+body {
+    background-color: #0375B4;
+    color: white;
+
+}
+
+.title,
+.subtitle {
+    color: white;
+}
+
 a {
     color: white;
     text-decoration: underline;
 }
+
+/* Homepage Navigation */
+
 .navbar {
     background-color: transparent;
     color: white;
@@ -50,46 +133,190 @@ a {
     color: white;
 }
 
-.is-primary {
-    background-color: #ff9a00!important;
+.donation-buttons {
+    margin-top: 20px;
+}
+
+/* Register Page */
+
+.register-columns >.column {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.organism-register {
+    padding: 0;
+}
+
+.register-columns > .column>a:hover {
     text-decoration: none;
 }
 
-.is-secondary {
-    background-color : transparent!important;
-    border: 5px solid #ff9a00;
+.user-form {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.user-form input{
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid white;
     color: white;
-    padding:0;
+    font-size: 1.5rem;
 }
 
-.is-secondary:hover {
-    border: 5px solid #ff9a00;
+.user-form input[type=password] {
+    border: 6px solid white;
+    height: 50px;
+    width: 40%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+}
+
+.user-form input::placeholder{
     color: white;
+    text-align: center;
 }
 
-.is-secondary:focus {
-    border: 5px solid #ff9a00;
-    color: black;
-    background-color: white!important;
+.fullbox-form div{
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
 }
 
-.column.is-vcentered {
-    margin-top: auto;
-    margin-bottom: auto;
-  }
+.fullbox-form input{
+    border: 6px solid rgb(253, 255, 255);
+    height: 50px;
+    width: 40%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+}
 
-.nav-logo {
-    box-sizing: content-box;  
-    height: 30px;
+.register-title {
+    margin-bottom: 10px!important;
+}
+
+.register-section {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+}
+
+.interest-box {
+    position: relative;
+    border: 10px solid white;
+}
+
+.interest-box-adjuster {
+    padding-top: 100%;
+}
+
+.interest-box-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;;
+}
+
+.interest-icon {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(273deg) brightness(104%) contrast(102%);
+}
+
+.interest-box-activated .interest-icon {
+    filter: invert(33%) sepia(73%) saturate(1048%) hue-rotate(169deg) brightness(95%) contrast(99%);
+}
+.interest-box-activated {
+    color: #0375B4;
+    background-color: white;
+}
+
+.interest-box-activated .activated-icon{
+    color: #0375B4;
+}
+
+.activated-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: transparent;
+}
+
+.interest-text {
+    font-size: 2vw;
+}
+
+.interest-names {
+    text-decoration: underline;
+}
+
+
+/* Email Confirmation */
+.email-confirmation {
+    margin-top: 30px;
+}
+@media screen and (max-width: 769px) {
+    .user-form {
+        text-align: center;
+    }
+
+    .user-form p {
+        margin-bottom: 20px;
+    }
+
+    .user-form input{
+        background-color: rgba(255, 255, 255, 0.1);
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .user-form input[type=date] {
+        width: 100%;
+    }
+
+    .user-form input[type=password] {
+        border: 6px solid white;
+        height: 50px;
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    .interest-text {
+        font-size: 6vw!important;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    
+    .interest-text {
+        font-size: 6vw!important;
+    }
+}
+
+
+.login-form {
+    margin-top: 10px;
+}
+
+.login-form input, .login-form input[type="password"] {
+    width: 75%;
 }
 
 @media screen and (max-width: 769px) {
-    .reverse-column-order {
-      display: flex;
-      flex-direction: column-reverse;
+    .login-form input, .login-form input[type="password"] {
+        width: 100%;
     }
-  }
-
-.donation-buttons {
-    margin-top: 20px;
+    
+    .login-form .button {
+        width: 80%;
+    }
 }
