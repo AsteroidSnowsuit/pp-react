@@ -20,6 +20,10 @@ body {
     min-height: 100%;
 }
 
+.dashboard {
+    background-color: lightgrey;
+}
+
 .title {
     font-family: 'SF Pro Bold', Arial;
 }
