@@ -21,7 +21,7 @@ body {
 }
 
 .dashboard {
-    background-color: lightgrey;
+    background-color: #e8e8e8;
 }
 
 .title {
@@ -97,6 +97,18 @@ span.underlined {
     text-decoration: underline;
 }
 
+/* Dashboard Specific */
+.dashboard .navbar-burger {
+    color: black!important;
+}
+
+.dashboard .navbar-item a {
+    color: black;
+}
+
+.dashboard .title, .subtitle{
+    color: black;
+}
 /* Homepage Section Specific */
 
 body {
