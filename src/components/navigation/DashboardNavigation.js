@@ -5,7 +5,7 @@ import Navigation from './Navigation'
 export class DashboardNavigation extends Component {
     render() {
         return (
-            <Navigation>
+            <Navigation dashboard={true}>
                 <NavLink to="/">Accueil</NavLink>
                 <NavLink to="/recherche">Recherche</NavLink>
                 <NavLink to="/groupes">Groupes</NavLink>

@@ -98,6 +98,11 @@ span.underlined {
 }
 
 /* Dashboard Specific */
+
+.dashboard {
+    color: black;
+}
+
 .dashboard .navbar-burger {
     color: black!important;
 }

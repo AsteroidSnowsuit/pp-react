@@ -4,7 +4,7 @@ export class NavLogo extends Component {
     render() {
         return (
             <div>
-                <img className="column is-vcentered nav-logo" src={require('../../img/logo.svg')}></img>
+                <img className="column is-vcentered nav-logo" src={this.props.dashboard ? require('../../img/logo-dashboard.svg') : require('../../img/logo.svg')}></img>
             </div>
         )
     }
