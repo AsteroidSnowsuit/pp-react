@@ -20,6 +20,10 @@ body {
     min-height: 100%;
 }
 
+.dashboard {
+    background-color: #e8e8e8;
+}
+
 .title {
     font-family: 'SF Pro Bold', Arial;
 }
@@ -93,6 +97,18 @@ span.underlined {
     text-decoration: underline;
 }
 
+/* Dashboard Specific */
+.dashboard .navbar-burger {
+    color: black!important;
+}
+
+.dashboard .navbar-item a {
+    color: black;
+}
+
+.dashboard .title, .subtitle{
+    color: black;
+}
 /* Homepage Section Specific */
 
 body {
