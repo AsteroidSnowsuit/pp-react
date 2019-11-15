@@ -8,7 +8,7 @@ export class Dashboard extends Component {
         return (
             <div class="container dashboard">
                 <DashboardNavigation />
-                
+                {this.props.children}
             </div>
         )
     }

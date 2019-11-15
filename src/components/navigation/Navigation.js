@@ -17,7 +17,7 @@ export class Navigation extends Component {
         return (
             <nav className="navbar">
                 <div className="navbar-brand">
-                    <NavLogo />
+                    <NavLogo dashboard={this.props.dashboard} />
                     <a onClick={this.handleClick} role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
