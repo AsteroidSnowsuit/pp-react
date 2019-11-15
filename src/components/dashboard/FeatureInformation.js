@@ -7,7 +7,7 @@ export class FeatureInformation extends Component {
         return (
             <div className="feature-info-box">
                 <h2 className="subtitle">{title}</h2>
-                <p>{this.props.description}</p>
+                <p>{this.props.children}</p>
             </div>
         )
     }
