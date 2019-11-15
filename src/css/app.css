@@ -112,7 +112,39 @@ span.underlined {
 }
 
 .dashboard .title, .subtitle{
-    color: black;
+    color: black!important;
+}
+
+.feature-row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch!important;
+}
+
+.feature-info-box {
+    height: 100%;
+    border: 1px solid black;
+}
+
+.feature-icon-box {
+    position: relative;
+    border: 1px solid black;
+}
+
+.feature-icon-box-adjuster {
+    padding-top: 100%;
+}
+
+.feature-icon-box-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 0;
+    bottom:0;
+    left: 0;
+    right: 0;
 }
 /* Homepage Section Specific */
 
