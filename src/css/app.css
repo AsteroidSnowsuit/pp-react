@@ -158,6 +158,69 @@ span.underlined {
 .feature-icon-box-content img{
     max-height: 50%;
 }
+
+.banner-container {
+    width: 100%;
+    height: 300px;
+    background-image: url(../img/user/low-poly-red-banner.png)
+}
+
+.user-info {
+    margin-left: 50px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: row;
+}
+.user-info .user-picture {
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+    border: 10px solid white;
+    background-image: url(../img/user/boy.svg)
+}
+
+.user-text {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.user-description {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-text .user-name {
+    font-size: 35px;
+}
+
+.user-text .user-occupation {
+    margin-top: -5px;
+}
+
+.user-activity {
+    height: 120px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.user-activity img {
+    height: 70%;
+}
+
+.user-activity-text {
+    margin-left: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-activity-title {
+    font-size: 1.5em;
+}
+
+
 /* Homepage Section Specific */
 
 body {
