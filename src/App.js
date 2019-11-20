@@ -11,6 +11,7 @@ import EmailConfirmation from './pages/register/EmailConfirmation';
 import EmailConfirmed from './pages/register/EmailConfirmed';
 import Login from './pages/login/Login'
 import DashboardHomepage from './pages/dashboard/DashboardHomepage';
+import UserProfile from './pages/user/UserProfile'
 
 
 export class App extends Component {
@@ -20,6 +21,7 @@ export class App extends Component {
         <div>
           <Switch>
             <Route exact path={["/tableaudebord"]} component={DashboardHomepage} />
+            <Route exact path={["/profil"]} component={UserProfile} />
             <Route exact path={["/inscription/benevole"]} component={RegisterVolunteer} />
             <Route exact path={["/inscription/verifier-email"]} component={EmailConfirmation} />
             <Route exact path={["/inscription/email-confirme"]} component={EmailConfirmed} />
