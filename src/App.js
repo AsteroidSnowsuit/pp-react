@@ -13,26 +13,29 @@ import Login from './pages/login/Login'
 import DashboardHomepage from './pages/dashboard/DashboardHomepage';
 import UserProfile from './pages/user/UserProfile'
 
+//export const RequestContext = React.createContext('http://localhost:8000');
 
 export class App extends Component {
   render() {
     return (
-      <Router>
-        <div>
-          <Switch>
-            <Route exact path={["/tableaudebord"]} component={DashboardHomepage} />
-            <Route exact path={["/profil"]} component={UserProfile} />
-            <Route exact path={["/inscription/benevole"]} component={RegisterVolunteer} />
-            <Route exact path={["/inscription/verifier-email"]} component={EmailConfirmation} />
-            <Route exact path={["/inscription/email-confirme"]} component={EmailConfirmed} />
-            <Route exact path={["/inscription/organisme"]} component={RegisterOrganism} />
-            <Route exact path={["/inscription"]} component={Register} />
-            <Route exact path={["/connexion"]} component={Login} />
-            <Route exact path={["/", "/accueil"]} component={Homepage} />
-            <Route component={NoMatch} />
-          </Switch>
-        </div>
-      </Router>
+      //<RequestContext.Provider>
+        <Router>
+          <div>
+            <Switch>
+              <Route exact path={["/tableaudebord"]} component={DashboardHomepage} />
+              <Route exact path={["/profil"]} component={UserProfile} />
+              <Route exact path={["/inscription/benevole"]} component={RegisterVolunteer} />
+              <Route exact path={["/inscription/verifier-email"]} component={EmailConfirmation} />
+              <Route exact path={["/inscription/email-confirme"]} component={EmailConfirmed} />
+              <Route exact path={["/inscription/organisme"]} component={RegisterOrganism} />
+              <Route exact path={["/inscription"]} component={Register} />
+              <Route exact path={["/connexion"]} component={Login} />
+              <Route exact path={["/", "/accueil"]} component={Homepage} />
+              <Route component={NoMatch} />
+            </Switch>
+          </div>
+        </Router>
+      //</RequestContext.Provider>
     )
   }
 }

@@ -100,6 +100,24 @@ span.underlined {
     text-decoration: underline;
 }
 
+.error-container {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.error-line {
+    margin-bottom: 15px;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.error-line img {
+    height: 35px;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(138deg) brightness(105%) contrast(101%);
+    margin-right: 10px;
+}
 /* Dashboard Specific */
 
 .dashboard {

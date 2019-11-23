@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 import HomepageNavigation from '../../components/navigation/HomepageNavigation';
 import InterestBox from '../../components/register/InterestBox';
+//import {RequestContext} from '../../App'
+import axios from 'axios'
+import ErrorLine from '../../components/ErrorLine';
 
 export class RegisterVolunteer extends Component {
+
+    //static contextType = RequestContext;
 
     constructor(props) {
         super(props)
@@ -59,7 +64,19 @@ export class RegisterVolunteer extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.history.push('/inscription/verifier-email')
+        if(this.checkInfoFilled()) {
+            axios.post("http://localhost:8000/api/register", 
+            {firstname: this.state.firstname, lastname: this.state.lastname, email: this.state.email, password: this.state.password, c_password: this.state.c_password},
+            {headers : {Accept: 'application/json'}})
+            .then((success) =>{
+                this.props.history.push('/inscription/verifier-email')
+            })
+            .catch(error => {
+               this.setState({'errors' : error.response.data.data})
+               console.log(error.response.data);
+            });
+        }
+        console.log(this.state.errors)
     }
     render() {
         return (
@@ -101,8 +118,11 @@ export class RegisterVolunteer extends Component {
                             <p className="is-size-4">Votre adresse email est le <span className="underlined">{this.state.email}</span>.</p>
                             <p className="is-size-4">Vous êtes interessé par : {this.getInterests()}</p>
                             <p className="is-size-4">Veuillez entrer votre mot de passe pour confirmer votre inscription.</p>
-                            <input type="password" name="password" placeholder="Mot de passe"></input><br />
-                            <input type="password" name="c_password" placeholder="Confirmation de mot de passe"></input><br />
+                            <input type="password" name="password" placeholder="Mot de passe" value={this.state.password} onChange={this.handleChange}></input><br />
+                            <input type="password" name="c_password" placeholder="Confirmation de mot de passe" value={this.state.c_password} onChange={this.handleChange}></input><br />
+                            <div class="error-container">
+                            {(this.state.errors != undefined) ? Object.keys(this.state.errors).map((key, index) => (<ErrorLine>{this.state.errors[key]}</ErrorLine>)) : ""}
+                            </div>
                             <button className="button is-primary has-text-left">Confirmer</button>
                             </div></div> : '' }      
                         </section>      
