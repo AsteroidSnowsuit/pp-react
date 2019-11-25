@@ -1,17 +1,14 @@
 import React, { Component } from 'react'
 import HomepageNavigation from '../../components/navigation/HomepageNavigation';
 import InterestBox from '../../components/register/InterestBox';
-//import {RequestContext} from '../../App'
 import axios from 'axios'
 import ErrorLine from '../../components/ErrorLine';
 
 export class RegisterVolunteer extends Component {
 
-    //static contextType = RequestContext;
-
     constructor(props) {
         super(props)
-        this.state = {interests: {}}
+        this.state = {interests: {}, firstname: '', lastname: '', email: '', password: '', c_password: ''}
         this.handleChange = this.handleChange.bind(this);
         this.addInterest = this.addInterest.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
