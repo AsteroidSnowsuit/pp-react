@@ -12,6 +12,7 @@ import EmailConfirmed from './pages/register/EmailConfirmed';
 import Login from './pages/login/Login'
 import DashboardHomepage from './pages/dashboard/DashboardHomepage';
 import UserProfile from './pages/user/UserProfile'
+import PrivateRoute from './PrivateRoute'
 
 //export const RequestContext = React.createContext('http://localhost:8000');
 
@@ -22,14 +23,26 @@ export class App extends Component {
         <Router>
           <div>
             <Switch>
-              <Route exact path={["/tableaudebord"]} component={DashboardHomepage} />
-              <Route exact path={["/profil"]} component={UserProfile} />
-              <Route exact path={["/inscription/benevole"]} component={RegisterVolunteer} />
+              <PrivateRoute path="/profil">
+                <UserProfile />
+              </PrivateRoute>
+              <PrivateRoute path="/tableaudebord">
+                <DashboardHomepage />
+              </PrivateRoute>
+              <PrivateRoute reverse="true" path="/inscription">
+                <Register />
+              </PrivateRoute>
+              <PrivateRoute reverse="true" path="/inscription/benevole">
+                <RegisterVolunteer />
+              </PrivateRoute>
+              <PrivateRoute reverse="true" path="/connexion">
+                <Login />
+              </PrivateRoute>
+              <PrivateRoute reverse="true" path="/inscription/organisme">
+                <RegisterOrganism />
+              </PrivateRoute>
               <Route exact path={["/inscription/verifier-email"]} component={EmailConfirmation} />
               <Route exact path={["/inscription/email-confirme"]} component={EmailConfirmed} />
-              <Route exact path={["/inscription/organisme"]} component={RegisterOrganism} />
-              <Route exact path={["/inscription"]} component={Register} />
-              <Route exact path={["/connexion"]} component={Login} />
               <Route exact path={["/", "/accueil"]} component={Homepage} />
               <Route component={NoMatch} />
             </Switch>
