@@ -24,22 +24,22 @@ export class App extends Component {
         <Router>
           <div>
             <Switch>
-              <PrivateRoute path="/profil">
+              <PrivateRoute exact path="/profil">
                 <UserProfile />
               </PrivateRoute>
-              <PrivateRoute path="/tableaudebord">
+              <PrivateRoute exact path="/tableaudebord">
                 <DashboardHomepage />
               </PrivateRoute>
-              <PrivateRoute reverse="true" path="/inscription">
+              <PrivateRoute reverse="true" exact path="/inscription">
                 <Register />
               </PrivateRoute>
-              <PrivateRoute reverse="true" path="/inscription/benevole">
+              <PrivateRoute reverse="true" exact path="/inscription/benevole">
                 <RegisterVolunteer />
               </PrivateRoute>
-              <PrivateRoute reverse="true" path="/connexion">
+              <PrivateRoute reverse="true" exact path="/connexion">
                 <Login />
               </PrivateRoute>
-              <PrivateRoute reverse="true" path="/inscription/organisme">
+              <PrivateRoute reverse="true" exact path="/inscription/organisme">
                 <RegisterOrganism />
               </PrivateRoute>
               <PrivateRoute path="/deconnexion">
