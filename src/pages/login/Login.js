@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component} from 'react'
+import {withRouter} from 'react-router-dom'
 import HomepageNavigation from '../../components/navigation/HomepageNavigation';
 import Button from '../../components/Button';
 import Axios from 'axios';
@@ -29,8 +30,8 @@ export class Login extends Component {
         Axios.post('http://localhost:8000/api/login', {email: this.state.email, password: this.state.password}, {headers : {Accept: 'application/json'}})
         .then((success) => {
             Cookies.set('token', success.data.data.token);
+            this.props.history.push("/tableaudebord")
         }, (error) => {
-            console.log('error')
             this.setState({'errors' : error.response.data.data})
         });
     }
@@ -56,4 +57,4 @@ export class Login extends Component {
     }
 }
 
-export default Login
+export default withRouter(Login)

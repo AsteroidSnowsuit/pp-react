@@ -13,6 +13,7 @@ import Login from './pages/login/Login'
 import DashboardHomepage from './pages/dashboard/DashboardHomepage';
 import UserProfile from './pages/user/UserProfile'
 import PrivateRoute from './PrivateRoute'
+import Logout from './pages/Logout'
 
 //export const RequestContext = React.createContext('http://localhost:8000');
 
@@ -40,6 +41,9 @@ export class App extends Component {
               </PrivateRoute>
               <PrivateRoute reverse="true" path="/inscription/organisme">
                 <RegisterOrganism />
+              </PrivateRoute>
+              <PrivateRoute path="/deconnexion">
+                <Logout />
               </PrivateRoute>
               <Route exact path={["/inscription/verifier-email"]} component={EmailConfirmation} />
               <Route exact path={["/inscription/email-confirme"]} component={EmailConfirmed} />
