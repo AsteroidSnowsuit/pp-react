@@ -13,11 +13,14 @@ export class Logout extends Component {
                 "Accept": 'application/json', 
                 "Authorization": `Bearer ${token}`}
             })
-            .then((success) => {
-                this.props.history.push("/");
-                Cookies.remove('token');
+        .then((success) => {
+            Cookies.remove('token');
+            this.props.history.push("/");
         })
-        console.log('test 2')
+        .catch((error) => {
+            Cookies.remove('token');
+            this.props.history.push("/");
+        })
         return <p>Déconnexion...</p>
     }
 }

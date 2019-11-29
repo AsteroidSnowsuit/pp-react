@@ -5,6 +5,7 @@ export class UserActivity extends Component {
         return (
             <div class="user-activity">
                 <img src={require('../../img/user/hands.svg')} />
+                {this.props.participations}
                 <div class="user-activity-text">
                     <span class="user-activity-title">Micheal Drapeau a fait du bénévolat !</span>
                     <span class="user-activity-offer">Télérecrutement chez Héma-Québec</span>

@@ -7,8 +7,8 @@ export class UserInfo extends Component {
                 <div class="user-picture"></div>
                 <div class="user-text">
                     <div class="user-description">
-                        <span class="user-name">Michel Drapeau</span>
-                        <span class="user-occupation">Héma-Québec</span>
+                        <span class="user-name">{this.props.firstname + ' ' + this.props.lastname}</span>
+                        <span class="user-occupation">{this.props.occupation}</span>
                     </div>
                 </div>
             </div>
