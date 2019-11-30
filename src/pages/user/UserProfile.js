@@ -11,7 +11,7 @@ export class UserProfile extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {firstname : '', lastname: '', occupation: '', participations: ''}
+        this.state = {firstname : '', lastname: '', occupation: '', participations: []}
     }
     componentDidMount() {
         var token = Cookies.get('token');
@@ -34,7 +34,10 @@ export class UserProfile extends Component {
                 </div>
                 <div className="columns">
                     <div className="user-body column is-6 is-offset-1">
-                        <UserActivity />
+                        {this.state.participations.map((participation) => {
+                            return <UserActivity firstname={this.state.firstname} lastname={this.state.lastname} organization={participation.offer.organization.name} title={participation.offer.name} date={participation.offer.date} />
+                        })}
+                        
                     </div>
                 </div>
 
