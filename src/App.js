@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Navigation from './components/navigation/Navigation'
-import Homepage from './pages/Homepage'
+import HomepageHomepage from './pages/homepage/HomepageHomepage'
 import Dashboard from './pages/Dashboard'
 import NoMatch from './pages/NoMatch'
 import Register from './pages/register/Register'
@@ -14,8 +14,7 @@ import DashboardHomepage from './pages/dashboard/DashboardHomepage';
 import UserProfile from './pages/user/UserProfile'
 import PrivateRoute from './PrivateRoute'
 import Logout from './pages/Logout'
-
-//export const RequestContext = React.createContext('http://localhost:8000');
+import AddOrganism from './pages/organization/AddOrganism'
 
 export class App extends Component {
   render() {
@@ -42,12 +41,15 @@ export class App extends Component {
               <PrivateRoute reverse="true" exact path="/inscription/organisme">
                 <RegisterOrganism />
               </PrivateRoute>
+              <PrivateRoute exact path="/organisme/creation">
+                <AddOrganism />
+              </PrivateRoute>
               <PrivateRoute path="/deconnexion">
                 <Logout />
               </PrivateRoute>
               <Route exact path={["/inscription/verifier-email"]} component={EmailConfirmation} />
               <Route exact path={["/inscription/email-confirme"]} component={EmailConfirmed} />
-              <Route exact path={["/", "/accueil"]} component={Homepage} />
+              <Route exact path={["/", "/accueil"]} component={HomepageHomepage} />
               <Route component={NoMatch} />
             </Switch>
           </div>

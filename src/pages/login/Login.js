@@ -5,12 +5,13 @@ import Button from '../../components/Button';
 import Axios from 'axios';
 import ErrorLine from '../../components/ErrorLine'
 import * as Cookies from 'js-cookie'
+import HomepageLoading from '../loading/HomepageLoading';
 
 export class Login extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {email: '', password: ''}
+        this.state = {email: '', password: '', loading: false}
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -26,18 +27,21 @@ export class Login extends Component {
       }
 
     handleSubmit(e) {
+        this.setState({loading: true})
         e.preventDefault();
         Axios.post('http://localhost:8000/api/login', {email: this.state.email, password: this.state.password}, {headers : {Accept: 'application/json'}})
         .then((success) => {
             Cookies.set('token', success.data.data.token);
             this.props.history.push("/tableaudebord")
         }, (error) => {
+            this.setState({loading: false})
             this.setState({'errors' : error.response.data.data})
         });
     }
 
     render() {
         return (
+            <HomepageLoading loading={this.state.loading}>
             <div className="container fullheight">
                 <HomepageNavigation />
                 <div className="columns has-text-centered">
@@ -53,6 +57,7 @@ export class Login extends Component {
                 </div>
                 </div>
             </div>
+            </HomepageLoading>
         )
     }
 }

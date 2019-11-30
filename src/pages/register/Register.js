@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import HomepageNavigation from '../../components/navigation/HomepageNavigation';
 import {Link} from 'react-router-dom'
+import Homepage from '../Homepage';
 
 export class Register extends Component {
     render() {
         return (
-            <div className="container fullheight">
-                <HomepageNavigation />
+            <Homepage>
                 <section className="section has-text-centered">
                     <h1 className="title is-size-1">Je suis un...</h1>
                     <div className="columns register-columns">
@@ -24,7 +24,7 @@ export class Register extends Component {
                         </div>
                     </div>
                 </section>
-            </div>
+            </Homepage>
         )
     }
 }

@@ -6,7 +6,7 @@ export class DashboardNavigation extends Component {
     render() {
         return (
             <Navigation dashboard={true}>
-                <NavLink to="/">Accueil</NavLink>
+                <NavLink to="/tableaudebord">Tableau de bord</NavLink>
                 <NavLink to="/recherche">Recherche</NavLink>
                 <NavLink to="/groupes">Groupes</NavLink>
                 <NavLink to="/profil">Mon profil</NavLink>

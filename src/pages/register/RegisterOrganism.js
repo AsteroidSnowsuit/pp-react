@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom'
 import HomepageNavigation from '../../components/navigation/HomepageNavigation';
 import axios from 'axios'
 import ErrorLine from '../../components/ErrorLine'
+import Homepage from '../Homepage';
 
 export class RegisterOrganism extends Component {
 
@@ -42,8 +43,7 @@ export class RegisterOrganism extends Component {
 
     render() {
         return (
-            <div className="container">
-                <HomepageNavigation />
+            <Homepage>
                 <section className="section has-text-centered">
                     <div className="column is-offset-1 is-10">
                     <h1 className="title is-size-1 register-title">Inscription des organismes</h1>
@@ -64,7 +64,7 @@ export class RegisterOrganism extends Component {
                         </section>
                     </div>
                 </section>
-            </div>
+            </Homepage>
         )
     }
 }

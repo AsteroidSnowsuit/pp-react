@@ -78,8 +78,7 @@ export class RegisterVolunteer extends Component {
     
     render() {
         return (
-            <div className="container">
-                <HomepageNavigation />
+            <Homepage>
                 <section className="section has-text-centered">
                     <div className="column is-offset-1 is-10">
                     <form className="user-form" method="POST" onSubmit={this.handleSubmit}>
@@ -127,7 +126,7 @@ export class RegisterVolunteer extends Component {
                         </form>
                     </div>
                 </section>
-            </div>
+            </Homepage>
         )
     }
 }

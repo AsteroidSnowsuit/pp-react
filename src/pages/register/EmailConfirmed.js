@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import HomepageNavigation from '../../components/navigation/HomepageNavigation';
 import LinkButton from '../../components/LinkButton';
+import Homepage from '../Homepage';
 
 export class EmailConfirmed extends Component {
     render() {
         return (
-            <div className="container">
-                <HomepageNavigation />
+            <Homepage>
                 <div className="columns is-fullheight email-confirmation has-text-centered">
                     <div className="column is-4 is-offset-4 is-10-mobile is-offset-1-mobile">
                     <img src={require('../../img/confirmation.svg')} />
@@ -15,7 +15,7 @@ export class EmailConfirmed extends Component {
                     <LinkButton type="primary" destination="/connexion">Se connecter</LinkButton>
                 </div>
                 </div>
-            </div>
+            </Homepage>
         )
     }
 }
