@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import {withRouter} from 'react-router-dom'
 import HomepageNavigation from '../../components/navigation/HomepageNavigation';
-import InterestBox from '../../components/register/InterestBox';
+import axios from 'axios'
+import ErrorLine from '../../components/ErrorLine'
 
 export class RegisterOrganism extends Component {
 
@@ -10,41 +12,6 @@ export class RegisterOrganism extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.addInterest = this.addInterest.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    addInterest(id, name) {
-        var mid = 'm' + id;
-        console.log(this.state.interests[mid] == undefined)
-        if(this.state.interests[mid] == undefined) {
-            this.setState((state) => {
-                state.interests[mid] = name;
-                return {interests: state.interests}
-            })
-        } else {
-            var newInterest = this.state.interests;
-            delete newInterest[mid]
-            this.setState(newInterest)
-        }
-        console.log(this.state.interests)
-    }
-
-    getInterests() {
-        var interests = (Object.keys(this.state.interests).map((key) => {
-            return (<span className="interest-names" key={key}>{this.state.interests[key]}</span>)
-        }))
-        interests = interests.length > 0
-        ? interests.reduce((prev, curr) => <>{prev}{', '}{curr}</>)
-        : null;
-        return interests
-    }
-
-    checkInfoFilled() {
-        if(this.state.firstname != undefined && this.state.lastname != undefined & this.state.dateofbirth != undefined && this.state.email != undefined && this.state.address != undefined) {
-            return true;
-        }
-        else {
-            return false;
-        }
     }
 
     handleChange(event) {
@@ -59,8 +26,20 @@ export class RegisterOrganism extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.history.push('/inscription/verifier-email')
+        if(this.checkInfoFilled()) {
+            axios.post("http://localhost:8000/api/register", 
+            {firstname: this.state.firstname, lastname: this.state.lastname, email: this.state.email, password: this.state.password, c_password: this.state.c_password, organismMember: true},
+            {headers : {Accept: 'application/json'}})
+            .then((success) =>{
+                this.props.history.push('/inscription/verifier-email')
+            }, (error) => {
+                this.setState({'errors' : error.response.data.data})
+                console.log(error.response.data);
+            });
+        }
+        console.log(this.state.errors)
     }
+
     render() {
         return (
             <div className="container">
@@ -76,9 +55,10 @@ export class RegisterOrganism extends Component {
                             <label className="is-size-4">Date de naissance : </label><input type="date" name="dateofbirth" value={this.state.dateofbirth} onChange={this.handleChange}></input>
                             <label className="is-size-4">Adresse de travail : </label><input type="text" name="address" placeholder="Adresse" value={this.state.address} onChange={this.handleChange}/>
                             <label className="is-size-4">Adresse email : </label><input type="email" name="email" placeholder="Adresse email" value={this.state.email} onChange={this.handleChange} />
-                            <label className="is-size-4">Mot de passe : </label><input type="password" name="password" placeholder="Mot de passe"></input>
-                            <label className="is-size-4">Confirmation de mot de passe : </label><input type="password" name="c_password" placeholder="Confirmation de mot de passe"></input>                     
+                            <label className="is-size-4">Mot de passe : </label><input type="password" name="password" placeholder="Mot de passe" value={this.state.password} onChange={this.handleChange}></input>
+                            <label className="is-size-4">Confirmation de mot de passe : </label><input type="password" name="c_password" placeholder="Confirmation de mot de passe" value={this.state.c_password} onChange={this.handleChange}></input>                     
                             </div>
+                            {(this.state.errors != undefined) ? Object.keys(this.state.errors).map((key, index) => (<ErrorLine>{this.state.errors[key]}</ErrorLine>)) : ""}
                             <button className="button is-primary has-text-left">Soumettre le formulaire</button>
                         </form>
                         </section>
@@ -89,4 +69,4 @@ export class RegisterOrganism extends Component {
     }
 }
 
-export default RegisterOrganism
+export default withRouter(RegisterOrganism)

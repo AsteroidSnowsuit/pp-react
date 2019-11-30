@@ -75,6 +75,7 @@ export class RegisterVolunteer extends Component {
         }
         console.log(this.state.errors)
     }
+    
     render() {
         return (
             <div className="container">
