@@ -11,13 +11,13 @@ export class UserProfile extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {firstname : '', lastname: '', occupation: '', participations: []}
+        this.state = {firstname : '', lastname: '', occupation: '', participations: [], loading: true}
     }
     componentDidMount() {
         var token = Cookies.get('token');
         axios.get('http://localhost:8000/api/details', {headers: {"Accept": 'application/json', "Authorization": `Bearer ${token}`}}).then(
             (success) => {
-                console.log(success)
+                this.setState({loading: false});
                 this.setState({firstname : success.data.data.user.firstname, lastname: success.data.data.user.lastname})
                 this.setState({occupation : (success.data.data.user.organismMember ? 'Membre d\'un organisme' : 'Bénévole')})
                 this.setState({participations : success.data.data.participations})
@@ -26,7 +26,7 @@ export class UserProfile extends Component {
     }
     render() {
         return (
-            <Dashboard>
+            <Dashboard loading={this.state.loading}>
                 <div className="user-header">
                     <UserBanner />
                     <UserInfo firstname={this.state.firstname} lastname={this.state.lastname} occupation={this.state.occupation} />
