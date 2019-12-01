@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import DashboardNavigation from '../components/navigation/DashboardNavigation'
 import $ from 'jquery'
 import DashboardLoading from '../../src/pages/loading/DashboardLoading'
-
+import * as Cookies from 'js-cookie'
 
 export class Dashboard extends Component {
     render() {
@@ -10,7 +10,7 @@ export class Dashboard extends Component {
         return (
             <DashboardLoading loading={this.props.loading}>
                 <div class="container dashboard">
-                    <DashboardNavigation />
+                    <DashboardNavigation organism={Cookies.get('organism')} />
                     {this.props.children}
                 </div>
             </DashboardLoading>

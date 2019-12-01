@@ -32,6 +32,7 @@ export class Login extends Component {
         Axios.post('http://localhost:8000/api/login', {email: this.state.email, password: this.state.password}, {headers : {Accept: 'application/json'}})
         .then((success) => {
             Cookies.set('token', success.data.data.token);
+            Cookies.set('organism', success.data.data.organismMember);
             this.props.history.push("/tableaudebord")
         }, (error) => {
             this.setState({loading: false})
