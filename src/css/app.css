@@ -144,6 +144,11 @@ span.underlined {
     color: black!important;
 }
 
+.dashboard .user-form input, .dashboard .user-form input::placeholder {
+    border-color: black;
+    color: black;
+}
+
 .feature-info-box {
     padding: 20px;
     height: 100%;
