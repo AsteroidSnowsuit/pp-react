@@ -15,6 +15,7 @@ import UserProfile from './pages/user/UserProfile'
 import PrivateRoute from './PrivateRoute'
 import Logout from './pages/Logout'
 import AddOrganism from './pages/organization/AddOrganism'
+import OfferCreation from './pages/organization/OfferCreation'
 
 export class App extends Component {
   render() {
@@ -43,6 +44,9 @@ export class App extends Component {
               </PrivateRoute>
               <PrivateRoute exact path="/organisme/creation">
                 <AddOrganism />
+              </PrivateRoute>
+              <PrivateRoute exact path="/offres/nouvelle">
+                <OfferCreation />
               </PrivateRoute>
               <PrivateRoute path="/deconnexion">
                 <Logout />

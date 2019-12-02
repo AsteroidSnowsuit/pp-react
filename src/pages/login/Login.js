@@ -3,9 +3,10 @@ import {withRouter} from 'react-router-dom'
 import HomepageNavigation from '../../components/navigation/HomepageNavigation';
 import Button from '../../components/Button';
 import Axios from 'axios';
-import ErrorLine from '../../components/ErrorLine'
+import ErrorContainer from '../../components/ErrorContainer'
 import * as Cookies from 'js-cookie'
 import HomepageLoading from '../loading/HomepageLoading';
+
 
 export class Login extends Component {
 
@@ -52,7 +53,7 @@ export class Login extends Component {
                     <form className="login-form user-form fullbox-form" onSubmit={this.handleSubmit}>
                         <input name="email" value={this.state.email} onChange={this.handleChange} type="text" placeholder="Adresse email"></input><br />
                         <input name="password" value={this.state.password} onChange={this.handleChange} type="password" placeholder="Mot de passe"></input><br />
-                        {(this.state.errors != undefined) ? Object.keys(this.state.errors).map((key, index) => (<ErrorLine>{this.state.errors[key]}</ErrorLine>)) : ""}
+                        <ErrorContainer errors={this.state.errors} />
                         <Button type="primary">Se connecter</Button>
                     </form>
                 </div>

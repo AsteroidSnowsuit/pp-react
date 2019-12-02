@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {withRouter} from 'react-router-dom'
 import Dashboard from '../Dashboard'
 import UserBanner from '../../components/user/UserBanner'
 import UserInfo from '../../components/user/UserInfo';
@@ -21,6 +22,8 @@ export class UserProfile extends Component {
                 this.setState({firstname : success.data.data.user.firstname, lastname: success.data.data.user.lastname})
                 this.setState({occupation : (success.data.data.user.organismMember ? 'Membre d\'un organisme' : 'Bénévole')})
                 this.setState({participations : success.data.data.participations})
+            }, (error) => {
+                this.props.history.push('/deconnexion');
             }
         )
     }
@@ -46,4 +49,4 @@ export class UserProfile extends Component {
     }
 }
 
-export default UserProfile
+export default withRouter(UserProfile)
