@@ -11,7 +11,6 @@ export class RegisterOrganism extends Component {
         super(props)
         this.state = {interests: {}}
         this.handleChange = this.handleChange.bind(this);
-        this.addInterest = this.addInterest.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -27,17 +26,16 @@ export class RegisterOrganism extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        if(this.checkInfoFilled()) {
-            axios.post("http://localhost:8000/api/register", 
-            {firstname: this.state.firstname, lastname: this.state.lastname, email: this.state.email, password: this.state.password, c_password: this.state.c_password, organismMember: true},
-            {headers : {Accept: 'application/json'}})
-            .then((success) =>{
-                this.props.history.push('/inscription/verifier-email')
-            }, (error) => {
-                this.setState({'errors' : error.response.data.data})
-                console.log(error.response.data);
-            });
-        }
+        axios.post("http://localhost:8000/api/register", 
+        {firstname: this.state.firstname, lastname: this.state.lastname, email: this.state.email, password: this.state.password, c_password: this.state.c_password, organismMember: true},
+        {headers : {Accept: 'application/json'}})
+        .then((success) =>{
+            this.props.history.push('/inscription/verifier-email')
+        }, (error) => {
+            this.setState({'errors' : error.response.data.data})
+            console.log(error.response.data);
+        });
+    
         console.log(this.state.errors)
     }
 

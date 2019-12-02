@@ -18,14 +18,6 @@ export class InterestBox extends Component {
         }))        
     }
 
-    componentDidMount() {
-       /* if((window.getComputedStyle(this.refs.interest_text).width) > (window.getComputedStyle(this.refs.interest_box_content).width)) {
-            console.log((window.getComputedStyle(this.refs.interest_text).width));
-            console.log((window.getComputedStyle(this.refs.interest_box_content).width));
-            this.refs.interest_text.style.fontSize = '1.5vw';
-        }*/
-    }
-
     updateDimensions() {
         console.log((window.getComputedStyle(this.refs.interest_box_content).width))
         this.refs.interest_text = (window.getComputedStyle(this.refs.interest_box_content).width)
