@@ -3,6 +3,7 @@ import HomepageNavigation from '../../components/navigation/HomepageNavigation';
 import InterestBox from '../../components/register/InterestBox';
 import axios from 'axios'
 import ErrorLine from '../../components/ErrorLine';
+import Homepage from '../Homepage'
 
 export class RegisterVolunteer extends Component {
 

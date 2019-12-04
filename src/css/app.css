@@ -471,3 +471,57 @@ a {
         width: 80%;
     }
 }
+
+/* Offer */
+
+.offer-header {
+    border-bottom: 1px solid dimgray;
+    padding-bottom: 10px;
+}
+
+.offer-header .title {
+    margin-bottom: 0px;
+}
+
+.offer-header .subtitle {
+    margin-left: 15px;
+    font-weight: 600;
+}
+
+.offer-header p {
+    margin-top: 10px;
+}
+
+.offer-header img {
+    height: 120px;
+}
+
+.offer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.offer-header .level-left, .offer-header .level-right {
+    display: inline-block;
+}
+
+.nbPlaces {
+    font-size: 1.3em;
+}
+
+.nbPlaces .subtitle {
+    margin-bottom: 0;
+}
+
+.nbPlaces > div {
+    padding-left: 15px;
+}
+
+.nbPlaces span {
+    text-decoration: underline;
+}
+
+.nbPlaces .button {
+    margin-top: 10px;
+}

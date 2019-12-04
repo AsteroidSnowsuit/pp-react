@@ -3,6 +3,7 @@ import Dashboard from '../Dashboard'
 import ErrorContainer from '../../components/ErrorContainer'
 import Axios from 'axios';
 import * as Cookies from 'js-cookie'
+import {withRouter} from 'react-router-dom'
 
 export class OfferCreation extends Component {
 
@@ -32,6 +33,8 @@ export class OfferCreation extends Component {
         .then(
         (success) => {
             this.setState({loading: false})
+            console.log(success)
+            this.props.history.push('/offres/' + success.data.data.id)
         }, 
         (error) => {
             this.setState({errors: error.response.data.data})
@@ -65,4 +68,4 @@ export class OfferCreation extends Component {
     }
 }
 
-export default OfferCreation
+export default withRouter(OfferCreation)
