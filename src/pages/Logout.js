@@ -14,6 +14,7 @@ export class Logout extends Component {
                 "Authorization": `Bearer ${token}`}
             })
         .then((success) => {
+            Cookies.remove('organism');
             Cookies.remove('token');
             this.props.history.push("/");
         })
