@@ -17,12 +17,15 @@ import Logout from './pages/Logout'
 import AddOrganism from './pages/organization/AddOrganism'
 import OfferCreation from './pages/organization/OfferCreation'
 import OfferPage from './pages/organization/OfferPage'
+import OrganismOffers from './pages/organization/OrganismOffers'
+import ReactNotification from 'react-notifications-component'
 
 export class App extends Component {
   render() {
     return (
       //<RequestContext.Provider>
         <Router>
+          <ReactNotification />
           <div>
             <Switch>
               <PrivateRoute exact path="/profil">
@@ -45,6 +48,9 @@ export class App extends Component {
               </PrivateRoute>
               <PrivateRoute exact path="/organisme/creation">
                 <AddOrganism />
+              </PrivateRoute>
+              <PrivateRoute exact path="/organisme/offres">
+                <OrganismOffers />
               </PrivateRoute>
               <PrivateRoute exact path="/organisme/offres/nouvelle">
                 <OfferCreation />

@@ -12,10 +12,13 @@
     "bulma": "^0.7.5",
     "jquery": "^3.4.1",
     "js-cookie": "^2.2.1",
+    "leaflet": "^1.6.0",
     "normalize.css": "^8.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-loading-screen": "0.0.17",
+    "react-notifications": "^1.4.3",
+    "react-notifications-component": "^2.2.3",
     "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
