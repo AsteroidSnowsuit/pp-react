@@ -94,9 +94,9 @@ export class OfferPage extends Component {
                         <img src={require('../../img/user/hands.svg')} />
                     </div>
                 </div>
-                <div class="columns">
+                <div className="columns">
                     <div className="column is-8 nbPlaces">
-                        <h2 class="subtitle is-3">Inscription</h2>
+                        <h2 className="subtitle is-3">Inscription</h2>
                         <div>
                         {(!this.state.isUserIn) ?
                             ((this.state.nPlaces > 0) ? 

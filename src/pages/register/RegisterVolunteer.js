@@ -118,7 +118,7 @@ export class RegisterVolunteer extends Component {
                             <p className="is-size-4">Veuillez entrer votre mot de passe pour confirmer votre inscription.</p>
                             <input type="password" name="password" placeholder="Mot de passe" value={this.state.password} onChange={this.handleChange}></input><br />
                             <input type="password" name="c_password" placeholder="Confirmation de mot de passe" value={this.state.c_password} onChange={this.handleChange}></input><br />
-                            <div class="error-container">
+                            <div className="error-container">
                             {(this.state.errors != undefined) ? Object.keys(this.state.errors).map((key, index) => (<ErrorLine>{this.state.errors[key]}</ErrorLine>)) : ""}
                             </div>
                             <button className="button is-primary has-text-left">Confirmer</button>
