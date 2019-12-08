@@ -15,7 +15,7 @@ export class DashboardNavigation extends Component {
                     </React.Fragment>
                     : 
                     <React.Fragment>
-                        <NavLink to="/offres">Offres</NavLink>
+                        <NavLink to="/organisme/offres">Offres</NavLink>
                         <NavLink to="/organisme">Organisme</NavLink>
                     </React.Fragment>
                 }
