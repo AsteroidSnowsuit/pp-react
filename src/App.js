@@ -19,6 +19,7 @@ import OfferCreation from './pages/organization/OfferCreation'
 import OfferPage from './pages/organization/OfferPage'
 import OrganismOffers from './pages/organization/OrganismOffers'
 import ReactNotification from 'react-notifications-component'
+import "../src/css/app.scss"
 
 export class App extends Component {
   render() {
