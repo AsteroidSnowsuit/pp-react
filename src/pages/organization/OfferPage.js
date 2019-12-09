@@ -49,7 +49,7 @@ export class OfferPage extends Component {
             this.setState({button_loading: false});
             store.addNotification({
                 title: 'Erreur !',
-                message: 'Vous êtes déjà inscrit à cette offre.',
+                message: error.response.data.error,
                 type: 'danger',
                 container: 'top-right'
             })

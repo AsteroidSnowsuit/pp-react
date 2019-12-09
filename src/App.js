@@ -19,12 +19,12 @@ import OfferCreation from './pages/organization/OfferCreation'
 import OfferPage from './pages/organization/OfferPage'
 import OrganismOffers from './pages/organization/OrganismOffers'
 import ReactNotification from 'react-notifications-component'
+import OrganismOffer from './pages/organization/OrganismOffer'
 import "../src/css/app.scss"
 
 export class App extends Component {
   render() {
     return (
-      //<RequestContext.Provider>
         <Router>
           <ReactNotification />
           <div>
@@ -43,33 +43,35 @@ export class App extends Component {
               </PrivateRoute>
               <PrivateRoute reverse="true" exact path="/connexion">
                 <Login />
-              </PrivateRoute>
-              <PrivateRoute reverse="true" exact path="/inscription/organisme">
-                <RegisterOrganism />
-              </PrivateRoute>
-              <PrivateRoute exact path="/organisme/creation">
-                <AddOrganism />
-              </PrivateRoute>
-              <PrivateRoute exact path="/organisme/offres">
-                <OrganismOffers />
-              </PrivateRoute>
-              <PrivateRoute exact path="/organisme/offres/nouvelle">
-                <OfferCreation />
-              </PrivateRoute>
-              <PrivateRoute exact path="/offres/:id">
-                <OfferPage />
-              </PrivateRoute>
-              <PrivateRoute path="/deconnexion">
-                <Logout />
-              </PrivateRoute>
-              <Route exact path={["/inscription/verifier-email"]} component={EmailConfirmation} />
-              <Route exact path={["/inscription/email-confirme"]} component={EmailConfirmed} />
-              <Route exact path={["/", "/accueil"]} component={HomepageHomepage} />
-              <Route component={NoMatch} />
-            </Switch>
-          </div>
-        </Router>
-      //</RequestContext.Provider>
+            </PrivateRoute>
+            <PrivateRoute reverse="true" exact path="/inscription/organisme">
+              <RegisterOrganism />
+            </PrivateRoute>
+            <PrivateRoute exact path="/offres/:id">
+              <OfferPage />
+            </PrivateRoute>
+            <PrivateRoute exact path="/organisme/creation">
+              <AddOrganism />
+            </PrivateRoute>
+            <PrivateRoute exact path="/organisme/offres/:id">
+              <OrganismOffer />
+            </PrivateRoute>
+            <PrivateRoute exact path="/organisme/offres">
+              <OrganismOffers />
+            </PrivateRoute>
+            <PrivateRoute exact path="/organisme/offres/nouvelle">
+              <OfferCreation />
+            </PrivateRoute>
+            <PrivateRoute path="/deconnexion">
+              <Logout />
+            </PrivateRoute>
+            <Route exact path={["/inscription/verifier-email"]} component={EmailConfirmation} />
+            <Route exact path={["/inscription/email-confirme"]} component={EmailConfirmed} />
+            <Route exact path={["/", "/accueil"]} component={HomepageHomepage} />
+            <Route component={NoMatch} />
+          </Switch>
+        </div>
+      </Router>
     )
   }
 }
