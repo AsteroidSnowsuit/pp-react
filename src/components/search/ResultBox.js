@@ -10,7 +10,7 @@ export class ResultBox extends Component {
                 <div className="result-box-img"><img src={require('../../img/user/hands.svg')} /></div>
                 <div>
                     <span className="result-box-org">{offer.organization.name}</span>
-                    <span className="result-box-title"><Link to={"/offres/" + offer.id}>{offer.name}</Link></span>
+                    <span className="result-box-title"><Link to={"/organisme/offres/" + offer.id}>{offer.name}</Link></span>
                     <p className="result-box-desc">{offer.description}</p>
                     {(offer.nPlaces > 0) ? 
                     <span className="result-box-nPlaces">{offer.nPlaces} places disponibles {info}</span>

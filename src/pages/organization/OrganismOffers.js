@@ -12,15 +12,16 @@ export class OrganismOffers extends Component {
         this.state = {offers: []}
     }
     componentDidMount() {
+        this.setState({loading: true})
         Axios.get('http://localhost:8000/api/organism/offers', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
         .then((success) => {
             console.log(success)
-            this.setState({offers : success.data.data.offers})
+            this.setState({loading: false, offers : success.data.data.offers})
         })
     }
     render() {
         return (
-            <Dashboard>
+            <Dashboard loading={this.state.loading}>
                 {this.state.offers.map((offer) => {
                    return (
                     <ResultBox offer={offer}></ResultBox>

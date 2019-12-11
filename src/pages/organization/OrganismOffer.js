@@ -20,6 +20,7 @@ export class OrganismOffer extends Component {
         this.removeParticipant = this.removeParticipant.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.reorganizeParticipants = this.reorganizeParticipants.bind(this);
     }
 
     handleChange(event) {
@@ -31,21 +32,43 @@ export class OrganismOffer extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        this.setState({loading: true})
         Axios.patch(`http://localhost:8000/api/organism/offer/${this.props.match.params.id}`, 
         {name: this.state.name, description: this.state.description, address: this.state.address, date: this.state.date, n_places: this.state.n_places}, 
-        {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
+        {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}}).then((success) => {
+            this.getOffer();
+        })
     }
+
     componentDidMount() {
+        this.setState({loading: true})
         this.getOffer();
     }
+
     getOffer() {
+        this.setState({loading: true});
         Axios.get('http://localhost:8000/api/organism/offer/' + this.props.match.params.id, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
        .then((success) => {
-           this.setState({loading: false, participants: success.data.data.participants, offer: success.data.data.offer, organization: success.data.data.offer.organization, nPlaces: success.data.data.n_places});
+           this.setState({loading: false, participants: success.data.data.participants, offer: success.data.data.offer, organization: success.data.data.offer.organization, nPlaces: success.data.data.nPlaces});
             this.setState({name: this.state.offer.name, description: this.state.offer.description, address: this.state.offer.address, date: this.state.offer.date, n_places: this.state.offer.n_places})
             }, (error) => {
-           this.props.history.push('/orgnisme/offres');
+           this.props.history.push('/organisme/offres');
        })
+    }
+
+    reorganizeParticipants() {
+        this.setState((prevState, props) => {
+            var participants = prevState.participants;
+            for(var i = 0; i < participants.length; i++) {
+                if(i < prevState.offer.n_places) {
+                    participants[i].waiting_list = 0;
+                } else {
+                    participants[i].waiting_list = 1;
+                }
+            }
+            return {participants: participants};
+            
+        })
     }
 
     removeParticipant(id, e) {
@@ -57,7 +80,12 @@ export class OrganismOffer extends Component {
                 type: 'success',
                 container: 'top-right'
             })
-            e.target.parentElement.innerHTML = ""
+            this.setState((prevState, props) => {
+                var participants = prevState.participants.filter(p => p.id != id)
+                return {participants: participants}
+            })
+            this.reorganizeParticipants();
+            //.target.parentElement.parentNode.removeChild(e.target.parentElement);
         },
         (error) => {
             store.addNotification({
@@ -137,10 +165,14 @@ export class OrganismOffer extends Component {
                         <Button type="primary">Soumettre les changements</Button>
                         </form>
                     </div>
-                    <div className="column is-half">
-                        <h2 className="subtitle">Participants</h2>
-                        {this.renderParticipants()}
-                        {this.renderWaitingList()}
+                    <div className="column is-half organism-offer-participants">
+                        <h2 className="subtitle ">Participants</h2>
+                        <div>
+                            {this.renderParticipants()}
+                        </div>
+                        <div class="organism-offer-waitinglist">
+                            {this.renderWaitingList()}
+                        </div>
                     </div>
                 </div>
             </Dashboard>
