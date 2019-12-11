@@ -21,6 +21,7 @@ import OrganismOffers from './pages/organization/OrganismOffers'
 import ReactNotification from 'react-notifications-component'
 import OrganismOffer from './pages/organization/OrganismOffer'
 import "../src/css/app.scss"
+import SmartSearch from './pages/search/SmartSearch'
 
 export class App extends Component {
   render() {
@@ -46,6 +47,9 @@ export class App extends Component {
             </PrivateRoute>
             <PrivateRoute reverse="true" exact path="/inscription/organisme">
               <RegisterOrganism />
+            </PrivateRoute>
+            <PrivateRoute exact path="/recherche">
+              <SmartSearch />
             </PrivateRoute>
             <PrivateRoute exact path="/offres/:id">
               <OfferPage />
