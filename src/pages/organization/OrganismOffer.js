@@ -114,10 +114,6 @@ export class OrganismOffer extends Component {
                 }
                
             })
-            
-
-            console.log(Aparticipants)
-            return Aparticipants + middleBlock + Wparticipants;
         } else {
             return 'Aucun participants enregistrés...'
         }

@@ -101,11 +101,11 @@ export class OfferPage extends Component {
                         {(!this.state.isUserIn) ?
                             ((this.state.nPlaces > 0) ? 
                             <React.Fragment>
-                                Il reste <span>{this.state.nPlaces} places</span> disponibles.<br />
+                                Il reste <span>{Math.abs(this.state.offer.placesAvailable)} places</span> disponibles.<br />
                                 <div className="button is-primary" onClick={this.handleParticipation}>S'insrire seul</div>
                             </React.Fragment> :
                             <React.Fragment>
-                                Il y a <span>{this.state.nPlaces} utilisateurs</span> dans la file d'attente.
+                                Il y a <span>{Math.abs(this.state.offer.placesAvailable)} utilisateurs</span> dans la file d'attente.<br />
                                 <div className="button is-primary" onClick={this.handleParticipation}>S'insrire dans la file d'attente</div>
                             </React.Fragment>) :
                             <React.Fragment>
