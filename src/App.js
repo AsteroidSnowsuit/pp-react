@@ -22,6 +22,7 @@ import ReactNotification from 'react-notifications-component'
 import OrganismOffer from './pages/organization/OrganismOffer'
 import "../src/css/app.scss"
 import SmartSearch from './pages/search/SmartSearch'
+import { OrganismSettings } from './pages/organization/OrganismSettings'
 
 export class App extends Component {
   render() {
@@ -65,6 +66,9 @@ export class App extends Component {
             </PrivateRoute>
             <PrivateRoute exact path="/organisme/offres/nouvelle">
               <OfferCreation />
+            </PrivateRoute>
+            <PrivateRoute exact path="/organisme/parametres">
+              <OrganismSettings />
             </PrivateRoute>
             <PrivateRoute path="/deconnexion">
               <Logout />
