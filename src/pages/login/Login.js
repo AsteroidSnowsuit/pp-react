@@ -38,6 +38,9 @@ export class Login extends Component {
         }, (error) => {
             this.setState({loading: false})
             this.setState({'errors' : error.response.data.data})
+            if(error.response.data.redirect != "") {
+                this.props.history.push(error.response.data.redirect);
+            }
         });
     }
 
