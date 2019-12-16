@@ -8,6 +8,8 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css'
 import Button from '../../components/Button';
+import ErrorLine from '../../components/ErrorLine'
+import ErrorContainer from '../../components/ErrorContainer'
 
 export class OrganismOffer extends Component {
 
@@ -37,6 +39,9 @@ export class OrganismOffer extends Component {
         {name: this.state.name, description: this.state.description, address: this.state.address, date: this.state.date, n_places: this.state.n_places}, 
         {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}}).then((success) => {
             this.getOffer();
+            this.setState({errors: []})
+        }, (error) => {
+            this.setState({loading: false, errors: error.response.data.data});
         })
     }
 
@@ -158,6 +163,7 @@ export class OrganismOffer extends Component {
                         <input type="date" name="date" value={this.state.date} onChange={this.handleChange}></input> <br />
                         <label>Nombre de places disponibles :</label>
                         <input type="number" name="n_places" value={this.state.n_places} onChange={this.handleChange}></input>
+                        <ErrorContainer errors={this.state.errors} />
                         <Button type="primary">Soumettre les changements</Button>
                         </form>
                     </div>
