@@ -23,6 +23,7 @@ import OrganismOffer from './pages/organization/OrganismOffer'
 import "../src/css/app.scss"
 import SmartSearch from './pages/search/SmartSearch'
 import { OrganismSettings } from './pages/organization/OrganismSettings'
+import WorkingOn from './pages/WorkingOn'
 
 export class App extends Component {
   render() {
@@ -73,6 +74,7 @@ export class App extends Component {
             <PrivateRoute path="/deconnexion">
               <Logout />
             </PrivateRoute>
+            <Route exact path={['/groupes', '/dons']} component={WorkingOn} />
             <Route exact path={["/inscription/verifier-email"]} component={EmailConfirmation} />
             <Route exact path={["/inscription/email-confirme"]} component={EmailConfirmed} />
             <Route exact path={["/", "/accueil"]} component={HomepageHomepage} />
