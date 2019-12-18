@@ -24,6 +24,8 @@ import "../src/css/app.scss"
 import SmartSearch from './pages/search/SmartSearch'
 import { OrganismSettings } from './pages/organization/OrganismSettings'
 import WorkingOn from './pages/WorkingOn'
+import InterestsIndex from './pages/admin/interests/InterestsIndex';
+import AddInterest from './pages/admin/interests/AddInterest';
 
 export class App extends Component {
   render() {
@@ -73,6 +75,12 @@ export class App extends Component {
             </PrivateRoute>
             <PrivateRoute path="/deconnexion">
               <Logout />
+            </PrivateRoute>
+            <PrivateRoute exact path="/admin/interests">
+              <InterestsIndex />
+            </PrivateRoute>
+            <PrivateRoute exact path="/admin/interests/store">
+              <AddInterest />
             </PrivateRoute>
             <Route exact path={['/groupes', '/dons']} component={WorkingOn} />
             <Route exact path={["/inscription/verifier-email"]} component={EmailConfirmation} />
