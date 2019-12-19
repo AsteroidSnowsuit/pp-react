@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Dashboard from '../../Dashboard';
 import Axios from 'axios';
 import LinkButton from './../../../components/LinkButton'
+import {Link} from 'react-router-dom'
 
 export class InterestsIndex extends Component {
 
@@ -26,6 +27,16 @@ export class InterestsIndex extends Component {
         return (
             <Dashboard>
                 <LinkButton type="primary" size="medium" destination="/admin/interests/store">Ajouter un intérêt</LinkButton>
+                <ul>
+                    {Object.keys(this.state.interests).map((key, index) => {
+                        var interest = this.state.interests[key]
+                        return (
+                        <li key={interest.id}>
+                            <Link to={"/admin/interests/" + interest.id}>{interest.name}</Link>
+                        </li>
+                        )
+                    })}
+                </ul>
             </Dashboard>
         )
     }
