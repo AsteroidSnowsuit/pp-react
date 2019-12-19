@@ -154,6 +154,10 @@ span.underlined {
     color: black;
 }
 
+.dashboard .error-line img {
+    filter: brightness(0.1);
+}
+
 .feature-info-box {
     padding: 20px;
     height: 100%;
