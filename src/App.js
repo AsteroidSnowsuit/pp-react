@@ -26,6 +26,7 @@ import { OrganismSettings } from './pages/organization/OrganismSettings'
 import WorkingOn from './pages/WorkingOn'
 import InterestsIndex from './pages/admin/interests/InterestsIndex';
 import AddInterest from './pages/admin/interests/AddInterest';
+import ManageInterest from './pages/admin/interests/ManageInterest'
 
 export class App extends Component {
   render() {
@@ -75,6 +76,9 @@ export class App extends Component {
             </PrivateRoute>
             <PrivateRoute path="/deconnexion">
               <Logout />
+            </PrivateRoute>
+            <PrivateRoute exact path="/admin/interests/:id">
+              <ManageInterest />
             </PrivateRoute>
             <PrivateRoute exact path="/admin/interests">
               <InterestsIndex />
