@@ -25,6 +25,24 @@ body {
     min-height: 100%;
 }
 
+.admin-toolbox {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.user-container {
+    height: 300px;
+    overflow-y: scroll;
+    color: black!important;
+}
+
+.user-container a {
+    color: blueviolet;
+}
 .dashboard {
     background-color: $white;
 }
@@ -538,6 +556,10 @@ a {
 
 .nbPlaces .button {
     margin-top: 10px;
+}
+
+.offers-container {
+    margin-top: 20px;
 }
 
 .result-box {
