@@ -48,6 +48,12 @@ export class OrganismOffer extends Component {
     componentDidMount() {
         this.setState({loading: true})
         this.getOffer();
+        var places = require('places.js');
+        var placesAutocomplete = places({
+        appId: "plZJLSHIW8M5",
+        apiKey: "0eddd2fc93b5429f5012ee49bcf8807a",
+        container: document.querySelector('#address-input')
+        });
     }
 
     getOffer() {
@@ -158,7 +164,7 @@ export class OrganismOffer extends Component {
                         <label>Description de l'offre :</label>
                         <textarea type="text" name="description" value={this.state.description} onChange={this.handleChange}></textarea> <br />
                         <label>Adresse de l'offre :</label>
-                        <input type="text" name="address" value={this.state.address} onChange={this.handleChange}></input> <br />
+                        <input type="text" id="address-input" name="address" value={this.state.address} onChange={this.handleChange}></input> <br />
                         <label>Date de l'offre :</label>
                         <input type="date" name="date" value={this.state.date} onChange={this.handleChange}></input> <br />
                         <label>Nombre de places disponibles :</label>

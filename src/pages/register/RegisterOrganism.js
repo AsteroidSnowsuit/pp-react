@@ -14,6 +14,15 @@ export class RegisterOrganism extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        var places = require('places.js');
+        var placesAutocomplete = places({
+        appId: "plZJLSHIW8M5",
+        apiKey: "0eddd2fc93b5429f5012ee49bcf8807a",
+        container: document.querySelector('#address-input')
+        });
+    }
+
     handleChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -47,11 +56,11 @@ export class RegisterOrganism extends Component {
                     <h1 className="title is-size-1 register-title">Inscription des organismes</h1>
                         <section className="section organism-register">
                     <form className="user-form fullbox-form" method="POST" onSubmit={this.handleSubmit}>
-                            <div className="has-text-left">
+                            <div className="has-text-left input-fixer">
                             <label className="is-size-4">Prénom : </label><input type="text" name="firstname" placeholder="Prénom" value={this.state.firstname} onChange={this.handleChange}/>
                             <label className="is-size-4">Nom de famille : </label><input type="text" name="lastname" placeholder="Nom de famille" value={this.state.lastname} onChange={this.handleChange}/>
                             <label className="is-size-4">Date de naissance : </label><input type="date" name="dateofbirth" value={this.state.dateofbirth} onChange={this.handleChange}></input>
-                            <label className="is-size-4">Adresse de travail : </label><input type="text" name="address" placeholder="Adresse" value={this.state.address} onChange={this.handleChange}/>
+                            <label className="is-size-4">Adresse de travail : </label><input id="address-input" type="text" name="address" placeholder="Adresse" value={this.state.address} onChange={this.handleChange}/>
                             <label className="is-size-4">Adresse email : </label><input type="email" name="email" placeholder="Adresse email" value={this.state.email} onChange={this.handleChange} />
                             <label className="is-size-4">Mot de passe : </label><input type="password" name="password" placeholder="Mot de passe" value={this.state.password} onChange={this.handleChange}></input>
                             <label className="is-size-4">Confirmation de mot de passe : </label><input type="password" name="c_password" placeholder="Confirmation de mot de passe" value={this.state.c_password} onChange={this.handleChange}></input>                     

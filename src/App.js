@@ -62,14 +62,14 @@ export class App extends Component {
             <PrivateRoute exact path="/organisme/creation">
               <AddOrganism />
             </PrivateRoute>
+            <PrivateRoute exact path="/organisme/offres/nouvelle">
+              <OfferCreation />
+            </PrivateRoute>
             <PrivateRoute exact path="/organisme/offres/:id">
               <OrganismOffer />
             </PrivateRoute>
             <PrivateRoute exact path="/organisme/offres">
               <OrganismOffers />
-            </PrivateRoute>
-            <PrivateRoute exact path="/organisme/offres/nouvelle">
-              <OfferCreation />
             </PrivateRoute>
             <PrivateRoute exact path="/organisme/parametres">
               <OrganismSettings />
