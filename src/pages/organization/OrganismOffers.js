@@ -4,6 +4,8 @@ import Dashboard from '../Dashboard'
 import Axios from 'axios'
 import * as Cookies from 'js-cookie'
 import ResultBox from '../../components/search/ResultBox';
+import Button from '../../components/Button'
+import LinkButton from '../../components/LinkButton'
 
 export class OrganismOffers extends Component {
 
@@ -22,11 +24,14 @@ export class OrganismOffers extends Component {
     render() {
         return (
             <Dashboard loading={this.state.loading}>
-                {this.state.offers.map((offer) => {
-                   return (
-                    <ResultBox offer={offer}></ResultBox>
-                   )
-                })}
+                <LinkButton type="primary" destination="/organisme/offres/nouvelle">Ajouter une nouvelle offre</LinkButton>
+                <div className="offers-container">
+                    {this.state.offers.map((offer) => {
+                    return (
+                        <ResultBox offer={offer}></ResultBox>
+                    )
+                    })}
+                </div>
             </Dashboard>
         )
     }
