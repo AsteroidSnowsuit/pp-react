@@ -5,6 +5,7 @@ import Axios from 'axios'
 import * as Cookies from 'js-cookie'
 import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css'
+import { VolontariusMap } from '../../components/VolontariusMap'
 
 
 export class OfferPage extends Component {
@@ -116,7 +117,7 @@ export class OfferPage extends Component {
                     </div>
                     <div className="column is-4 offer-map">
                         L'offre est située au {this.state.offer.address}
-                        
+                        {/* <VolontariusMap /> */}
                     </div>
                 </div>
             </Dashboard>
