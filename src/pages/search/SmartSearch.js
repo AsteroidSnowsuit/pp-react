@@ -10,8 +10,9 @@ export class SmartSearch extends Component {
     constructor(props) {
         super(props);
         this.getOffers = this.getOffers.bind(this);
-        this.state = {loading: true, offers: [], activeSorter: ''}
+        this.state = {loading: true, offers: [], filters: [], activeSorter: ''}
         this.handleSorter = this.handleSorter.bind(this);
+        this.handleFilter = this.handleFilter.bind(this);
     }
 
     componentDidMount() {
@@ -19,7 +20,7 @@ export class SmartSearch extends Component {
     }
 
     getOffers() {
-        Axios.post('http://localhost:8000/api/search/smart', {order: this.state.sorter}, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
+        Axios.post('http://localhost:8000/api/search/smart', {order: this.state.sorter, filters: this.state.filters}, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
         .then((success) => {
             this.setState({loading: false, offers : success.data.data.offers})
 
@@ -37,6 +38,28 @@ export class SmartSearch extends Component {
         this.setState({sorter: sorter}, () => {
             this.getOffers();
         })
+    }
+
+    handleFilter(e) {
+        e.preventDefault();
+        e.persist();
+        var filter = e.target.getAttribute('data-filter')
+        if(this.state.filters.indexOf(filter) == -1) {
+            this.setState((state) => {
+                state.filters.push(filter);
+                return {filters: state.filters}
+            }, () => {
+                console.log(JSON.stringify(this.state.filters))
+                this.getOffers();
+            })
+        } else {
+            this.setState((state) => {
+                state.filters.splice(state.filters.indexOf(filter), 1);
+            }, () => {
+                console.log(JSON.stringify(this.state.filters))
+                this.getOffers();
+            })
+        }
     }
 
     render() {
@@ -88,21 +111,8 @@ export class SmartSearch extends Component {
                             </div>
                             <div class="dropdown-menu" id="dropdown-menu" role="menu">
                                 <div class="dropdown-content">
-                                <a href="#" class="dropdown-item">
-                                    Dropdown item
-                                </a>
-                                <a class="dropdown-item">
-                                    Other dropdown item
-                                </a>
-                                <a href="#" class="dropdown-item is-active">
-                                    Active dropdown item
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    Other dropdown item
-                                </a>
-                                <hr class="dropdown-divider"></hr>
-                                <a href="#" class="dropdown-item">
-                                    With a divider
+                                <a href="#" onClick={this.handleFilter} data-filter="no-wait" class="dropdown-item">
+                                    cacher files d'attente
                                 </a>
                                 </div>
                             </div>
