@@ -44,6 +44,7 @@ export class SmartSearch extends Component {
         e.preventDefault();
         e.persist();
         var filter = e.target.getAttribute('data-filter')
+        this.setState({loading: true});
         if(this.state.filters.indexOf(filter) == -1) {
             this.setState((state) => {
                 state.filters.push(filter);
@@ -72,7 +73,7 @@ export class SmartSearch extends Component {
                     <div className="level-right">
                         <div className="sortBy">
                             <span>Trier par</span>
-                            <div class="dropdown is-active">
+                            <div class="dropdown is-right is-hoverable">
                             <div class="dropdown-trigger">
                                 <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
                                 <span>{(this.state.activeSorter !== "" ? this.state.activeSorter : 'sélectionner')}</span>
@@ -100,7 +101,7 @@ export class SmartSearch extends Component {
                             </div>
                         </div>
                         <div className="filter">
-                            <div class="dropdown is-active">
+                            <div class="dropdown is-right is-hoverable">
                             <div class="dropdown-trigger">
                                 <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
                                 <span>Filtres</span>
@@ -109,11 +110,14 @@ export class SmartSearch extends Component {
                                 </span>
                                 </button>
                             </div>
-                            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                            <div class="dropdown-menu is-right" id="dropdown-menu" role="menu">
                                 <div class="dropdown-content">
                                 <a href="#" onClick={this.handleFilter} data-filter="no-wait" class="dropdown-item">
                                     cacher files d'attente
                                 </a>
+                                {/* <a href="#" onClick={this.handleFilter} data-filter="age-restriction" class="dropdown-item">
+                                    afficher les offres adaptées à mon âge
+                                </a> */}
                                 </div>
                             </div>
                             </div>
