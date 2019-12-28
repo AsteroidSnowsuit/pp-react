@@ -6,6 +6,7 @@ import * as Cookies from 'js-cookie'
 import ResultBox from '../../components/search/ResultBox';
 import Button from '../../components/Button'
 import LinkButton from '../../components/LinkButton'
+import {withRouter} from 'react-router-dom'
 
 export class OrganismOffers extends Component {
 
@@ -19,6 +20,8 @@ export class OrganismOffers extends Component {
         .then((success) => {
             console.log(success)
             this.setState({loading: false, offers : success.data.data.offers})
+        }, (error) => {
+            this.props.history.push('/tableaudebord');
         })
     }
     render() {
@@ -37,4 +40,4 @@ export class OrganismOffers extends Component {
     }
 }
 
-export default OrganismOffers
+export default withRouter(OrganismOffers)
