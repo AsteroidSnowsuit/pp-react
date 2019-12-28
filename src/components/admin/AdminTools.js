@@ -11,9 +11,10 @@ export class AdminTools extends Component {
         super(props);
         this.state = {users: {}}
         this.handleDisconnect = this.handleDisconnect.bind(this);
+        this.loadUsers = this.loadUsers.bind(this);
     }
 
-    componentDidMount() {
+    loadUsers() {
         Axios.get('http://localhost:8000/api/god/users')
         .then((success) => {
             this.setState({users: success.data.data.users});
@@ -44,7 +45,7 @@ export class AdminTools extends Component {
 
     render() {
         return (
-            <Popup trigger={<div className="admin-toolbox"></div>} modal>
+            <Popup trigger={<div className="admin-toolbox"></div>} onOpen={this.loadUsers} modal>
                 <Button type='danger' noSubmit={true} onClick={this.handleDisconnect}>Déconnexion</Button>
                 <div className="user-container">
                     {Object.keys(this.state.users).map((key, index) => {
