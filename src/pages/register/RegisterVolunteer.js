@@ -4,17 +4,25 @@ import InterestBox from '../../components/register/InterestBox';
 import axios from 'axios'
 import ErrorLine from '../../components/ErrorLine';
 import Homepage from '../Homepage'
+import Axios from 'axios';
+import InterestList from '../../components/register/InterestList';
 
 export class RegisterVolunteer extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {interests: {}, firstname: '', lastname: '', email: '', password: '', c_password: ''}
+        this.state = {interests: {}, firstname: '', lastname: '', email: '', password: '', c_password: '', pinterests: {}}
         this.handleChange = this.handleChange.bind(this);
         this.addInterest = this.addInterest.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        Axios.get('http://localhost:8000/api/interests')
+        .then((success) => {
+            this.setState({pinterests: success.data.data.interests});
+        })
+    }
     addInterest(id, name) {
         var mid = 'm' + id;
         console.log(this.state.interests[mid] == undefined)
@@ -64,7 +72,7 @@ export class RegisterVolunteer extends Component {
         e.preventDefault();
         if(this.checkInfoFilled()) {
             axios.post("http://localhost:8000/api/register", 
-            {firstname: this.state.firstname, lastname: this.state.lastname, email: this.state.email, password: this.state.password, c_password: this.state.c_password},
+            {interests: this.state.interests, firstname: this.state.firstname, lastname: this.state.lastname, email: this.state.email, password: this.state.password, c_password: this.state.c_password},
             {headers : {Accept: 'application/json'}})
             .then((success) =>{
                 this.props.history.push('/inscription/verifier-email')
@@ -96,7 +104,8 @@ export class RegisterVolunteer extends Component {
                             <h2 className="register-title subtitle is-size-3">Mes centres d'intérêts</h2>
                             <p>Sélectionne tous tes intérêts en cliquant desuss.</p>
                             <div className="columns interest-columns is-multiline column  is-mobile">
-                                <InterestBox id="1" handleClick={this.addInterest} icon={require('../../img/interests/futbol.svg')} title="Sports" />
+                                <InterestList pinterests={this.state.pinterests} />
+                                {/* <InterestBox id="1" handleClick={this.addInterest} icon={require('../../img/interests/futbol.svg')} title="Sports" />
                                 <InterestBox id="2" handleClick={this.addInterest} icon={require('../../img/interests/paw.svg')} title="Animaux" />
                                 <InterestBox id="3" handleClick={this.addInterest} icon={require('../../img/interests/briefcase.svg')} title="Bureau" />
                                 <InterestBox id="4" handleClick={this.addInterest} icon={require('../../img/interests/child.svg')} title="Enfants" />
@@ -104,7 +113,7 @@ export class RegisterVolunteer extends Component {
                                 <InterestBox id="6" handleClick={this.addInterest} icon={require('../../img/interests/leaf.svg')} title="Écolo" />
                                 <InterestBox id="7" handleClick={this.addInterest} icon={require('../../img/interests/microchip.svg')} title="Techno" />
                                 <InterestBox id="8" handleClick={this.addInterest} icon={require('../../img/interests/seniors.svg')} title="Aînés" />
-                                <InterestBox id="9" handleClick={this.addInterest} icon={require('../../img/interests/theater.svg')} title="Culture" />
+                                <InterestBox id="9" handleClick={this.addInterest} icon={require('../../img/interests/theater.svg')} title="Culture" /> */}
                             </div>
                         </section>
                         <section className="section register-section">

@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-
 export class InterestBox extends Component {
 
     constructor(props) {
         super(props);
+        this.images = require('../../img/interests/*.svg');
+
         this.state = {activated: false};
         this.interest_box_content = React.createRef();
         this.interest_text = React.createRef();
@@ -29,7 +30,7 @@ export class InterestBox extends Component {
                 <div className="interest-box">
                     <div className="interest-box-adjuster">
                         <div ref={"interest_box_content"} className={"interest-box-content " + (this.state.activated == true ? 'interest-box-activated' : '')} onClick={this.handleClick}>
-                            <img className="interest-icon" src={this.props.icon} style={{'height': '50%'}}></img>
+                            <img className="interest-icon" src={this.images[this.props.icon]} style={{'height': '50%'}}></img>
                             <i className="activated-icon fas fa-check"></i>
                             <span ref={"interest_text"} className="interest-text">{this.props.title}</span>
                         </div>
