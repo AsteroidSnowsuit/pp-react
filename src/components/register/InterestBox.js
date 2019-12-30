@@ -13,7 +13,8 @@ export class InterestBox extends Component {
     }
 
     handleClick() {
-        this.props.handleClick(this.props.id, this.props.title);
+        console.log('hoppity hippity you clicky')
+        this.props.onClick(this.props.id, this.props.title);
         this.setState(prevState => ({
             activated: !prevState.activated
         }))        

@@ -17,12 +17,6 @@ export class RegisterVolunteer extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentDidMount() {
-        Axios.get('http://localhost:8000/api/interests')
-        .then((success) => {
-            this.setState({pinterests: success.data.data.interests});
-        })
-    }
     addInterest(id, name) {
         var mid = 'm' + id;
         console.log(this.state.interests[mid] == undefined)
@@ -104,7 +98,7 @@ export class RegisterVolunteer extends Component {
                             <h2 className="register-title subtitle is-size-3">Mes centres d'intérêts</h2>
                             <p>Sélectionne tous tes intérêts en cliquant desuss.</p>
                             <div className="columns interest-columns is-multiline column  is-mobile">
-                                <InterestList pinterests={this.state.pinterests} />
+                                <InterestList handleClick={this.addInterest} pinterests={this.state.pinterests} />
                                 {/* <InterestBox id="1" handleClick={this.addInterest} icon={require('../../img/interests/futbol.svg')} title="Sports" />
                                 <InterestBox id="2" handleClick={this.addInterest} icon={require('../../img/interests/paw.svg')} title="Animaux" />
                                 <InterestBox id="3" handleClick={this.addInterest} icon={require('../../img/interests/briefcase.svg')} title="Bureau" />
