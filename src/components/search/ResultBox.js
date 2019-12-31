@@ -5,13 +5,16 @@ export class ResultBox extends Component {
     render() {
         var offer = this.props.offer;
         var info = "| " + offer.address + " | " + offer.date;
+        if(offer.minimumAge > 0) {
+            info = info + " | Âge minimum : " + offer.minimumAge + " ans" 
+        }
         return (
             <div key={offer.id} className="result-box">
                 <div className="result-box-img"><img src={require('../../img/user/hands.svg')} /></div>
                 <div>
                     <span className="result-box-org">{offer.organization.name}</span>
                     <span className="result-box-title"><Link to={"/organisme/offres/" + offer.id}>{offer.name}</Link></span>
-                    <p className="result-box-desc">{offer.description}</p>
+                    <p className="result-box-desc">{offer.description.substring(0,100)}</p>
                     {(offer.placesAvailable > 0) ? 
                     <span className="result-box-nPlaces">{offer.placesAvailable} places disponibles {info}</span>
                     :
@@ -24,4 +27,7 @@ export class ResultBox extends Component {
     }
 }
 
+ResultBox.defaultProps = {
+    offer : {description: ''}
+}
 export default ResultBox
