@@ -9,7 +9,7 @@ import InterestList from '../../components/register/InterestList';
 export class EditUser extends Component {
     constructor(props) {
         super(props);
-        this.state = {loading: true, interests: []}
+        this.state = {loading: true, interests: {}}
         this.addInterest = this.addInterest.bind(this);
         this.logState = this.logState.bind(this);
     }
@@ -24,6 +24,8 @@ export class EditUser extends Component {
             this.setState((state) => {
                 state.interests[mid] = name;
                 return {interests: state.interests}
+            }, () => {
+                console.log(JSON.stringify(this.state.interests))
             })
         } else {
             console.log('deleted')
