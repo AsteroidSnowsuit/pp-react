@@ -11,7 +11,16 @@ export class RegisterVolunteer extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {interests: {}, firstname: '', lastname: '', email: '', password: '', c_password: '', pinterests: {}}
+        this.state = {
+            interests: {},
+            dob: '',
+            firstname: '',
+            lastname: '',
+            email: '',
+            password: '',
+            c_password: '',
+            pinterests: {}
+        }
         this.handleChange = this.handleChange.bind(this);
         this.addInterest = this.addInterest.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -66,7 +75,15 @@ export class RegisterVolunteer extends Component {
         e.preventDefault();
         if(this.checkInfoFilled()) {
             axios.post("http://localhost:8000/api/register", 
-            {interests: this.state.interests, firstname: this.state.firstname, lastname: this.state.lastname, email: this.state.email, password: this.state.password, c_password: this.state.c_password},
+            {
+                interests: this.state.interests,
+                firstname: this.state.firstname,
+                lastname: this.state.lastname,
+                email: this.state.email,
+                password: this.state.password,
+                c_password: this.state.c_password,
+                dob: this.state.dob
+            },
             {headers : {Accept: 'application/json'}})
             .then((success) =>{
                 this.props.history.push('/inscription/verifier-email')
@@ -90,7 +107,7 @@ export class RegisterVolunteer extends Component {
                             <p>Clique sur les lignes pour y ajouter tes informations.</p>
                             <div className="has-text-left">
                             <p className="is-size-4">Je m'appelle <input type="text" name="firstname" placeholder="prénom" value={this.state.firstname} onChange={this.handleChange}/> <input type="text" name="lastname" placeholder="nom de famille" value={this.state.lastname} onChange={this.handleChange}/></p>
-                            {/* <p className="is-size-4">Je suis né le <input type="date" name="dateofbirth" value={this.state.dateofbirth} onChange={this.handleChange}></input> et mon adresse est <input type="text" name="address" placeholder="adresse" value={this.state.address} onChange={this.handleChange}/></p> */}
+                            <p className="is-size-4">Je suis né le <input type="date" name="dob" value={this.state.dob} onChange={this.handleChange}></input></p>
                             <p className="is-size-4">Mon adresse email est le <input type="email" name="email" placeholder="adresse email" value={this.state.email} onChange={this.handleChange} /></p>
                             </div>
                         </section>
@@ -98,17 +115,7 @@ export class RegisterVolunteer extends Component {
                             <h2 className="register-title subtitle is-size-3">Mes centres d'intérêts</h2>
                             <p>Sélectionne tous tes intérêts en cliquant desuss.</p>
                             <div className="columns interest-columns is-multiline column  is-mobile">
-                                <InterestList handleClick={this.addInterest} pinterests={this.state.pinterests} />
-                                {/* <InterestBox id="1" handleClick={this.addInterest} icon={require('../../img/interests/futbol.svg')} title="Sports" />
-                                <InterestBox id="2" handleClick={this.addInterest} icon={require('../../img/interests/paw.svg')} title="Animaux" />
-                                <InterestBox id="3" handleClick={this.addInterest} icon={require('../../img/interests/briefcase.svg')} title="Bureau" />
-                                <InterestBox id="4" handleClick={this.addInterest} icon={require('../../img/interests/child.svg')} title="Enfants" />
-                                <InterestBox id="5" handleClick={this.addInterest} icon={require('../../img/interests/carry.svg')} title="Manuel" />
-                                <InterestBox id="6" handleClick={this.addInterest} icon={require('../../img/interests/leaf.svg')} title="Écolo" />
-                                <InterestBox id="7" handleClick={this.addInterest} icon={require('../../img/interests/microchip.svg')} title="Techno" />
-                                <InterestBox id="8" handleClick={this.addInterest} icon={require('../../img/interests/seniors.svg')} title="Aînés" />
-                                <InterestBox id="9" handleClick={this.addInterest} icon={require('../../img/interests/theater.svg')} title="Culture" /> */}
-                            </div>
+                                <InterestList onClick={this.addInterest} pinterests={this.state.pinterests} />                            </div>
                         </section>
                         <section className="section register-section">
                             {this.checkInfoFilled() ? 
@@ -118,6 +125,7 @@ export class RegisterVolunteer extends Component {
                             <p className="is-size-4">Votre nom est <span className="underlined">{this.state.firstname}</span> <span className="underlined">{this.state.lastname}</span></p>
                             <p className="is-size-4">Votre adresse email est le <span className="underlined">{this.state.email}</span>.</p>
                             <p className="is-size-4">Vous êtes interessé par : {this.getInterests()}</p>
+                            <p className="is-size-4">Vous êtes né le {this.state.dob}</p>
                             <p className="is-size-4">Veuillez entrer votre mot de passe pour confirmer votre inscription.</p>
                             <input type="password" name="password" placeholder="Mot de passe" value={this.state.password} onChange={this.handleChange}></input><br />
                             <input type="password" name="c_password" placeholder="Confirmation de mot de passe" value={this.state.c_password} onChange={this.handleChange}></input><br />
