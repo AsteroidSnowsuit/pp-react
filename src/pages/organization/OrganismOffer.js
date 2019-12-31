@@ -15,7 +15,7 @@ export class OrganismOffer extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {loading: true, offer: [], organization: [], participants: [], name: "", description: "", n_places: '', address: '', date: ''}
+        this.state = {loading: true, minimumAge: 0, offer: [], organization: [], participants: [], name: "", description: "", n_places: '', address: '', date: ''}
         this.getOffer = this.getOffer.bind(this)
         this.renderParticipants = this.renderParticipants.bind(this);
         this.renderWaitingList = this.renderWaitingList.bind(this);
@@ -36,7 +36,14 @@ export class OrganismOffer extends Component {
         e.preventDefault();
         this.setState({loading: true})
         Axios.patch(`http://localhost:8000/api/organism/offer/${this.props.match.params.id}`, 
-        {name: this.state.name, description: this.state.description, address: this.state.address, date: this.state.date, n_places: this.state.n_places}, 
+        {
+            name: this.state.name,
+            description: this.state.description,
+            address: this.state.address,
+            date: this.state.date,
+            n_places: this.state.n_places,
+            minimumAge: this.state.minimumAge
+        },
         {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}}).then((success) => {
             this.getOffer();
             this.setState({errors: []})
@@ -60,7 +67,14 @@ export class OrganismOffer extends Component {
         this.setState({loading: true});
         Axios.get('http://localhost:8000/api/organism/offer/' + this.props.match.params.id, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
        .then((success) => {
-           this.setState({loading: false, participants: success.data.data.participants, offer: success.data.data.offer, organization: success.data.data.offer.organization, nPlaces: success.data.data.nPlaces});
+           this.setState({
+               loading: false,
+               participants: success.data.data.participants,
+               offer: success.data.data.offer,
+               organization: success.data.data.offer.organization,
+               nPlaces: success.data.data.nPlaces,
+               minimumAge: success.data.data.offer.minimumAge
+           });
             this.setState({name: this.state.offer.name, description: this.state.offer.description, address: this.state.offer.address, date: this.state.offer.date, n_places: this.state.offer.n_places})
             }, (error) => {
            this.props.history.push('/organisme/offres');
@@ -169,6 +183,7 @@ export class OrganismOffer extends Component {
                         <input type="date" name="date" value={this.state.date} onChange={this.handleChange}></input> <br />
                         <label>Nombre de places disponibles :</label>
                         <input type="number" name="n_places" value={this.state.n_places} onChange={this.handleChange}></input>
+                        <label className="is-size-4">Âge minimum pour participer : </label><input type="number" name="minimumAge" value={this.state.minimumAge} onChange={this.handleChange} />
                         <ErrorContainer errors={this.state.errors} />
                         <Button type="primary">Soumettre les changements</Button>
                         </form>

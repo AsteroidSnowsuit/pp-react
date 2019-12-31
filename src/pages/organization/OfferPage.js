@@ -90,6 +90,7 @@ export class OfferPage extends Component {
                         <h1 className="title">{this.state.offer.name}</h1>
                         <span className="subtitle">{this.state.organization.name}</span>
                         <p>{this.state.offer.description}</p>
+                        <span>Âge minimum pour participer: <strong>{this.state.offer.minimumAge} ans.</strong></span>
                     </div>
                     <div className="level-right">
                         <img src={require('../../img/user/hands.svg')} />

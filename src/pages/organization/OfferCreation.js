@@ -9,7 +9,7 @@ export class OfferCreation extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {name: '', description: '', address: '', date: '', n_places: '', minimumAge: 0}
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -37,7 +37,14 @@ export class OfferCreation extends Component {
         e.preventDefault();
         var token = Cookies.get('token');
         Axios.post('http://localhost:8000/api/offer', 
-        {name: this.state.name, description: this.state.description, address: this.state.address, date: this.state.date, n_places: this.state.n_places}, 
+        {
+            name: this.state.name, 
+            description: this.state.description, 
+            address: this.state.address, 
+            date: this.state.date, 
+            n_places: this.state.n_places,
+            minimumAge: this.state.minimumAge
+        }, 
         {headers: {"Accept": 'application/json', "Authorization": `Bearer ${token}`}})
         .then(
         (success) => {
@@ -63,8 +70,8 @@ export class OfferCreation extends Component {
                             <label className="is-size-4">Description de l'offre : </label><textarea name="description" placeholder="Description de l'organisme" value={this.state.description} onChange={this.handleChange}/>
                             <label className="is-size-4">Adresse de l'offre : </label><input id="address-input" type="text" name="address" value={this.state.address} onChange={this.handleChange}></input>
                             <label className="is-size-4">Date de l'offre : </label><input type="date" name="date" value={this.state.date} onChange={this.handleChange}></input>
-                            <label className="is-size-4">Nombre de places disponibles : </label><input type="number" name="n_places" value={this.state.number} onChange={this.handleChange}>
-                            </input>
+                            <label className="is-size-4">Nombre de places disponibles : </label><input type="number" name="n_places" value={this.state.number} onChange={this.handleChange}/>
+                            <label className="is-size-4">Âge minimum pour participer : </label><input type="number" name="minimumAge" value={this.state.minimumAge} onChange={this.handleChange} />
                             </div>
                             <ErrorContainer errors={this.state.errors} />
                             <button className="button is-primary has-text-left">Soumettre le formulaire</button>

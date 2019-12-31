@@ -39,7 +39,7 @@ export class AddOrganism extends Component {
         {name: this.state.name, description: this.state.description, address : this.state.address}, {headers: {"Accept": 'application/json', "Authorization": `Bearer ${token}`}}).then(
             (success) => {
                 this.setState({loading: false});
-                //this.props.history.push('/organisme')
+                this.props.history.push('/organisme')
             }, (error) => {
                 this.setState({errors : error.response.data.data})
                 if(error.response.data.redirect != "") {
