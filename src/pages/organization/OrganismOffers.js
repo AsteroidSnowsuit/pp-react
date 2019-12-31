@@ -31,7 +31,7 @@ export class OrganismOffers extends Component {
                 <div className="offers-container">
                     {this.state.offers.map((offer) => {
                     return (
-                        <ResultBox offer={offer}></ResultBox>
+                        <ResultBox organism={true} offer={offer}></ResultBox>
                     )
                     })}
                 </div>

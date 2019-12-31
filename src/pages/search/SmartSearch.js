@@ -126,7 +126,7 @@ export class SmartSearch extends Component {
                 </div>
                 {this.state.offers.map((offer) => {
                    return (
-                    <ResultBox key={offer.id} offer={offer}></ResultBox>
+                    <ResultBox organism={false} key={offer.id} offer={offer}></ResultBox>
                    )
                 })}
             </Dashboard>
