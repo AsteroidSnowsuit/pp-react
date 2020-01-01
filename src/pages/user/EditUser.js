@@ -11,7 +11,8 @@ export class EditUser extends Component {
         super(props);
         this.state = {loading: true, interests: {}}
         this.addInterest = this.addInterest.bind(this);
-        this.logState = this.logState.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     addInterest(id, name) {
@@ -61,9 +62,37 @@ export class EditUser extends Component {
         });
     }
 
-    logState() {
-        console.log(this.state);
+    handleSubmit(e) {
+        e.preventDefault();
+        axios.patch("http://localhost:8000/api/details", 
+        {
+            interests: this.state.interests, 
+            firstname: this.state.firstname, 
+            lastname: this.state.lastname, 
+            email: this.state.email,
+            dob: this.state.dob,
+            address: this.state.address
+            },
+        {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
+        .then((success) =>{
+            this.props.history.push('/profil')
+        })
+        .catch(error => {
+            this.setState({'errors' : error.response.data.data})
+        });
+        console.log(this.state.errors)
     }
+
+    handleChange(event) {
+            const target = event.target;
+            const value = target.type === 'checkbox' ? target.checked : target.value;
+            const name = target.name;
+    
+            this.setState({
+                [name]: value
+            });
+        }
+
     render() {
         return (
             <Dashboard loading={this.state.loading}>
@@ -83,7 +112,6 @@ export class EditUser extends Component {
                 <ErrorContainer errors={this.state.errors} />
                 <Button type="primary">Soumettre les changements</Button>
                 </form>
-                <Button type="danger" onClick={this.logState} />
             </Dashboard>
         )
     }
