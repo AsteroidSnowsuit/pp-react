@@ -1,6 +1,7 @@
 import axios from 'axios';
 import * as Cookies from 'js-cookie';
 import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom';
 import Button from '../../components/Button';
 import Dashboard from '../Dashboard';
 import ErrorContainer from '../../components/ErrorContainer';
@@ -76,8 +77,7 @@ export class EditUser extends Component {
         {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
         .then((success) =>{
             this.props.history.push('/profil')
-        })
-        .catch(error => {
+        }, (error) => {
             this.setState({'errors' : error.response.data.data})
         });
         console.log(this.state.errors)
@@ -117,4 +117,4 @@ export class EditUser extends Component {
     }
 }
 
-export default EditUser
+export default withRouter(EditUser)
