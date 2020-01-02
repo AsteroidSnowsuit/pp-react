@@ -115,9 +115,9 @@ export class SmartSearch extends Component {
                                 <a href="#" onClick={this.handleFilter} data-filter="no-wait" class="dropdown-item">
                                     cacher files d'attente
                                 </a>
-                                {/* <a href="#" onClick={this.handleFilter} data-filter="age-restriction" class="dropdown-item">
+                                <a href="#" onClick={this.handleFilter} data-filter="age-restriction" class="dropdown-item">
                                     afficher les offres adaptées à mon âge
-                                </a> */}
+                                </a>
                                 </div>
                             </div>
                             </div>

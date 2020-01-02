@@ -376,6 +376,10 @@ a {
     padding-left: 15px;
 }
 
+.fullbox-form input[type=file] {
+    border: none;
+    font-size: 1rem;
+}
 .register-title {
     margin-bottom: 10px!important;
 }
