@@ -83,6 +83,8 @@ export class OfferPage extends Component {
     }
 
     render() {
+        var pictureLink = this.state.organization.picture != null ? "http://localhost:8000" + this.state.organization.picture : require('../../img/user/hands.svg');
+
         return (
             <Dashboard loading={this.state.loading}>
                 <div className="levels offer-header">
@@ -93,7 +95,8 @@ export class OfferPage extends Component {
                         <span>Âge minimum pour participer: <strong>{this.state.offer.minimumAge} ans.</strong></span>
                     </div>
                     <div className="level-right">
-                        <img src={require('../../img/user/hands.svg')} />
+                        
+                        <img src={pictureLink} />
                     </div>
                 </div>
                 <div className="columns">
