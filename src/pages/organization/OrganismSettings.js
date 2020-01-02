@@ -47,12 +47,12 @@ export class OrganismSettings extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        var token = Cookies.get('token');
         var formData = new FormData();
         formData.append('name', this.state.name);
         formData.append('description', this.state.description);
         formData.append('address', this.state.address);
         formData.append('picture', this.state.picture);
+        var token = Cookies.get('token');
         Axios.patch('http://localhost:8000/api/organism/settings', formData, {
             headers: {
                 "Accept": 'application/json',

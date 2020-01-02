@@ -13,9 +13,10 @@ export class ResultBox extends Component {
         if(offer.minimumAge > 0) {
             info = info + " | Âge minimum : " + offer.minimumAge + " ans" 
         }
+        var pictureLink = offer.organization.picture != null ? "http://localhost:8000" + offer.organization.picture : require('../../img/user/hands.svg');
         return (
             <div key={offer.id} className="result-box">
-                <div className="result-box-img"><img src={require('../../img/user/hands.svg')} /></div>
+                <div className="result-box-img"><img src={pictureLink} /></div>
                 <div>
                     <span className="result-box-org">{offer.organization.name}</span>
                     <span className="result-box-title"><Link to={link}>{offer.name}</Link></span>
