@@ -11,7 +11,15 @@ export class OfferCreation extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {interests: {}, name: '', description: '', address: '', date: '', n_places: '', minimumAge: 0}
+        this.state = {
+            interests: {},
+            name: '',
+            description: '',
+            address: '',
+            date: '',
+            n_places: '',
+            minimumAge: 0
+        }
         this.handleChange = handleChange.bind(this);
         this.addInterest = addInterest.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,7 +39,8 @@ export class OfferCreation extends Component {
             address: this.state.address, 
             date: this.state.date, 
             n_places: this.state.n_places,
-            minimumAge: this.state.minimumAge
+            minimumAge: this.state.minimumAge,
+            interests: this.state.interests
         }, 
         {headers: {"Accept": 'application/json', "Authorization": `Bearer ${token}`}})
         .then(

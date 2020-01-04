@@ -10,17 +10,31 @@ import 'react-notifications-component/dist/theme.css'
 import Button from '../../components/Button';
 import ErrorLine from '../../components/ErrorLine'
 import ErrorContainer from '../../components/ErrorContainer'
-import { addAlgolia, handleChange } from 'utils'
+import { addAlgolia, handleChange, addInterest } from 'utils'
+import InterestList from '../../components/register/InterestList'
 
 export class OrganismOffer extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {loading: true, minimumAge: 0, offer: [], organization: [], participants: [], name: "", description: "", n_places: '', address: '', date: ''}
+        this.state = {
+            loading: true,
+            minimumAge: 0,
+            offer: [],
+            organization: [],
+            participants: [],
+            name: "",
+            description: "",
+            n_places: '',
+            address: '',
+            date: '',
+            interests: {}
+        }
         this.getOffer = this.getOffer.bind(this)
         this.renderParticipants = this.renderParticipants.bind(this);
         this.renderWaitingList = this.renderWaitingList.bind(this);
         this.removeParticipant = this.removeParticipant.bind(this);
+        this.addInterest = addInterest.bind(this);
         this.handleChange = handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.reorganizeParticipants = this.reorganizeParticipants.bind(this);
@@ -36,11 +50,12 @@ export class OrganismOffer extends Component {
             address: this.state.address,
             date: this.state.date,
             n_places: this.state.n_places,
-            minimumAge: this.state.minimumAge
+            minimumAge: this.state.minimumAge,
+            interests: this.state.interests
         },
         {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}}).then((success) => {
-            this.getOffer();
-            this.setState({errors: []})
+            this.props.history.push("/organisme/offres/" + this.props.match.params.id);
+            this.setState({errors: [], loading:false})
         }, (error) => {
             this.setState({loading: false, errors: error.response.data.data});
         })
@@ -62,9 +77,16 @@ export class OrganismOffer extends Component {
                offer: success.data.data.offer,
                organization: success.data.data.offer.organization,
                nPlaces: success.data.data.nPlaces,
-               minimumAge: success.data.data.offer.minimumAge
+               minimumAge: success.data.data.offer.minimumAge,
+               ointerests: success.data.data.interests
            });
-            this.setState({name: this.state.offer.name, description: this.state.offer.description, address: this.state.offer.address, date: this.state.offer.date, n_places: this.state.offer.n_places})
+            this.setState({
+                name: this.state.offer.name,
+                description: this.state.offer.description,
+                address: this.state.offer.address,
+                date: this.state.offer.date,
+                n_places: this.state.offer.n_places
+            })
             }, (error) => {
            this.props.history.push('/organisme/offres');
        })
@@ -173,6 +195,7 @@ export class OrganismOffer extends Component {
                         <label>Nombre de places disponibles :</label>
                         <input type="number" name="n_places" value={this.state.n_places} onChange={this.handleChange}></input>
                         <label className="is-size-4">Âge minimum pour participer : </label><input type="number" name="minimumAge" value={this.state.minimumAge} onChange={this.handleChange} />
+                        <InterestList onClick={this.addInterest} alreadyChecked={this.state.ointerests} /> 
                         <ErrorContainer errors={this.state.errors} />
                         <Button type="primary">Soumettre les changements</Button>
                         </form>
