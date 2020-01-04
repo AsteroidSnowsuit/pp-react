@@ -6,6 +6,7 @@ import ErrorLine from '../../components/ErrorLine';
 import Homepage from '../Homepage'
 import Axios from 'axios';
 import InterestList from '../../components/register/InterestList';
+import {addInterest, handleChange} from 'utils'
 
 export class RegisterVolunteer extends Component {
 
@@ -21,25 +22,9 @@ export class RegisterVolunteer extends Component {
             c_password: '',
             pinterests: {}
         }
-        this.handleChange = this.handleChange.bind(this);
-        this.addInterest = this.addInterest.bind(this);
+        this.handleChange = handleChange.bind(this);
+        this.addInterest = addInterest.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    addInterest(id, name) {
-        var mid = 'm' + id;
-        console.log(this.state.interests[mid] == undefined)
-        if(this.state.interests[mid] == undefined) {
-            this.setState((state) => {
-                state.interests[mid] = name;
-                return {interests: state.interests}
-            })
-        } else {
-            var newInterest = this.state.interests;
-            delete newInterest[mid]
-            this.setState(newInterest)
-        }
-        console.log(this.state.interests)
     }
 
     getInterests() {
@@ -60,16 +45,6 @@ export class RegisterVolunteer extends Component {
             return false;
         }
     }
-
-    handleChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-    
-        this.setState({
-          [name]: value
-        });
-      }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -114,8 +89,7 @@ export class RegisterVolunteer extends Component {
                         <section className="section register-section">
                             <h2 className="register-title subtitle is-size-3">Mes centres d'intérêts</h2>
                             <p>Sélectionne tous tes intérêts en cliquant desuss.</p>
-                            <div className="columns interest-columns is-multiline column  is-mobile">
-                                <InterestList onClick={this.addInterest} pinterests={this.state.pinterests} />                            </div>
+                            <InterestList onClick={this.addInterest} pinterests={this.state.pinterests} />
                         </section>
                         <section className="section register-section">
                             {this.checkInfoFilled() ? 

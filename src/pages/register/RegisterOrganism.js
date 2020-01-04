@@ -4,34 +4,20 @@ import HomepageNavigation from '../../components/navigation/HomepageNavigation';
 import axios from 'axios'
 import ErrorLine from '../../components/ErrorLine'
 import Homepage from '../Homepage';
+import { addAlgolia, handleChange } from 'utils';
 
 export class RegisterOrganism extends Component {
 
     constructor(props) {
         super(props)
         this.state = {interests: {}}
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChange = handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
-        var places = require('places.js');
-        var placesAutocomplete = places({
-        appId: "plZJLSHIW8M5",
-        apiKey: "0eddd2fc93b5429f5012ee49bcf8807a",
-        container: document.querySelector('#address-input')
-        });
+        addAlgolia()
     }
-
-    handleChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-    
-        this.setState({
-          [name]: value
-        });
-      }
 
     handleSubmit(e) {
         e.preventDefault();

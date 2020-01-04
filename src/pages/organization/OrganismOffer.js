@@ -10,6 +10,7 @@ import 'react-notifications-component/dist/theme.css'
 import Button from '../../components/Button';
 import ErrorLine from '../../components/ErrorLine'
 import ErrorContainer from '../../components/ErrorContainer'
+import { addAlgolia, handleChange } from 'utils'
 
 export class OrganismOffer extends Component {
 
@@ -20,17 +21,10 @@ export class OrganismOffer extends Component {
         this.renderParticipants = this.renderParticipants.bind(this);
         this.renderWaitingList = this.renderWaitingList.bind(this);
         this.removeParticipant = this.removeParticipant.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChange = handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.reorganizeParticipants = this.reorganizeParticipants.bind(this);
     }
-
-    handleChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-        this.setState({[name]: value});
-      }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -55,12 +49,7 @@ export class OrganismOffer extends Component {
     componentDidMount() {
         this.setState({loading: true})
         this.getOffer();
-        var places = require('places.js');
-        var placesAutocomplete = places({
-        appId: "plZJLSHIW8M5",
-        apiKey: "0eddd2fc93b5429f5012ee49bcf8807a",
-        container: document.querySelector('#address-input')
-        });
+        addAlgolia()
     }
 
     getOffer() {

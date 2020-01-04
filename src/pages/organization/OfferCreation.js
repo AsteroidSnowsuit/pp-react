@@ -4,34 +4,22 @@ import ErrorContainer from '../../components/ErrorContainer'
 import Axios from 'axios';
 import * as Cookies from 'js-cookie'
 import {withRouter} from 'react-router-dom'
+import InterestList from './../../components/register/InterestList'
+import {addInterest, handleChange, addAlgolia} from 'utils'
 
 export class OfferCreation extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {name: '', description: '', address: '', date: '', n_places: '', minimumAge: 0}
-        this.handleChange = this.handleChange.bind(this);
+        this.state = {interests: {}, name: '', description: '', address: '', date: '', n_places: '', minimumAge: 0}
+        this.handleChange = handleChange.bind(this);
+        this.addInterest = addInterest.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
-        var places = require('places.js');
-        var placesAutocomplete = places({
-        appId: "plZJLSHIW8M5",
-        apiKey: "0eddd2fc93b5429f5012ee49bcf8807a",
-        container: document.querySelector('#address-input')
-        });
+        addAlgolia()
     }
-
-    handleChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-    
-        this.setState({
-          [name]: value
-        });
-      }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -73,6 +61,7 @@ export class OfferCreation extends Component {
                             <label className="is-size-4">Nombre de places disponibles : </label><input type="number" name="n_places" value={this.state.number} onChange={this.handleChange}/>
                             <label className="is-size-4">Âge minimum pour participer : </label><input type="number" name="minimumAge" value={this.state.minimumAge} onChange={this.handleChange} />
                             </div>
+                            <InterestList onClick={this.addInterest} />
                             <ErrorContainer errors={this.state.errors} />
                             <button className="button is-primary has-text-left">Soumettre le formulaire</button>
                         </form>

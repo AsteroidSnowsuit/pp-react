@@ -37,13 +37,13 @@ export class InterestList extends Component {
 
     render() {
         return (
-            <React.Fragment>
+            <div className="columns interest-columns is-multiline column  is-mobile">
                 {Object.keys(this.state.pinterests).map((interest, i) => {
                     var pinterest = this.state.pinterests[interest];
                     var callbackRef = node => this.pinterestRefs.current[i] = node;
                     return <InterestBox id={pinterest.id} onClick={this.props.onClick} icon={pinterest.picture_src} title={pinterest.name} ref={callbackRef} />
                 })}
-            </React.Fragment>
+            </div>
         )
     }
 }

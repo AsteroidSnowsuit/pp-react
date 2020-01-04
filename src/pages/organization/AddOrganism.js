@@ -4,35 +4,21 @@ import Dashboard from '../Dashboard';
 import * as Cookies from 'js-cookie'
 import ErrorContainer from '../../components/ErrorContainer';
 import axios from 'axios'
-import { createOrUpdateFromFlatCoordinates } from 'ol/extent';
+import { addAlgolia, handleChange } from 'utils';
 
 export class AddOrganism extends Component {
 
     constructor(props) {
         super(props);
         this.state = {name: '', description: '', address: '', picture: null}
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChange = handleChange.bind(this);
         this.handleChangePicture = this.handleChangePicture.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
-        var places = require('places.js');
-        var placesAutocomplete = places({
-        appId: "plZJLSHIW8M5",
-        apiKey: "0eddd2fc93b5429f5012ee49bcf8807a",
-        container: document.querySelector('#address-input')
-        });
+        addAlgolia()
     }
-    handleChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-    
-        this.setState({
-          [name]: value
-        });
-      }
 
     handleChangePicture(event) {
         this.setState({picture: event.target.files[0]})

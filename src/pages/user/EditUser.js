@@ -6,6 +6,7 @@ import Button from '../../components/Button';
 import Dashboard from '../Dashboard';
 import ErrorContainer from '../../components/ErrorContainer';
 import InterestList from '../../components/register/InterestList';
+import { addAlgolia, handleChange } from 'utils';
 
 export class EditUser extends Component {
     constructor(props) {
@@ -13,7 +14,7 @@ export class EditUser extends Component {
         this.state = {loading: true, interests: {}}
         this.addInterest = this.addInterest.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChange = handleChange.bind(this);
     }
 
     addInterest(id, name) {
@@ -55,12 +56,7 @@ export class EditUser extends Component {
                 this.props.history.push('/deconnexion');
             }
         )
-        var places = require('places.js');
-        var placesAutocomplete = places({
-        appId: "plZJLSHIW8M5",
-        apiKey: "0eddd2fc93b5429f5012ee49bcf8807a",
-        container: document.querySelector('#address-input')
-        });
+        addAlgolia()
     }
 
     handleSubmit(e) {
@@ -82,17 +78,6 @@ export class EditUser extends Component {
         });
         console.log(this.state.errors)
     }
-
-    handleChange(event) {
-            const target = event.target;
-            const value = target.type === 'checkbox' ? target.checked : target.value;
-            const name = target.name;
-    
-            this.setState({
-                [name]: value
-            });
-        }
-
     render() {
         return (
             <Dashboard loading={this.state.loading}>

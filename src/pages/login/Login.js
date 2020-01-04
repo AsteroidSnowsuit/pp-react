@@ -7,26 +7,16 @@ import ErrorContainer from '../../components/ErrorContainer'
 import * as Cookies from 'js-cookie'
 import HomepageLoading from '../loading/HomepageLoading';
 import AdminTools from '../../components/admin/AdminTools';
-
+import {handleChange} from 'utils'
 
 export class Login extends Component {
 
     constructor(props) {
         super(props);
         this.state = {email: '', password: '', loading: false}
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChange = handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    
-    handleChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-    
-        this.setState({
-          [name]: value
-        });
-      }
 
     handleSubmit(e) {
         this.setState({loading: true})

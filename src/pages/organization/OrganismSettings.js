@@ -4,25 +4,22 @@ import Dashboard from '../Dashboard'
 import Axios from 'axios'
 import * as Cookies from 'js-cookie'
 import ErrorContainer from '../../components/ErrorContainer'
+import { addAlgolia, handleChange } from 'utils'
+
 export class OrganismSettings extends Component {
 
     constructor(props) {
         super(props);
         this.state = {loading: true, organism: [], name: "", description: "", address: "", picture: null}
         this.getOrganism = this.getOrganism.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChange = handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChangePicture = this.handleChangePicture.bind(this);
     }
 
     componentDidMount() {
         this.getOrganism();
-        var places = require('places.js');
-        var placesAutocomplete = places({
-        appId: "plZJLSHIW8M5",
-        apiKey: "0eddd2fc93b5429f5012ee49bcf8807a",
-        container: document.querySelector('#address-input')
-        });
+        addAlgolia()
     }
 
     getOrganism() {
@@ -35,16 +32,6 @@ export class OrganismSettings extends Component {
             this.props.history.push('/organisme/creation')
         })
     }
-
-    handleChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-    
-        this.setState({
-          [name]: value
-        });
-      }
 
       handleChangePicture(event) {
         this.setState({picture: event.target.files[0]})

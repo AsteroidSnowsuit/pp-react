@@ -5,6 +5,7 @@ import Axios from 'axios';
 import {withRouter} from 'react-router-dom'
 import * as Cookies from 'js-cookie'
 import ErrorContainer from './../../../components/ErrorContainer'
+import {handleChange} from 'utils'
 
 export class AddInterest extends Component {
 
@@ -12,7 +13,7 @@ export class AddInterest extends Component {
         super(props)
         this.state = {loading: false, name: "", picture_src: ""}
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChange = handleChange.bind(this);
     }
 
     handleSubmit(e) {
@@ -29,16 +30,6 @@ export class AddInterest extends Component {
             this.setState({loading: false});
         })
         
-    }
-
-    handleChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-
-        this.setState({
-            [name]: value
-        });
     }
 
     render() {

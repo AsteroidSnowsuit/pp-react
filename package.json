@@ -6,8 +6,12 @@
     "start": "parcel index.html",
     "build": "parcel build index.html"
   },
+  "alias": {
+    "utils": "./src/Utils.js"
+  },
   "license": "MIT",
   "dependencies": {
+    "Utils": "^1.0.39",
     "axios": "^0.19.0",
     "bulma": "^0.7.5",
     "jquery": "^3.4.1",
