@@ -4,6 +4,7 @@ import Dashboard from '../Dashboard'
 import Axios from 'axios'
 import * as Cookies from 'js-cookie'
 import ResultBox from '../../components/search/ResultBox'
+import $ from 'jquery'
 
 export class SmartSearch extends Component {
 
@@ -17,6 +18,13 @@ export class SmartSearch extends Component {
 
     componentDidMount() {
         this.getOffers();
+        $('.dropdown-item').click(function() {
+            $(this).toggleClass('is-active');
+        })
+        $('.dropdown-one').click(function() {
+            $('.dropdown-one').removeClass('is-active');
+            $(this).addClass('is-active');
+        })
     }
 
     getOffers() {
@@ -84,16 +92,16 @@ export class SmartSearch extends Component {
                             </div>
                             <div class="dropdown-menu" id="dropdown-menu" role="menu">
                                 <div class="dropdown-content">
-                                <a class="dropdown-item" onClick={this.handleSorter} data-sorter="date-asc">
+                                <a class="dropdown-item dropdown-one" onClick={this.handleSorter} data-sorter="date-asc">
                                     date (le plust tôt)
                                 </a>
-                                <a class="dropdown-item" onClick={this.handleSorter} data-sorter="date-desc">
+                                <a class="dropdown-item dropdown-one" onClick={this.handleSorter} data-sorter="date-desc">
                                     date (le plus tard)
                                 </a>
-                                <a class="dropdown-item" onClick={this.handleSorter} data-sorter="places-desc">
+                                <a class="dropdown-item dropdown-one" onClick={this.handleSorter} data-sorter="places-desc">
                                     places disponibles (le plus)
                                 </a>
-                                <a class="dropdown-item" onClick={this.handleSorter} data-sorter="places-asc">
+                                <a class="dropdown-item dropdown-one" onClick={this.handleSorter} data-sorter="places-asc">
                                     places disponibles (le moins)
                                 </a>
                                 </div>
