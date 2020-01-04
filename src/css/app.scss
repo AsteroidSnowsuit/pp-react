@@ -658,3 +658,13 @@ a {
 #offer-map {
     height: 400px;
 }
+
+.sortBy {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sortBy span {
+    margin-right: 10px;
+}

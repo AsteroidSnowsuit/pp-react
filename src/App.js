@@ -21,7 +21,7 @@ import OrganismOffers from './pages/organization/OrganismOffers'
 import ReactNotification from 'react-notifications-component'
 import OrganismOffer from './pages/organization/OrganismOffer'
 import "../src/css/app.scss"
-import SmartSearch from './pages/search/SmartSearch'
+import ClassicSearch from './pages/search/ClassicSearch'
 import { OrganismSettings } from './pages/organization/OrganismSettings'
 import WorkingOn from './pages/WorkingOn'
 import InterestsIndex from './pages/admin/interests/InterestsIndex';
@@ -58,7 +58,7 @@ export class App extends Component {
               <RegisterOrganism />
             </PrivateRoute>
             <PrivateRoute exact path="/recherche">
-              <SmartSearch />
+              <ClassicSearch />
             </PrivateRoute>
             <PrivateRoute exact path="/offres/:id">
               <OfferPage />

@@ -6,7 +6,7 @@ import * as Cookies from 'js-cookie'
 import ResultBox from '../../components/search/ResultBox'
 import $ from 'jquery'
 
-export class SmartSearch extends Component {
+export class ClassicSearch extends Component {
 
     constructor(props) {
         super(props);
@@ -142,4 +142,4 @@ export class SmartSearch extends Component {
     }
 }
 
-export default SmartSearch
+export default ClassicSearch
