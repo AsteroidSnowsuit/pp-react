@@ -28,7 +28,7 @@ import InterestsIndex from './pages/admin/interests/InterestsIndex';
 import AddInterest from './pages/admin/interests/AddInterest';
 import ManageInterest from './pages/admin/interests/ManageInterest'
 import EditUser from './pages/user/EditUser'
-
+import SmartSearch from './pages/search/SmartSearch'
 export class App extends Component {
   render() {
     return (
@@ -59,6 +59,9 @@ export class App extends Component {
             </PrivateRoute>
             <PrivateRoute exact path="/recherche">
               <ClassicSearch />
+            </PrivateRoute>
+            <PrivateRoute exact path="/recherche-intelligente">
+              <SmartSearch />
             </PrivateRoute>
             <PrivateRoute exact path="/offres/:id">
               <OfferPage />

@@ -6,13 +6,12 @@ import * as Cookies from 'js-cookie'
 import ResultBox from '../../components/search/ResultBox'
 import $ from 'jquery'
 
-export class ClassicSearch extends Component {
+export class SmartSearch extends Component {
 
     constructor(props) {
         super(props);
         this.getOffers = this.getOffers.bind(this);
-        this.state = {loading: true, offers: [], filters: [], activeSorter: ''}
-        this.handleSorter = this.handleSorter.bind(this);
+        this.state = {loading: true, offers: [], filters: []}
         this.handleFilter = this.handleFilter.bind(this);
     }
 
@@ -28,23 +27,12 @@ export class ClassicSearch extends Component {
     }
 
     getOffers() {
-        Axios.post('http://localhost:8000/api/search', {order: this.state.sorter, filters: this.state.filters}, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
+        Axios.post('http://localhost:8000/api/search/smart', {order: this.state.sorter, filters: this.state.filters}, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
         .then((success) => {
             this.setState({loading: false, offers : success.data.data.offers})
 
         }, (error) => {
 
-        })
-    }
-
-    handleSorter(e) {
-        e.preventDefault();
-        e.persist();
-        this.setState({loading: true});
-        this.setState({activeSorter : e.target.innerText})
-        var sorter = e.target.getAttribute('data-sorter')
-        this.setState({sorter: sorter}, () => {
-            this.getOffers();
         })
     }
 
@@ -79,35 +67,6 @@ export class ClassicSearch extends Component {
                         <h2 className="subtitle">Résultats de recherche</h2>
                     </div>
                     <div className="level-right">
-                        <div className="sortBy">
-                            <span>Trier par</span>
-                            <div class="dropdown is-right is-hoverable">
-                            <div class="dropdown-trigger">
-                                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                                <span>{(this.state.activeSorter !== "" ? this.state.activeSorter : 'sélectionner')}</span>
-                                <span class="icon is-small">
-                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                </span>
-                                </button>
-                            </div>
-                            <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                                <div class="dropdown-content">
-                                <a class="dropdown-item dropdown-one" onClick={this.handleSorter} data-sorter="date-asc">
-                                    date (le plust tôt)
-                                </a>
-                                <a class="dropdown-item dropdown-one" onClick={this.handleSorter} data-sorter="date-desc">
-                                    date (le plus tard)
-                                </a>
-                                <a class="dropdown-item dropdown-one" onClick={this.handleSorter} data-sorter="places-desc">
-                                    places disponibles (le plus)
-                                </a>
-                                <a class="dropdown-item dropdown-one" onClick={this.handleSorter} data-sorter="places-asc">
-                                    places disponibles (le moins)
-                                </a>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
                         <div className="filter">
                             <div class="dropdown is-right is-hoverable">
                             <div class="dropdown-trigger">
@@ -142,4 +101,4 @@ export class ClassicSearch extends Component {
     }
 }
 
-export default ClassicSearch
+export default SmartSearch
