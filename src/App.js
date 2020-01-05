@@ -29,6 +29,7 @@ import AddInterest from './pages/admin/interests/AddInterest';
 import ManageInterest from './pages/admin/interests/ManageInterest'
 import EditUser from './pages/user/EditUser'
 import SmartSearch from './pages/search/SmartSearch'
+import AlternativeDashboardHomepage from './pages/dashboard/AlternativeDashboardHomepage';
 export class App extends Component {
   render() {
     return (
@@ -43,7 +44,8 @@ export class App extends Component {
                 <UserProfile />
               </PrivateRoute>
               <PrivateRoute exact path="/tableaudebord">
-                <DashboardHomepage />
+                {/* <DashboardHomepage /> */}
+                <AlternativeDashboardHomepage />
               </PrivateRoute>
               <PrivateRoute reverse="true" exact path="/inscription">
                 <Register />

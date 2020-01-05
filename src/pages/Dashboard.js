@@ -10,8 +10,8 @@ export class Dashboard extends Component {
         $('body').addClass('dashboard');
         return (
             <DashboardLoading loading={this.props.loading}>
+                <DashboardNavigation organism={Cookies.get('organism')} />
                 <div className="container dashboard">
-                    <DashboardNavigation organism={Cookies.get('organism')} />
                     {this.props.children}
                 </div>
                 <AdminTools />

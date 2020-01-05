@@ -4,8 +4,10 @@ $white: #e8e8e8;
 $yellow: #ff9a00;
 $blue: #0375B4;
 $borderGrey: #707070;
+$background-blue : #E6F1F8;
 
 @import "../../node_modules/bulma/css/bulma.css";
+@import "dashboard";
 
 @font-face {
     font-family: 'SF Pro Bold';
@@ -43,9 +45,7 @@ body {
 .user-container a {
     color: blueviolet;
 }
-.dashboard {
-    background-color: $white;
-}
+
 
 .title {
     font-family: 'SF Pro Bold', Arial;
@@ -142,39 +142,6 @@ span.underlined {
     margin-right: 10px;
 }
 /* Dashboard Specific */
-
-.dashboard {
-    color: black;
-}
-
-.dashboard a {
-    color : $blue;
-}
-
-.dashboard a .subtitle {
-    color : $blue!important;
-}
-
-.dashboard .navbar-burger {
-    color: black!important;
-}
-
-.dashboard .navbar-item a {
-    color: black;
-}
-
-.dashboard .title, .dashboard .subtitle{
-    color: black!important;
-}
-
-.dashboard .user-form input, .dashboard .user-form input::placeholder, .dashboard .user-form textarea {
-    border-color: black;
-    color: black;
-}
-
-.dashboard .error-line img {
-    filter: brightness(0.1);
-}
 
 .feature-info-box {
     padding: 20px;
@@ -390,10 +357,6 @@ a {
     padding-bottom: 0;
 }
 
-.dashboard .interest-box {
-    border-color: $blue;
-} 
-
 .interest-box {
     position: relative;
     border: 10px solid white;
@@ -425,28 +388,11 @@ a {
     filter: invert(33%) sepia(73%) saturate(1048%) hue-rotate(169deg) brightness(95%) contrast(99%);
 }
 
-.dashboard .interest-icon {
-    filter: invert(33%) sepia(73%) saturate(1048%) hue-rotate(169deg) brightness(95%) contrast(99%);
-}
-
-.dashboard .interest-box-activated .interest-icon {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(273deg) brightness(104%) contrast(102%);
-}
-
-.dashboard .interest-box-activated {
-    color: $white;
-    background-color: $blue;
-}
-
 .interest-box-activated {
     color: $blue;
     background-color: white;
 }
 
-
-.dashboard .interest-box-activated .activated-icon{
-    color: white;
-}
 
 .interest-box-activated .activated-icon{
     color: $blue;
@@ -596,7 +542,6 @@ a {
     padding-top: 10px;
     background-color: white;
     border: 1px solid black;
-    margin-bottom: 20px;
 }
 
 .result-box .result-box-org {

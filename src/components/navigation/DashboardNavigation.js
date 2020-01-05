@@ -5,7 +5,7 @@ import Navigation from './Navigation'
 export class DashboardNavigation extends Component {
     render() {
         return (
-            <Navigation dashboard={true}>
+            <Navigation>
                 <NavLink to="/tableaudebord">Tableau de bord</NavLink>
                 {(this.props.organism == 0) ?
                     <React.Fragment>

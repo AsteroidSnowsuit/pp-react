@@ -1,0 +1,72 @@
+.dashboard-box {
+    min-height: 100px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px 15px;
+}
+
+.dashboard-box p {
+    padding-left: 10px;
+    margin: 10px 0px;
+}
+
+.dashboard .is-secondary {
+    color: black;
+}
+
+
+.dashboard .is-secondary:hover {
+    color: black;
+}
+
+.dashboard {
+    color: black;
+}
+
+.dashboard a {
+    color : $blue;
+}
+
+.dashboard .subtitle {
+    color: black;
+}
+.dashboard a .subtitle {
+    color : $blue!important;
+}
+
+.dashboard .navbar {
+    background: $blue;
+}
+
+.dashboard .user-form input, .dashboard .user-form input::placeholder, .dashboard .user-form textarea {
+    border-color: black;
+    color: black;
+}
+
+.dashboard .error-line img {
+    filter: brightness(0.1);
+}
+
+.dashboard {
+    background-color: $background-blue;
+}
+
+.dashboard .interest-icon {
+    filter: invert(33%) sepia(73%) saturate(1048%) hue-rotate(169deg) brightness(95%) contrast(99%);
+}
+
+.dashboard .interest-box-activated .interest-icon {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(273deg) brightness(104%) contrast(102%);
+}
+
+.dashboard .interest-box-activated {
+    color: $white;
+    background-color: $blue;
+}
+
+.dashboard .interest-box-activated .activated-icon{
+    color: white;
+}
+.dashboard .interest-box {
+    border-color: $blue;
+} 
