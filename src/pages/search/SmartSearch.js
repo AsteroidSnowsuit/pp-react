@@ -62,40 +62,44 @@ export class SmartSearch extends Component {
     render() {
         return (
             <Dashboard loading={this.state.loading}>
-                <div className="level">
-                    <div className="level-left">
-                        <h2 className="subtitle">Résultats de recherche</h2>
+                <div className="columns is-multiline">
+                    <div className="column is-6 is-12-mobile">
+                    <p>La recherche intelligente trouve des offres correspondants à vos intérêts renseignés sur votre profil. La recherche intelligente place les offres qui correpondent le plus à vos intérêts en premier et exlcuent les offres pour lesquelles vous n'avez pas l'âge requis.</p>
                     </div>
-                    <div className="level-right">
-                        <div className="filter">
-                            <div class="dropdown is-right is-hoverable">
-                            <div class="dropdown-trigger">
-                                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                                <span>Filtres</span>
-                                <span class="icon is-small">
-                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                </span>
-                                </button>
-                            </div>
-                            <div class="dropdown-menu is-right" id="dropdown-menu" role="menu">
-                                <div class="dropdown-content">
-                                <a href="#" onClick={this.handleFilter} data-filter="no-wait" class="dropdown-item">
-                                    cacher files d'attente
-                                </a>
-                                <a href="#" onClick={this.handleFilter} data-filter="age-restriction" class="dropdown-item">
-                                    afficher les offres adaptées à mon âge
-                                </a>
+                    <div className="column is-12">
+                    <div className="level">
+                        <div className="level-left">
+                            <h2 className="subtitle">Résultats de recherche</h2>
+                        </div>
+                        <div className="level-right">
+                            <div className="filter">
+                                <div class="dropdown is-right is-hoverable">
+                                <div class="dropdown-trigger">
+                                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                                    <span>Filtres</span>
+                                    <span class="icon is-small">
+                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                    </span>
+                                    </button>
                                 </div>
-                            </div>
+                                <div class="dropdown-menu is-right" id="dropdown-menu" role="menu">
+                                    <div class="dropdown-content">
+                                    <a href="#" onClick={this.handleFilter} data-filter="no-wait" class="dropdown-item">
+                                        cacher files d'attente
+                                    </a>
+                                    </div>
+                                </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    {this.state.offers.map((offer) => {
+                    return (
+                        <ResultBox organism={false} key={offer.id} offer={offer}></ResultBox>
+                    )
+                    })}
+                    </div>
                 </div>
-                {this.state.offers.map((offer) => {
-                   return (
-                    <ResultBox organism={false} key={offer.id} offer={offer}></ResultBox>
-                   )
-                })}
             </Dashboard>
         )
     }
