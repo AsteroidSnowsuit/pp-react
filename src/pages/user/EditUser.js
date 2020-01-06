@@ -15,6 +15,7 @@ export class EditUser extends Component {
         this.addInterest = this.addInterest.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = handleChange.bind(this);
+        this.addAlgolia = addAlgolia.bind(this);
     }
 
     addInterest(id, name) {
@@ -56,7 +57,7 @@ export class EditUser extends Component {
                 this.props.history.push('/deconnexion');
             }
         )
-        addAlgolia()
+        this.addAlgolia()
     }
 
     handleSubmit(e) {

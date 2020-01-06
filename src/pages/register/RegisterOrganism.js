@@ -13,10 +13,11 @@ export class RegisterOrganism extends Component {
         this.state = {interests: {}}
         this.handleChange = handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.addAlgolia = addAlgolia.bind(this);
     }
 
     componentDidMount() {
-        addAlgolia()
+        this.addAlgolia()
     }
 
     handleSubmit(e) {

@@ -30,5 +30,15 @@ export function addAlgolia() {
     appId: "plZJLSHIW8M5",
     apiKey: "dca5bc08b6d6290701c6dfa897fd1fab",
     container: document.querySelector('#address-input')
+    }).configure({
+        countries: ['ca'],
+        type: 'address'
+    });
+    placesAutocomplete.on('change', e => {
+        const value = e.suggestion.value;
+        this.setState({address: value});
+   });
+   placesAutocomplete.on('clear', e => {
+        this.setState({address: ''});
     });
 }

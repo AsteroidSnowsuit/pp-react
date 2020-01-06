@@ -21,12 +21,13 @@ export class OfferCreation extends Component {
             minimumAge: 0
         }
         this.handleChange = handleChange.bind(this);
+        this.addAlgolia = addAlgolia.bind(this);
         this.addInterest = addInterest.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
-        addAlgolia()
+        this.addAlgolia()
     }
 
     handleSubmit(e) {

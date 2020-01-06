@@ -14,12 +14,13 @@ export class OrganismSettings extends Component {
         this.getOrganism = this.getOrganism.bind(this);
         this.handleChange = handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.addAlgolia = addAlgolia.bind(this);
         this.handleChangePicture = this.handleChangePicture.bind(this);
     }
 
     componentDidMount() {
         this.getOrganism();
-        addAlgolia()
+        this.addAlgolia()
     }
 
     getOrganism() {

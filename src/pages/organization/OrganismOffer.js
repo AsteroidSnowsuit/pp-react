@@ -64,7 +64,7 @@ export class OrganismOffer extends Component {
     componentDidMount() {
         this.setState({loading: true})
         this.getOffer();
-        addAlgolia()
+        this.addAlgolia()
     }
 
     getOffer() {

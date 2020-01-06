@@ -12,12 +12,13 @@ export class AddOrganism extends Component {
         super(props);
         this.state = {name: '', description: '', address: '', picture: null}
         this.handleChange = handleChange.bind(this);
+        this.addAlgolia = addAlgolia.bind(this);
         this.handleChangePicture = this.handleChangePicture.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
-        addAlgolia()
+        this.addAlgolia()
     }
 
     handleChangePicture(event) {
