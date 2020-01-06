@@ -93,11 +93,15 @@ export class SmartSearch extends Component {
                             </div>
                         </div>
                     </div>
-                    {this.state.offers.map((offer) => {
-                    return (
-                        <ResultBox organism={false} key={offer.id} offer={offer}></ResultBox>
-                    )
-                    })}
+                    <div className="columns is-multiline">
+                        {this.state.offers.map((offer) => {
+                        return (
+                            <div className="column is-12">
+                                <ResultBox organism={false} key={offer.id} offer={offer}></ResultBox>
+                            </div>
+                        )
+                        })}
+                    </div>
                     </div>
                 </div>
             </Dashboard>
