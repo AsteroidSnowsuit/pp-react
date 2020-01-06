@@ -46,7 +46,7 @@ export class AlternativeDashboardHomepage extends Component {
                     <div className="column is-half">
                         <div className="dashboard-box">
                             <h2 className="subtitle">Mon organisme</h2>
-                            {Cookies.get('organismCreated') ? (
+                            {Cookies.get('organismCreated') == "true" ? (
                                 <LinkButton type="primary" destination="/organisme/parametres">Gérer mon organisme</LinkButton>
                             ) : (
                                 <LinkButton type="primary" destination="/organisme/creation">Créer mon organisme</LinkButton>

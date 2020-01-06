@@ -43,7 +43,9 @@ export class OrganismSettings extends Component {
         formData.append('name', this.state.name);
         formData.append('description', this.state.description);
         formData.append('address', this.state.address);
-        formData.append('picture', this.state.picture);
+        if(this.state.picture !== null) {
+            formData.append('picture', this.state.picture);
+        }
         formData.append('_method', 'PATCH');
         var token = Cookies.get('token');
         Axios.post('http://localhost:8000/api/organism/settings', formData, {
@@ -71,17 +73,17 @@ export class OrganismSettings extends Component {
                     <div className="column is-offset-1 is-10">
                     <h1 className="title is-size-1 register-title">Paramètres de {this.state.name}</h1>
                         <section className="section organism-register">
-                    <form encType="multipart/form-data" className="user-form fullbox-form" method="POST" onSubmit={this.handleSubmit}>
-                            <div className="has-text-left input-fixer">
-                            <label className="is-size-4">Nom de l'organisme : </label><input type="text" name="name" placeholder="Nom de l'organisme" value={this.state.name} onChange={this.handleChange}/>
-                            <label className="is-size-4">Description de l'organisme : </label><textarea name="description" placeholder="Description de l'organisme" value={this.state.description} onChange={this.handleChange}/>
-                            <label className="is-size-4">Adresse de l'organisme : </label><input id="address-input" type="text" name="address" value={this.state.address} onChange={this.handleChange}></input>
-                            <label className="is-size-4">Ajouter le logo de votre organisme : </label>
-                            <input type="file" name="picture" onChange={this.handleChangePicture} />
-                            </div>
-                            <ErrorContainer errors={this.state.errors} />
-                            <button className="button is-primary has-text-left">Soumettre les changements</button>
-                        </form>
+                            <form encType="multipart/form-data" className="user-form fullbox-form" method="POST" onSubmit={this.handleSubmit}>
+                                <div className="has-text-left input-fixer">
+                                <label className="is-size-4">Nom de l'organisme : </label><input type="text" name="name" placeholder="Nom de l'organisme" value={this.state.name} onChange={this.handleChange}/>
+                                <label className="is-size-4">Description de l'organisme : </label><textarea name="description" placeholder="Description de l'organisme" value={this.state.description} onChange={this.handleChange}/>
+                                <label className="is-size-4">Adresse de l'organisme : </label><input id="address-input" type="text" name="address" value={this.state.address} onChange={this.handleChange}></input>
+                                <label className="is-size-4">Ajouter le logo de votre organisme : </label>
+                                <input type="file" name="picture" onChange={this.handleChangePicture} />
+                                </div>
+                                <ErrorContainer errors={this.state.errors} />
+                                <button className="button is-primary has-text-left">Soumettre les changements</button>
+                            </form>
                         </section>
                     </div>
                 </section>

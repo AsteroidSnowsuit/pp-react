@@ -31,7 +31,9 @@ export class AddOrganism extends Component {
         formData.append('name', this.state.name);
         formData.append('description', this.state.description);
         formData.append('address', this.state.address);
-        formData.append('picture', this.state.picture);
+        if(this.state.picture !== null) {
+            formData.append('picture', this.state.picture);
+        }
         var token = Cookies.get('token');
         axios.post('http://localhost:8000/api/organism/create',formData, {
             headers: {
@@ -41,7 +43,8 @@ export class AddOrganism extends Component {
         }).then(
             (success) => {
                 this.setState({loading: false});
-                this.props.history.push('/organisme')
+                Cookies.set('organismCreated', true);
+                this.props.history.push('/tableaudebord')
             }, (error) => {
                 this.setState({errors : error.response.data.data})
                 if(error.response.data.redirect != "") {
