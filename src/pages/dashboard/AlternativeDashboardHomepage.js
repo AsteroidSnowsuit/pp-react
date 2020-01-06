@@ -46,10 +46,11 @@ export class AlternativeDashboardHomepage extends Component {
                     <div className="column is-half">
                         <div className="dashboard-box">
                             <h2 className="subtitle">Mon organisme</h2>
-                            <LinkButton destination="/recherche-intelligente" shape="rounded" type="primary">Recherche intelligente</LinkButton>
-                            <p>La recherche intelligente trouve les offres les plus susceptibles de vous intéresser en se basant sur votre âge et les intérêts renseignés sur votre <Link to="/profil">profil</Link>.</p>
-                            <LinkButton destination="/recherche" shape="rounded" type="secondary">Recherche classique</LinkButton>
-                            <p>La recherche classique vous permet de filtrer et trier les offres de la manière que vous voulez.</p>
+                            {Cookies.get('organismCreated') ? (
+                                <LinkButton type="primary" destination="/organisme/parametres">Gérer mon organisme</LinkButton>
+                            ) : (
+                                <LinkButton type="primary" destination="/organisme/creation">Créer mon organisme</LinkButton>
+                             )}
                         </div>
                     </div>
                     <div className="column is-half">

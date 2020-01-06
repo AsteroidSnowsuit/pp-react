@@ -16,10 +16,13 @@ export class Logout extends Component {
         .then((success) => {
             Cookies.remove('organism');
             Cookies.remove('token');
+            Cookies.remove('organismCreated');
             this.props.history.push("/");
         })
         .catch((error) => {
+            Cookies.remove('organism');
             Cookies.remove('token');
+            Cookies.remove('organismCreated');
             this.props.history.push("/");
         })
         return <p>Déconnexion...</p>

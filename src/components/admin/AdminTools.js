@@ -33,11 +33,13 @@ export class AdminTools extends Component {
         .then((success) => {
             Cookies.remove('organism');
             Cookies.remove('token');
+            Cookies.remove('organismCreated');
             window.location.reload();
         })
         .catch((error) => {
-            Cookies.remove('token');
             Cookies.remove('organism');
+            Cookies.remove('token');
+            Cookies.remove('organismCreated');
             window.location.reload();
         })
     }

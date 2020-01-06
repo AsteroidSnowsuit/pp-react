@@ -25,6 +25,7 @@ export class Login extends Component {
         .then((success) => {
             Cookies.set('token', success.data.data.token);
             Cookies.set('organism', success.data.data.organismMember);
+            Cookies.set('organismCreated', success.data.data.organismCreated);
             this.props.history.push("/tableaudebord")
         }, (error) => {
             this.setState({loading: false})
