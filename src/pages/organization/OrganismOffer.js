@@ -37,6 +37,7 @@ export class OrganismOffer extends Component {
         this.addInterest = addInterest.bind(this);
         this.handleChange = handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.addAlgolia = addAlgolia.bind(this);
         this.reorganizeParticipants = this.reorganizeParticipants.bind(this);
     }
 

@@ -1,25 +1,22 @@
 import React, { Component } from 'react'
-import Map from 'ol/Map';
-import View from 'ol/View';
-import TileLayer from 'ol/layer/Tile';
-import OSM from 'ol/source/OSM';
- 
+import L from 'leaflet'
+
 export class VolontariusMap extends Component {
-    render() {
-        new Map({
-            target: 'offer-map',
-            layers: [
-              new TileLayer({
-                source: new OSM()
-              })
-            ],
-            view: new View({
-              center: [0, 0],
-              zoom: 1
-            })
-          })
+  componentDidMount() {
+    this.map = L.map('mapid', {
+      center: [49.8419, 24.0315],
+      zoom: 16,
+      layers: [
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }),
+      ]
+    })
+  }
+    render() {      
         return (
-            <div id="offer-map"></div>
+          <div id="mapid">
+          </div>
         )
     }
 }
