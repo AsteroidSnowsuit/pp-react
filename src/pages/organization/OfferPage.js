@@ -121,7 +121,8 @@ export class OfferPage extends Component {
                     </div>
                     <div className="column is-4 offer-map">
                         L'offre est située au {this.state.offer.address}
-                        <VolontariusMap />
+                        <div id="mapid"></div>
+                        <VolontariusMap lon={this.state.offer.lon} lat={this.state.offer.lat} />
                     </div>
                 </div>
             </Dashboard>

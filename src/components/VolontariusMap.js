@@ -13,10 +13,19 @@ export class VolontariusMap extends Component {
       ]
     })
   }
+
+  componentWillReceiveProps(nextProps) {
+    var lon = nextProps.lon;
+    var lat = nextProps.lat;
+    if(lon != this.props.lon && lat != this.props.lat) {
+      this.map.panTo(new L.latLng(lat, lon));
+      L.marker([lat, lon]).addTo(this.map);     
+      this.map.invalidateSize(); 
+    }
+  }
     render() {      
         return (
-          <div id="mapid">
-          </div>
+          ""
         )
     }
 }
