@@ -9,6 +9,7 @@ $background-blue : #E6F1F8;
 @import "../../node_modules/bulma/css/bulma.css";
 @import "dashboard";
 @import "map";
+@import "footer";
 
 @font-face {
     font-family: 'SF Pro Bold';
@@ -35,6 +36,10 @@ body {
     position: fixed;
     bottom: 10px;
     right: 10px;
+}
+
+.container {
+    min-height: 100vh;
 }
 
 .user-container {

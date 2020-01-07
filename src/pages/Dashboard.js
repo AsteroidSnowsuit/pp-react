@@ -4,6 +4,7 @@ import $ from 'jquery'
 import DashboardLoading from '../../src/pages/loading/DashboardLoading'
 import * as Cookies from 'js-cookie'
 import AdminTools from '../components/admin/AdminTools'
+import Footer from '../components/Footer'
 
 export class Dashboard extends Component {
     render() {
@@ -14,6 +15,7 @@ export class Dashboard extends Component {
                 <div className="container dashboard">
                     {this.props.children}
                 </div>
+                <Footer />
                 <AdminTools />
             </DashboardLoading>
         )
