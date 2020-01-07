@@ -56,7 +56,8 @@ export class AlternativeDashboardHomepage extends Component {
                     <div className="column is-half">
                         <div className="dashboard-box">
                             <h2 className="subtitle">Mes offres</h2>
-                            <p>Cette section n'est pas encore disponible.</p>
+                            <LinkButton type="primary" destination="/organisme/offres/nouvelle">Ajouter une offre</LinkButton>
+                            <LinkButton type="primary" destination="/organisme/offres">Voir mes offres</LinkButton>
                         </div>
                     </div>
                 </div>
