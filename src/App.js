@@ -30,6 +30,8 @@ import ManageInterest from './pages/admin/interests/ManageInterest'
 import EditUser from './pages/user/EditUser'
 import SmartSearch from './pages/search/SmartSearch'
 import AlternativeDashboardHomepage from './pages/dashboard/AlternativeDashboardHomepage';
+import ContactPage from './pages/misc/ContactPage'
+import About from './pages/misc/About'
 export class App extends Component {
   render() {
     return (
@@ -96,6 +98,8 @@ export class App extends Component {
               <AddInterest />
             </PrivateRoute>
             <Route exact path={['/groupes', '/dons']} component={WorkingOn} />
+            <Route exact path="/me-contacter" component={ContactPage} />
+            <Route exact path="/apropos" component={About} />
             <Route exact path={["/inscription/verifier-email"]} component={EmailConfirmation} />
             <Route exact path={["/inscription/email-confirme"]} component={EmailConfirmed} />
             <Route exact path={["/", "/accueil"]} component={HomepageHomepage} />
