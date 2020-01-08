@@ -12,6 +12,7 @@ import ErrorLine from '../../components/ErrorLine'
 import ErrorContainer from '../../components/ErrorContainer'
 import { addAlgolia, handleChange, addInterest } from 'utils'
 import InterestList from '../../components/register/InterestList'
+import PopupDelete from '../../components/offer/PopupDelete'
 
 export class OrganismOffer extends Component {
 
@@ -199,6 +200,7 @@ export class OrganismOffer extends Component {
                         <InterestList onClick={this.addInterest} alreadyChecked={this.state.ointerests} /> 
                         <ErrorContainer errors={this.state.errors} />
                         <Button type="primary">Soumettre les changements</Button>
+                        <PopupDelete history={this.props.history} id={this.state.offer.id}/>
                         </form>
                     </div>
                     <div className="column is-half organism-offer-participants">
