@@ -6,6 +6,7 @@ import * as Cookies from 'js-cookie'
 import {withRouter} from 'react-router-dom'
 import InterestList from './../../components/register/InterestList'
 import {addInterest, handleChange, addAlgolia} from 'utils'
+import {store} from 'react-notifications-component'
 
 export class OfferCreation extends Component {
 
@@ -41,7 +42,9 @@ export class OfferCreation extends Component {
             date: this.state.date, 
             n_places: this.state.n_places,
             minimumAge: this.state.minimumAge,
-            interests: this.state.interests
+            interests: this.state.interests,
+            direct_participation: this.state.direct_participation,
+            participation_url: this.state.participation_url
         }, 
         {headers: {"Accept": 'application/json', "Authorization": `Bearer ${token}`}})
         .then(
@@ -51,6 +54,12 @@ export class OfferCreation extends Component {
             this.props.history.push('/offres/' + success.data.data.id)
         }, 
         (error) => {
+            store.addNotification({
+                          title: 'Erreur !',
+                          message: error.response.data.error,
+                          type: 'danger',
+                          container: 'top-right'
+                        })
             this.setState({errors: error.response.data.data})
             });
     }
@@ -70,6 +79,19 @@ export class OfferCreation extends Component {
                             <label className="is-size-4">Date de l'offre : </label><input type="date" name="date" value={this.state.date} onChange={this.handleChange}></input>
                             <label className="is-size-4">Nombre de places disponibles : </label><input type="number" name="n_places" value={this.state.number} onChange={this.handleChange}/>
                             <label className="is-size-4">Âge minimum pour participer : </label><input type="number" name="minimumAge" value={this.state.minimumAge} onChange={this.handleChange} />
+                            <div class="pretty p-default p-thick">
+                            <input name="direct_participation" type="checkbox" value={this.state.direct_participation} onChange={this.handleChange}></input>
+                                <div class="state">
+                                <label className="is-size-4">Activer la participation directe</label>
+                                </div>
+                            </div>
+                            <p>La participation directe vous permet d'afficher votre offre sans passer par le système de participation de Volontarius. Les utilisateurs seront envoyés à l'URL désirée.</p>
+                            {(this.state.direct_participation == true) ? 
+                                (<React.Fragment>
+                                    <label className="is-size-4">URL pour la participation : </label><input type="text" name="participation_url" value={this.state.participation_url} onChange={this.handleChange} />
+                                 </React.Fragment>) :
+                                ''
+                            }
                             </div>
                             <InterestList onClick={this.addInterest} />
                             <ErrorContainer errors={this.state.errors} />

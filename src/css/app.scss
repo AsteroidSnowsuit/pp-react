@@ -5,12 +5,15 @@ $yellow: #ff9a00;
 $blue: #0375B4;
 $borderGrey: #707070;
 $background-blue : #E6F1F8;
+$pretty--color-default:#000000;
+
 
 @import "../../node_modules/bulma/css/bulma.css";
 @import "dashboard";
 @import "map";
 @import "footer";
 @import "search";
+@import '~pretty-checkbox/src/pretty-checkbox.scss';
 
 @font-face {
     font-family: 'SF Pro Bold';
@@ -319,6 +322,7 @@ a {
 
 .user-form textarea {
     border: 2px solid white;
+    padding: 5px;
 }
 
 .user-form input[type=password] {
@@ -329,6 +333,7 @@ a {
     margin-bottom: 10px;
     padding-left: 15px;
 }
+
 
 .user-form input::placeholder{
     color: white;

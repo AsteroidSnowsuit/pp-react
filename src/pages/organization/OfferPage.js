@@ -6,6 +6,7 @@ import * as Cookies from 'js-cookie'
 import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css'
 import { VolontariusMap } from '../../components/VolontariusMap'
+import Button from '../../components/Button';
 
 
 export class OfferPage extends Component {
@@ -103,7 +104,14 @@ export class OfferPage extends Component {
                     <div className="column is-8 nbPlaces">
                         <h2 className="subtitle is-3">Inscription</h2>
                         <div>
-                        {(!this.state.isUserIn) ?
+                        {(this.state.offer.direct_participation == 1) ?
+                            <React.Fragment>
+                                La participation prend place sur une autre plateforme.<br />
+                                <a href={this.state.offer.participation_url}>
+                                    <Button type="primary" shape="rounded">S'inscrire</Button>
+                                </a>
+                            </React.Fragment> :
+                            ((!this.state.isUserIn) ?
                             ((this.state.nPlaces > 0) ? 
                             <React.Fragment>
                                 Il reste <span>{Math.abs(this.state.offer.placesAvailable)} places</span> disponibles.<br />
@@ -116,7 +124,7 @@ export class OfferPage extends Component {
                             <React.Fragment>
                                 Vous êtes inscrit à cette offre.<br />
                                 <div className="button is-primary" onClick={this.handleQuitting}>Se désincrire</div>
-                            </React.Fragment>}
+                            </React.Fragment>)}
                         </div>
                     </div>
                     <div className="column is-4 offer-map">
