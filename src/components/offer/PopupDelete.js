@@ -3,6 +3,7 @@ import Button from '../Button'
 import Popup from 'reactjs-popup'
 import Axios from 'axios';
 import * as Cookies from 'js-cookie';
+import {store} from "react-notifications-component"
 
 export class PopupDelete extends Component {
     constructor() {
@@ -28,7 +29,12 @@ export class PopupDelete extends Component {
           .then((success) => {
             this.props.history.push('/organisme/offres')
           }, (error) => {
-            
+            store.addNotification({
+              title: 'Erreur !',
+              message: error.response.data.error,
+              type: 'danger',
+              container: 'top-right'
+            })
           })
       }
     render() {

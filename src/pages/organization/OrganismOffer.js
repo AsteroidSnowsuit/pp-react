@@ -3,8 +3,6 @@ import {withRouter} from 'react-router-dom'
 import Dashboard from '../Dashboard'
 import Axios from 'axios'
 import * as Cookies from 'js-cookie'
-import { confirmAlert } from 'react-confirm-alert'; // Import
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css'
 import Button from '../../components/Button';
@@ -13,6 +11,9 @@ import ErrorContainer from '../../components/ErrorContainer'
 import { addAlgolia, handleChange, addInterest } from 'utils'
 import InterestList from '../../components/register/InterestList'
 import PopupDelete from '../../components/offer/PopupDelete'
+import PopupArchive from '../../components/offer/PopupArchive';
+import AWN from "awesome-notifications"
+
 
 export class OrganismOffer extends Component {
 
@@ -59,6 +60,12 @@ export class OrganismOffer extends Component {
             this.props.history.push("/organisme/offres/" + this.props.match.params.id);
             this.setState({errors: [], loading:false})
         }, (error) => {
+            store.addNotification({
+                title: 'Erreur !',
+                message: error.response.data.error,
+                type: 'danger',
+                container: 'top-right'
+            })
             this.setState({loading: false, errors: error.response.data.data});
         })
     }
@@ -201,6 +208,7 @@ export class OrganismOffer extends Component {
                         <ErrorContainer errors={this.state.errors} />
                         <Button type="primary">Soumettre les changements</Button>
                         <PopupDelete history={this.props.history} id={this.state.offer.id}/>
+                        <PopupArchive notifier={this.notifier} history={this.props.history} id={this.state.offer.id}/>
                         </form>
                     </div>
                     <div className="column is-half organism-offer-participants">
