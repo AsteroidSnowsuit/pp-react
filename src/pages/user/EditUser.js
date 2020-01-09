@@ -82,22 +82,26 @@ export class EditUser extends Component {
     render() {
         return (
             <Dashboard loading={this.state.loading}>
-                <h1 className="title">Modifier mon profil</h1>
-                <form className="user-form offer-update-form" onSubmit={this.handleSubmit}>
-                <label>Prénom :</label>
-                <input type="text" name="firstname" value={this.state.firstname} onChange={this.handleChange}></input> <br />
-                <label>Nom de famille :</label>
-                <input type="text" name="lastname" value={this.state.lastname} onChange={this.handleChange}></input> <br />
-                <label>Email :</label>
-                <input type="email" name="email" value={this.state.email} onChange={this.handleChange} /><br />
-                <label>Adresse :</label>
-                <input type="address" id="address-input" name="address" value={this.state.address} onChange={this.handleChange} /><br />
-                <label>Date de naissance :</label>
-                <input type="date" name="dob" value={this.state.dob} onChange={this.handleChange} /><br />
-                <InterestList alreadyChecked={this.state.uinterests} onClick={this.addInterest} />
-                <ErrorContainer errors={this.state.errors} />
-                <Button type="primary">Soumettre les changements</Button>
-                </form>
+                <div className="columns">
+                    <div className="column is-12">
+                        <h1 className="title">Modifier mon profil</h1>
+                        <form className="user-form offer-update-form" onSubmit={this.handleSubmit}>
+                        <label>Prénom :</label>
+                        <input type="text" name="firstname" value={this.state.firstname} onChange={this.handleChange}></input> <br />
+                        <label>Nom de famille :</label>
+                        <input type="text" name="lastname" value={this.state.lastname} onChange={this.handleChange}></input> <br />
+                        <label>Email :</label>
+                        <input type="email" name="email" value={this.state.email} onChange={this.handleChange} /><br />
+                        <label>Adresse :</label>
+                        <input type="address" id="address-input" name="address" value={this.state.address} onChange={this.handleChange} /><br />
+                        <label>Date de naissance :</label>
+                        <input type="date" name="dob" value={this.state.dob} onChange={this.handleChange} /><br />
+                        <InterestList alreadyChecked={this.state.uinterests} onClick={this.addInterest} />
+                        <ErrorContainer errors={this.state.errors} />
+                        <Button type="primary">Soumettre les changements</Button>
+                        </form>
+                    </div>
+                </div>
             </Dashboard>
         )
     }

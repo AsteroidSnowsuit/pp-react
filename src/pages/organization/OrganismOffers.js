@@ -29,9 +29,15 @@ export class OrganismOffers extends Component {
             <Dashboard loading={this.state.loading}>
                 <LinkButton type="primary" destination="/organisme/offres/nouvelle">Ajouter une nouvelle offre</LinkButton>
                 <div className="offers-container">
+                    <p>Les offres ayant un fond jaune sont archivées. Vous ne pouvez pas les modifier ou les supprimer et les utilisateurs ne peuvent pas les voir.</p>
+                    <div className="columns">
+
+                    </div>
                     {this.state.offers.map((offer) => {
                     return (
-                        <ResultBox organism={true} offer={offer}></ResultBox>
+                        <div className="column is-12">
+                            <ResultBox organism={true} offer={offer}></ResultBox>
+                        </div>
                     )
                     })}
                 </div>
