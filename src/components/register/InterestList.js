@@ -36,6 +36,23 @@ export class InterestList extends Component {
     }
 
     render() {
+        if(this.props.fullInterests != null) {
+            if(this.props.fullInterests.length != 0) {
+                return (
+                    <div className="columns interest-columns is-multiline column  is-mobile">
+                        {Object.keys(this.props.fullInterests).map((interest, i) => {
+                            var pinterest = this.props.fullInterests[interest];
+                            return <InterestBox id={pinterest.id} onClick={this.props.onClick} icon={pinterest.picture_src} title={pinterest.name} />
+                        })}
+                    </div>
+                )
+            }
+            else {
+                console.log('boi')
+                return (<p>Aucun intérêt à afficher pour cette offre...</p>)
+            }
+            
+        }   
         return (
             <div className="columns interest-columns is-multiline column  is-mobile">
                 {Object.keys(this.state.pinterests).map((interest, i) => {

@@ -54,7 +54,8 @@ export class OrganismOffer extends Component {
             date: this.state.date,
             n_places: this.state.n_places,
             minimumAge: this.state.minimumAge,
-            interests: this.state.interests
+            interests: this.state.interests,
+            participation_url: this.state.participation_url
         },
         {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}}).then((success) => {
             this.props.history.push("/organisme/offres/" + this.props.match.params.id);
@@ -94,7 +95,8 @@ export class OrganismOffer extends Component {
                 description: this.state.offer.description,
                 address: this.state.offer.address,
                 date: this.state.offer.date,
-                n_places: this.state.offer.n_places
+                n_places: this.state.offer.n_places,
+                participation_url: this.state.offer.participation_url
             })
             }, (error) => {
            this.props.history.push('/organisme/offres');
@@ -147,7 +149,10 @@ export class OrganismOffer extends Component {
         var middleBlock = ""
         var Aparticipants = ""
         var Wparticipants = ""
-        if(participants !== null){
+        if(this.state.offer.direct_participation == 1) {
+            return (<p>Vous ne pouvez pas voir les participants puisque vous avez choisi l'option participation directe...</p>)
+        }
+        if(participants.length !== 0){
             return participants.map((participant) => {
                 if(participant.waiting_list == 0) {
                      return (
@@ -160,7 +165,7 @@ export class OrganismOffer extends Component {
                
             })
         } else {
-            return 'Aucun participants enregistrés...'
+            return (<p>Aucun participants enregistrés...</p>)
         }
     }
 
@@ -204,6 +209,11 @@ export class OrganismOffer extends Component {
                         <label>Nombre de places disponibles :</label>
                         <input type="number" name="n_places" value={this.state.n_places} onChange={this.handleChange}></input>
                         <label className="is-size-4">Âge minimum pour participer : </label><input type="number" name="minimumAge" value={this.state.minimumAge} onChange={this.handleChange} />
+                        {(this.state.offer.direct_participation == 1) ? 
+                            <React.Fragment>
+                                <label className="is-size-4">URL pour la participation : </label><input type="text" name="participation_url" value={this.state.participation_url} onChange={this.handleChange} />
+                            </React.Fragment>
+                            : ''}
                         <InterestList onClick={this.addInterest} alreadyChecked={this.state.ointerests} /> 
                         <ErrorContainer errors={this.state.errors} />
                         <Button type="primary">Soumettre les changements</Button>

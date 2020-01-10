@@ -7,7 +7,7 @@ import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css'
 import { VolontariusMap } from '../../components/VolontariusMap'
 import Button from '../../components/Button';
-
+import InterestList from '../../components/register/InterestList'
 
 export class OfferPage extends Component {
 
@@ -24,6 +24,7 @@ export class OfferPage extends Component {
        .then((success) => {
            this.setState({loading: false, offer: success.data.data.offer, organization: success.data.data.offer.organization, nPlaces: success.data.data.n_places});
            this.setState({isUserIn: success.data.data.isUserIn})
+           this.setState({interests: success.data.data.fullInterests})
        }, (error) => {
            this.props.history.push('/offres');
        })
@@ -102,6 +103,8 @@ export class OfferPage extends Component {
                 </div>
                 <div className="columns">
                     <div className="column is-8 nbPlaces">
+                        <h2 className="subtitle is-3">Intérêts de l'offre</h2>
+                        <InterestList fullInterests={this.state.interests} />
                         <h2 className="subtitle is-3">Inscription</h2>
                         <div>
                         {(this.state.offer.direct_participation == 1) ?
