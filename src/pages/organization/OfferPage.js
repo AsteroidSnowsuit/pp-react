@@ -17,6 +17,7 @@ export class OfferPage extends Component {
         this.handleParticipation = this.handleParticipation.bind(this);
         this.handleQuitting = this.handleQuitting.bind(this);
         this.getOffer = this.getOffer.bind(this)
+        this.map = React.createRef();
     }
 
     getOffer() {
@@ -32,6 +33,7 @@ export class OfferPage extends Component {
 
     componentDidMount() {
         this.getOffer();
+        //this.map.current.invalidateSize();
     }
 
     handleParticipation() {
@@ -132,8 +134,7 @@ export class OfferPage extends Component {
                     </div>
                     <div className="column is-4 offer-map">
                         L'offre est située au {this.state.offer.address}
-                        <div id="mapid"></div>
-                        <VolontariusMap lon={this.state.offer.lon} lat={this.state.offer.lat} />
+                        <VolontariusMap ref={(ref) => this.map = ref} lon={this.state.offer.lon} lat={this.state.offer.lat} />
                     </div>
                 </div>
             </Dashboard>
