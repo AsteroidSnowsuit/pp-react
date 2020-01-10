@@ -32,6 +32,7 @@ import SmartSearch from './pages/search/SmartSearch'
 import AlternativeDashboardHomepage from './pages/dashboard/AlternativeDashboardHomepage';
 import ContactPage from './pages/misc/ContactPage'
 import About from './pages/misc/About'
+import AdminHomepage from './pages/admin/AdminHomepage';
 export class App extends Component {
   render() {
     return (
@@ -87,6 +88,9 @@ export class App extends Component {
             </PrivateRoute>
             <PrivateRoute path="/deconnexion">
               <Logout />
+            </PrivateRoute>
+            <PrivateRoute exact path="/admin">
+              <AdminHomepage />
             </PrivateRoute>
             <PrivateRoute exact path="/admin/interests/:id">
               <ManageInterest />
