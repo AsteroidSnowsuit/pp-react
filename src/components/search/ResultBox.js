@@ -22,11 +22,13 @@ export class ResultBox extends Component {
                     <span className="result-box-org">{offer.organization.name}</span>
                     <span className="result-box-title"><Link to={link}>{offer.name}</Link></span>
                     <p className="result-box-desc">{offer.description.substring(0,50)}</p>
-                    {(offer.placesAvailable > 0) ? 
+                    {(offer.direct_participation == true) ? 
+                    <span className="result-box-nPlaces">Offre en participation directe {info} </span>
+                    : ((offer.placesAvailable > 0) ? 
                     <span className="result-box-nPlaces">{offer.placesAvailable} places disponibles {info}</span>
                     :
                     <span className="result-box-nPlaces">{offer.placesAvailable * -1} personnes dans la file d'attente  {info}</span>
-                    }
+                    )}
                 </div>
                 <div className="result-box-date"></div>
             </div>

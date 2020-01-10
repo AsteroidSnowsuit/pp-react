@@ -87,6 +87,12 @@ export class SmartSearch extends Component {
                                     <a href="#" onClick={this.handleFilter} data-filter="no-wait" class="dropdown-item">
                                         cacher files d'attente
                                     </a>
+                                    <a href="#" onClick={this.handleFilter} data-filter="no-direct" class="dropdown-item">
+                                        cacher les offres en participation directe
+                                    </a>
+                                    <a href="#" onClick={this.handleFilter} data-filter="only-direct" class="dropdown-item">
+                                        afficher uniquement les offres en participation directe
+                                    </a>
                                     </div>
                                 </div>
                                 </div>
@@ -94,6 +100,8 @@ export class SmartSearch extends Component {
                         </div>
                     </div>
                     <div className="columns is-multiline">
+                    <p>Les offres en participation directe sont des offres où l'inscription se passe sur un site autre que Volontarius.</p>
+
                         {this.state.offers.map((offer) => {
                         return (
                             <div className="column is-12">
