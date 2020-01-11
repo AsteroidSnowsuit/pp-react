@@ -26,6 +26,7 @@ export class Login extends Component {
             Cookies.set('token', success.data.data.token);
             Cookies.set('organism', success.data.data.organismMember);
             Cookies.set('organismCreated', success.data.data.organismCreated);
+            Cookies.set('validation-pending', success.data.data.validationPending);
             this.props.history.push("/tableaudebord")
         }, (error) => {
             this.setState({loading: false})

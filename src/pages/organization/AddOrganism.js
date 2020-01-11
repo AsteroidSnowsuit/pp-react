@@ -45,7 +45,8 @@ export class AddOrganism extends Component {
             (success) => {
                 this.setState({loading: false});
                 Cookies.set('organismCreated', true);
-                this.props.history.push('/tableaudebord')
+                Cookies.set('verification-pending', true);
+                this.props.history.push('/verification-en-cours')
             }, (error) => {
                 this.setState({errors : error.response.data.data})
                 if(error.response.data.redirect != "") {

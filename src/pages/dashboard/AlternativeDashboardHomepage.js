@@ -7,6 +7,7 @@ import BadgeBox from '../../components/dashboard/BadgeBox'
 import {Link} from 'react-router-dom'
 import * as Cookies from 'js-cookie'
 import LinkButton from '../../components/LinkButton';
+import {withRouter} from 'react-router-dom';
 
 export class AlternativeDashboardHomepage extends Component {
     render() {
@@ -40,6 +41,9 @@ export class AlternativeDashboardHomepage extends Component {
                 </Dashboard>
             )
         }
+        if(Cookies.get('validation-pending') == "true") {
+            this.props.history.push('/verification-en-cours');
+        } 
         return (
             <Dashboard>
                 <div className="columns is-multiline">
@@ -66,4 +70,4 @@ export class AlternativeDashboardHomepage extends Component {
     }
 }
 
-export default AlternativeDashboardHomepage
+export default withRouter(AlternativeDashboardHomepage)

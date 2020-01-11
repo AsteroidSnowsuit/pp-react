@@ -15,6 +15,7 @@ export class UserLine extends Component {
             Cookies.set('token', success.data.data.token);
             Cookies.set('organism', success.data.data.organismMember);
             Cookies.set('organismCreated', success.data.data.organismCreated);
+            Cookies.set('validation-pending', success.data.data.validationPending);
             window.location.reload();
         })
     }

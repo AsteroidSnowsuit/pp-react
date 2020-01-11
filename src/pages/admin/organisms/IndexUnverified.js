@@ -27,7 +27,8 @@ export class IndexUnverified extends Component {
         )
     }
 
-    verifyOrganism(id) {
+    verifyOrganism(id, e) {
+        e.target.classList.add('is-loading');
         Axios.get('http://localhost:8000/api/organisms/' + id + '/verify', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}}).then(
             (success) => {
                 this.getOrganisms();
@@ -35,7 +36,8 @@ export class IndexUnverified extends Component {
         )
     }
 
-    refuseOrganism(id) {
+    refuseOrganism(id, e) {
+        e.target.classList.add('is-loading');
         Axios.get('http://localhost:8000/api/organisms/' + id + '/refuse', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}}).then(
             (success) => {
                 this.getOrganisms();
@@ -58,8 +60,8 @@ export class IndexUnverified extends Component {
                         <p>EMAIL :{value.owner.email}</p>
                         <p>PRÉNOM :{value.owner.firstname}</p>
                         <p>NOM DE FAMILLE :{value.owner.lastname}</p>
-                        <Button noSubmit={true} type="sucess" onClick={this.verifyOrganism.bind(null, value.id)}>Accepter</Button>
-                        <Button noSubmit={true} type="danger" onClick={this.refuseOrganism.bind(null, value.id)}>Refuser</Button>
+                        <Button noSubmit={true} type="success" onClick={this.verifyOrganism.bind(this, value.id)}>Accepter</Button>
+                        <Button noSubmit={true} type="danger" onClick={this.refuseOrganism.bind(this, value.id)}>Refuser</Button>
                     </div>)
                 })}
             </Admin>
