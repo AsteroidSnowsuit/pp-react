@@ -33,6 +33,7 @@ import AlternativeDashboardHomepage from './pages/dashboard/AlternativeDashboard
 import ContactPage from './pages/misc/ContactPage'
 import About from './pages/misc/About'
 import AdminHomepage from './pages/admin/AdminHomepage';
+import IndexUnverified from './pages/admin/organisms/IndexUnverified'
 export class App extends Component {
   render() {
     return (
@@ -91,6 +92,9 @@ export class App extends Component {
             </PrivateRoute>
             <PrivateRoute exact path="/admin">
               <AdminHomepage />
+            </PrivateRoute>
+            <PrivateRoute exact path="/admin/organismes/verifier">
+              <IndexUnverified />
             </PrivateRoute>
             <PrivateRoute exact path="/admin/interests/:id">
               <ManageInterest />
