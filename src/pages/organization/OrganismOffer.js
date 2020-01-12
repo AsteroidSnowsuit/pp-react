@@ -46,7 +46,7 @@ export class OrganismOffer extends Component {
     handleSubmit(e) {
         e.preventDefault();
         this.setState({loading: true})
-        Axios.patch(`http://localhost:8000/api/organism/offer/${this.props.match.params.id}`, 
+        Axios.patch(`https://api.volontarius.com/api/organism/offer/${this.props.match.params.id}`, 
         {
             name: this.state.name,
             description: this.state.description,
@@ -79,7 +79,7 @@ export class OrganismOffer extends Component {
 
     getOffer() {
         this.setState({loading: true});
-        Axios.get('http://localhost:8000/api/organism/offer/' + this.props.match.params.id, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
+        Axios.get('https://api.volontarius.com/api/organism/offer/' + this.props.match.params.id, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
        .then((success) => {
            this.setState({
                loading: false,
@@ -120,7 +120,7 @@ export class OrganismOffer extends Component {
 
     removeParticipant(id, e) {
         e.persist();
-        Axios.delete('http://localhost:8000/api/participant/' + id, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
+        Axios.delete('https://api.volontarius.com/api/participant/' + id, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
         .then((success) => {
             store.addNotification({
                 message: 'Vous avez bien supprimé ce participant !',

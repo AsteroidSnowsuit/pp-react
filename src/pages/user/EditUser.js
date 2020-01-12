@@ -35,7 +35,7 @@ export class EditUser extends Component {
 
     componentDidMount() {
         var token = Cookies.get('token');
-        axios.get('http://localhost:8000/api/details', {headers: {"Accept": 'application/json', "Authorization": `Bearer ${token}`}}).then(
+        axios.get('https://api.volontarius.com/api/details', {headers: {"Accept": 'application/json', "Authorization": `Bearer ${token}`}}).then(
             (success) => {
                 this.setState({
                     loading: false,
@@ -55,7 +55,7 @@ export class EditUser extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        axios.patch("http://localhost:8000/api/details", 
+        axios.patch("https://api.volontarius.com/api/details", 
         {
             interests: this.state.interests, 
             firstname: this.state.firstname, 

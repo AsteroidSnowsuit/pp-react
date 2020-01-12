@@ -15,7 +15,7 @@ export class AdminTools extends Component {
     }
 
     loadUsers() {
-        Axios.get('http://localhost:8000/api/god/users')
+        Axios.get('https://api.volontarius.com/api/god/users')
         .then((success) => {
             this.setState({users: success.data.data.users});
         });
@@ -24,7 +24,7 @@ export class AdminTools extends Component {
     
     handleDisconnect() {
         var token = Cookies.get('token');
-        Axios.get('http://localhost:8000/api/logout', 
+        Axios.get('https://api.volontarius.com/api/logout', 
         {
             headers: {
                 "Accept": 'application/json', 

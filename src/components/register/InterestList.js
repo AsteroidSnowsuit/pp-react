@@ -12,7 +12,7 @@ export class InterestList extends Component {
     }
 
     componentDidMount() {
-        Axios.get('http://localhost:8000/api/interests')
+        Axios.get('https://api.volontarius.com/api/interests')
         .then((success) => {
             this.setState({pinterests: success.data.data.interests});
         })

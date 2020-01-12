@@ -49,7 +49,7 @@ export class RegisterVolunteer extends Component {
     handleSubmit(e) {
         e.preventDefault();
         if(this.checkInfoFilled()) {
-            axios.post("http://localhost:8000/api/register", 
+            axios.post("https://api.volontarius.com/api/register", 
             {
                 interests: this.state.interests,
                 firstname: this.state.firstname,

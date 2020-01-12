@@ -25,7 +25,7 @@ export class PopupDelete extends Component {
       }
 
       offerDelete() {
-          Axios.delete('http://localhost:8000/api/organism/offer/' + this.props.id, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
+          Axios.delete('https://api.volontarius.com/api/organism/offer/' + this.props.id, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
           .then((success) => {
             this.props.history.push('/organisme/offres')
           }, (error) => {

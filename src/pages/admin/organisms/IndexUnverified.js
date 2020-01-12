@@ -19,7 +19,7 @@ export class IndexUnverified extends Component {
     }
     
     getOrganisms() {
-        Axios.get('http://localhost:8000/api/organisms/unverified', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}}).then(
+        Axios.get('https://api.volontarius.com/api/organisms/unverified', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}}).then(
             (success) => {
                 this.setState({organisms: success.data.data.organisms})
             }
@@ -28,7 +28,7 @@ export class IndexUnverified extends Component {
 
     verifyOrganism(id, e) {
         e.target.classList.add('is-loading');
-        Axios.get('http://localhost:8000/api/organisms/' + id + '/verify', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}}).then(
+        Axios.get('https://api.volontarius.com/api/organisms/' + id + '/verify', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}}).then(
             (success) => {
                 this.getOrganisms();
             }
@@ -37,7 +37,7 @@ export class IndexUnverified extends Component {
 
     refuseOrganism(id, e) {
         e.target.classList.add('is-loading');
-        Axios.get('http://localhost:8000/api/organisms/' + id + '/refuse', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}}).then(
+        Axios.get('https://api.volontarius.com/api/organisms/' + id + '/refuse', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}}).then(
             (success) => {
                 this.getOrganisms();
             }

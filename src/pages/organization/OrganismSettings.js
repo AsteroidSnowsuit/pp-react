@@ -24,7 +24,7 @@ export class OrganismSettings extends Component {
     }
 
     getOrganism() {
-        Axios.get('http://localhost:8000/api/organism/settings', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
+        Axios.get('https://api.volontarius.com/api/organism/settings', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
         .then((success) => {
             var organism = success.data.data.organism;
             this.setState({organism: success.data.data.organism, loading: false})
@@ -49,7 +49,7 @@ export class OrganismSettings extends Component {
         }
         formData.append('_method', 'PATCH');
         var token = Cookies.get('token');
-        Axios.post('http://localhost:8000/api/organism/settings', formData, {
+        Axios.post('https://api.volontarius.com/api/organism/settings', formData, {
             headers: {
                 "Accept": 'application/json',
                 "Authorization": `Bearer ${token}`,

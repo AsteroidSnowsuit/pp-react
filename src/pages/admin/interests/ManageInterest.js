@@ -23,7 +23,7 @@ export class ManageInterest extends Component {
     }
 
     getInterest() {
-        Axios.get('http://localhost:8000/api/interests/' + this.props.match.params.id)
+        Axios.get('https://api.volontarius.com/api/interests/' + this.props.match.params.id)
         .then((success) => {
             var interest = success.data.data.interest;
             this.setState({name: interest.name, picture_src: interest.picture_src, loading: false})
@@ -35,7 +35,7 @@ export class ManageInterest extends Component {
     handleSubmit(e) {
         this.setState({loading: true});
         e.preventDefault();
-        Axios.patch('http://localhost:8000/api/interests/' + this.props.match.params.id, {
+        Axios.patch('https://api.volontarius.com/api/interests/' + this.props.match.params.id, {
             name: this.state.name,
             picture_src: this.state.picture_src
         }, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
@@ -49,7 +49,7 @@ export class ManageInterest extends Component {
 
     handleDelete(e) {
         this.setState({loading: true});
-        Axios.delete('http://localhost:8000/api/interests/' + this.props.match.params.id, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
+        Axios.delete('https://api.volontarius.com/api/interests/' + this.props.match.params.id, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
         .then((success) => {
             this.props.history.push('/admin/interests')
         })

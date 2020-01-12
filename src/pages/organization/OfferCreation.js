@@ -34,7 +34,7 @@ export class OfferCreation extends Component {
     handleSubmit(e) {
         e.preventDefault();
         var token = Cookies.get('token');
-        Axios.post('http://localhost:8000/api/offer', 
+        Axios.post('https://api.volontarius.com/api/offer', 
         {
             name: this.state.name, 
             description: this.state.description, 

@@ -21,7 +21,7 @@ export class OfferPage extends Component {
     }
 
     getOffer() {
-        Axios.get('http://localhost:8000/api/offer/' + this.props.match.params.id, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
+        Axios.get('https://api.volontarius.com/api/offer/' + this.props.match.params.id, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
        .then((success) => {
            this.setState({loading: false, offer: success.data.data.offer, organization: success.data.data.offer.organization, nPlaces: success.data.data.n_places});
            this.setState({isUserIn: success.data.data.isUserIn})
@@ -38,7 +38,7 @@ export class OfferPage extends Component {
 
     handleParticipation() {
         this.setState({button_loading: true})
-        Axios.get('http://localhost:8000/api/offer/' + this.props.match.params.id + '/join', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
+        Axios.get('https://api.volontarius.com/api/offer/' + this.props.match.params.id + '/join', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
         .then((success) => {
             this.setState({button_loading: false});
             store.addNotification({
@@ -63,7 +63,7 @@ export class OfferPage extends Component {
 
     handleQuitting() {
         this.setState({button_loading: true})
-        Axios.get('http://localhost:8000/api/offer/' + this.props.match.params.id + '/quit', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
+        Axios.get('https://api.volontarius.com/api/offer/' + this.props.match.params.id + '/quit', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
         .then((success) => {
             this.setState({button_loading: false});
             store.addNotification({
@@ -87,7 +87,7 @@ export class OfferPage extends Component {
     }
 
     render() {
-        var pictureLink = this.state.organization.picture != null ? "http://localhost:8000" + this.state.organization.picture : require('../../img/user/hands.svg');
+        var pictureLink = this.state.organization.picture != null ? "https://api.volontarius.com" + this.state.organization.picture : require('../../img/user/hands.svg');
 
         return (
             <Dashboard loading={this.state.loading}>

@@ -7,7 +7,7 @@ import Axios from 'axios';
 export class Logout extends Component {
     render() {
         var token = Cookies.get('token');
-        Axios.get('http://localhost:8000/api/logout', 
+        Axios.get('https://api.volontarius.com/api/logout', 
         {
             headers: {
                 "Accept": 'application/json', 

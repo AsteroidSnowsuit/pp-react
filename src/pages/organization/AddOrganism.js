@@ -36,7 +36,7 @@ export class AddOrganism extends Component {
             formData.append('picture', this.state.picture);
         }
         var token = Cookies.get('token');
-        axios.post('http://localhost:8000/api/organism/create',formData, {
+        axios.post('https://api.volontarius.com/api/organism/create',formData, {
             headers: {
                 "Accept": 'application/json',
                 "Authorization": `Bearer ${token}`

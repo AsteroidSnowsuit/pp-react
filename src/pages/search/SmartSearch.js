@@ -27,7 +27,7 @@ export class SmartSearch extends Component {
     }
 
     getOffers() {
-        Axios.post('http://localhost:8000/api/search/smart', {order: this.state.sorter, filters: this.state.filters}, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
+        Axios.post('https://api.volontarius.com/api/search/smart', {order: this.state.sorter, filters: this.state.filters}, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
         .then((success) => {
             this.setState({loading: false, offers : success.data.data.offers})
 

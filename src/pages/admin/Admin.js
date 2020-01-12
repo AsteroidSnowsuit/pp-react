@@ -6,7 +6,7 @@ import * as Cookies from 'js-cookie'
 export class Admin extends Component {
 
     componentDidMount() {
-        Axios.get('http://localhost:8000/api/details', {headers: {"Accept": 'application/json', "Authorization": `Bearer ${Cookies.get('token')}`}}).then(
+        Axios.get('https://api.volontarius.com/api/details', {headers: {"Accept": 'application/json', "Authorization": `Bearer ${Cookies.get('token')}`}}).then(
             (success) => {
                 this.setState({
                     admin : success.data.data.user.admin

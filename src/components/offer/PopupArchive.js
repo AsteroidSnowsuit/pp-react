@@ -27,7 +27,7 @@ export class PopupArchive extends Component {
       }
 
       offerDelete() {
-          Axios.get('http://localhost:8000/api/organism/offer/' + this.props.id + '/archive', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
+          Axios.get('https://api.volontarius.com/api/organism/offer/' + this.props.id + '/archive', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
           .then((success) => {
             this.props.history.push('/organisme/offres')
           }, (error) => {

@@ -19,7 +19,7 @@ export class AddInterest extends Component {
     handleSubmit(e) {
         e.preventDefault()
         this.setState({loading: true});
-        Axios.post('http://localhost:8000/api/interests', {
+        Axios.post('https://api.volontarius.com/api/interests', {
             name: this.state.name,
             picture_src: this.state.picture_src
         }, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})

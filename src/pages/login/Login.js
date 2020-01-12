@@ -21,7 +21,7 @@ export class Login extends Component {
     handleSubmit(e) {
         this.setState({loading: true})
         e.preventDefault();
-        Axios.post('http://localhost:8000/api/login', {email: this.state.email, password: this.state.password}, {headers : {Accept: 'application/json'}})
+        Axios.post('https://api.volontarius.com/api/login', {email: this.state.email, password: this.state.password}, {headers : {Accept: 'application/json'}})
         .then((success) => {
             Cookies.set('token', success.data.data.token);
             Cookies.set('organism', success.data.data.organismMember);

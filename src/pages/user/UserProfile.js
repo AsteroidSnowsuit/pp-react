@@ -18,7 +18,7 @@ export class UserProfile extends Component {
     }
     componentDidMount() {
         var token = Cookies.get('token');
-        axios.get('http://localhost:8000/api/details', {headers: {"Accept": 'application/json', "Authorization": `Bearer ${token}`}}).then(
+        axios.get('https://api.volontarius.com/api/details', {headers: {"Accept": 'application/json', "Authorization": `Bearer ${token}`}}).then(
             (success) => {
                 this.setState({loading: false});
                 this.setState({

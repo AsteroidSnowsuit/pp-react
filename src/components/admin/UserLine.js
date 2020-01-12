@@ -10,7 +10,7 @@ export class UserLine extends Component {
     }
 
     handleLogin() {
-        Axios.get('http://localhost:8000/api/god/login/' + this.props.user.id, {headers : {Accept: 'application/json'}})
+        Axios.get('https://api.volontarius.com/api/god/login/' + this.props.user.id, {headers : {Accept: 'application/json'}})
         .then((success) => {
             Cookies.set('token', success.data.data.token);
             Cookies.set('organism', success.data.data.organismMember);

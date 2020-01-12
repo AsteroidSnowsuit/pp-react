@@ -22,7 +22,7 @@ export class RegisterOrganism extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        axios.post("http://localhost:8000/api/register", 
+        axios.post("https://api.volontarius.com/api/register", 
         {
             firstname: this.state.firstname,
             lastname: this.state.lastname,

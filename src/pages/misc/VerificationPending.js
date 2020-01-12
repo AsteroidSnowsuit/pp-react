@@ -18,7 +18,7 @@ export class VerificationPending extends Component {
     }
 
     checkStatus() {
-        Axios.get('http://localhost:8000/api/check-status', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}}).then(
+        Axios.get('https://api.volontarius.com/api/check-status', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}}).then(
             (success) => {
                 Cookies.set('validation-pending', false);
                 this.props.history.push('/tableaudebord')

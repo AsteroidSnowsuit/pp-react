@@ -28,7 +28,7 @@ export class ClassicSearch extends Component {
     }
 
     getOffers() {
-        Axios.post('http://localhost:8000/api/search', {order: this.state.sorter, filters: this.state.filters}, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
+        Axios.post('https://api.volontarius.com/api/search', {order: this.state.sorter, filters: this.state.filters}, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
         .then((success) => {
             this.setState({loading: false, offers : success.data.data.offers})
 

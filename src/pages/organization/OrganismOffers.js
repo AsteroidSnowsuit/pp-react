@@ -16,7 +16,7 @@ export class OrganismOffers extends Component {
     }
     componentDidMount() {
         this.setState({loading: true})
-        Axios.get('http://localhost:8000/api/organism/offers', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
+        Axios.get('https://api.volontarius.com/api/organism/offers', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
         .then((success) => {
             this.setState({loading: false, offers : success.data.data.offers})
         }, (error) => {

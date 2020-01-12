@@ -16,7 +16,7 @@ export class InterestsIndex extends Component {
         this.getInterests()
     }
     getInterests() {
-        Axios.get("http://localhost:8000/api/interests")
+        Axios.get("https://api.volontarius.com/api/interests")
         .then((success) => {
             this.setState({interests: success.data.data.interests})
         }, (error) => {

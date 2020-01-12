@@ -13,7 +13,7 @@ export class ResultBox extends Component {
         if(offer.minimumAge > 0) {
             info = info + " | Âge minimum : " + offer.minimumAge + " ans" 
         }
-        var pictureLink = offer.organization.picture != null ? "http://localhost:8000" + offer.organization.picture : require('../../img/user/hands.svg');
+        var pictureLink = offer.organization.picture != null ? "https://api.volontarius.com" + offer.organization.picture : require('../../img/user/hands.svg');
         var archived = offer.archived == 1 ? ' archived' : '';
         return (
             <div key={offer.id} className={"result-box" + archived}>
