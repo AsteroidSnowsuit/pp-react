@@ -6,7 +6,6 @@ import Axios from 'axios';
 import ErrorContainer from '../../components/ErrorContainer'
 import * as Cookies from 'js-cookie'
 import HomepageLoading from '../loading/HomepageLoading';
-import AdminTools from '../../components/admin/AdminTools';
 import {handleChange} from 'utils'
 
 export class Login extends Component {
@@ -55,7 +54,6 @@ export class Login extends Component {
                 </div>
                 </div>
             </div>
-            <AdminTools />
             </HomepageLoading>
         )
     }

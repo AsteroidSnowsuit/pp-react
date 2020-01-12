@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { HomepageNavigation } from './../components/navigation/HomepageNavigation';
 import $ from 'jquery'
-import AdminTools from '../components/admin/AdminTools';
 import Footer from '../components/Footer';
 
 export class Homepage extends Component {
@@ -14,7 +13,6 @@ export class Homepage extends Component {
                     {this.props.children}
                 </div>
                 <Footer />
-                <AdminTools />
             </div>
         )
     }

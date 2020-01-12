@@ -3,7 +3,6 @@ import DashboardNavigation from '../components/navigation/DashboardNavigation'
 import $ from 'jquery'
 import DashboardLoading from '../../src/pages/loading/DashboardLoading'
 import * as Cookies from 'js-cookie'
-import AdminTools from '../components/admin/AdminTools'
 import Footer from '../components/Footer'
 
 export class Dashboard extends Component {
@@ -16,7 +15,6 @@ export class Dashboard extends Component {
                     {this.props.children}
                 </div>
                 <Footer />
-                <AdminTools />
             </DashboardLoading>
         )
     }
