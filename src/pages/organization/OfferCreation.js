@@ -50,7 +50,6 @@ export class OfferCreation extends Component {
         .then(
         (success) => {
             this.setState({loading: false})
-            console.log(success)
             this.props.history.push('/offres/' + success.data.data.id)
         }, 
         (error) => {

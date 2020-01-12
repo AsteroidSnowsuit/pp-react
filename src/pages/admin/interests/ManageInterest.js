@@ -16,7 +16,6 @@ export class ManageInterest extends Component {
         this.handleChange = handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
-        console.log(this.props)
     }
 
     componentDidMount() {
@@ -49,7 +48,6 @@ export class ManageInterest extends Component {
     }
 
     handleDelete(e) {
-        console.log('do something ffs')
         this.setState({loading: true});
         Axios.delete('http://localhost:8000/api/interests/' + this.props.match.params.id, {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
         .then((success) => {

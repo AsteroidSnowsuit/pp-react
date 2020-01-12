@@ -58,14 +58,12 @@ export class ClassicSearch extends Component {
                 state.filters.push(filter);
                 return {filters: state.filters}
             }, () => {
-                console.log(JSON.stringify(this.state.filters))
                 this.getOffers();
             })
         } else {
             this.setState((state) => {
                 state.filters.splice(state.filters.indexOf(filter), 1);
             }, () => {
-                console.log(JSON.stringify(this.state.filters))
                 this.getOffers();
             })
         }

@@ -18,7 +18,6 @@ export class OrganismOffers extends Component {
         this.setState({loading: true})
         Axios.get('http://localhost:8000/api/organism/offers', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}})
         .then((success) => {
-            console.log(success)
             this.setState({loading: false, offers : success.data.data.offers})
         }, (error) => {
             this.props.history.push('/tableaudebord');

@@ -19,20 +19,15 @@ export class InterestList extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        console.log(JSON.stringify(prevProps));
-        console.log(JSON.stringify(this.props))
         if(this.props.alreadyChecked != prevProps.alreadyChecked) {
             this.props.alreadyChecked.forEach((item) => {
                 this.pinterestRefs.current.forEach((pinterest) => {
                     if(item == pinterest.props.id) {
-                        console.log(pinterest)
                         pinterest.handleClick();
                     }
                 })
-                console.log(item)
             })
         }
-        console.log(this.pin)
     }
 
     render() {
@@ -48,7 +43,6 @@ export class InterestList extends Component {
                 )
             }
             else {
-                console.log('boi')
                 return (<p>Aucun intérêt à afficher pour cette offre...</p>)
             }
             

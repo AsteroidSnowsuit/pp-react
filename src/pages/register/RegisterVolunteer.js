@@ -65,10 +65,8 @@ export class RegisterVolunteer extends Component {
             })
             .catch(error => {
                this.setState({'errors' : error.response.data.data})
-               console.log(error.response.data);
             });
         }
-        console.log(this.state.errors)
     }
     
     render() {

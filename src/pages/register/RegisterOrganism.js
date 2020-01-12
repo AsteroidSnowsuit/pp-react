@@ -37,10 +37,7 @@ export class RegisterOrganism extends Component {
             this.props.history.push('/inscription/verifier-email')
         }, (error) => {
             this.setState({'errors' : error.response.data.data})
-            console.log(error.response.data);
         });
-    
-        console.log(this.state.errors)
     }
 
     render() {

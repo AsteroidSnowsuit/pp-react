@@ -13,7 +13,6 @@ export class InterestBox extends Component {
     }
 
     handleClick() {
-        console.log('hoppity hippity you clicky')
         this.props.onClick(this.props.id, this.props.title);
         this.setState(prevState => ({
             activated: !prevState.activated
@@ -21,7 +20,6 @@ export class InterestBox extends Component {
     }
 
     updateDimensions() {
-        console.log((window.getComputedStyle(this.refs.interest_box_content).width))
         this.refs.interest_text = (window.getComputedStyle(this.refs.interest_box_content).width)
     }
 

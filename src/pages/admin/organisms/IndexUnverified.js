@@ -21,7 +21,6 @@ export class IndexUnverified extends Component {
     getOrganisms() {
         Axios.get('http://localhost:8000/api/organisms/unverified', {headers: {Accept: 'application/json', Authorization: 'Bearer ' + Cookies.get('token')}}).then(
             (success) => {
-                console.log('success.data.data.organisms')
                 this.setState({organisms: success.data.data.organisms})
             }
         )
@@ -49,7 +48,6 @@ export class IndexUnverified extends Component {
         return (
             <Admin>
                 {Object.values(this.state.organisms).map((value) => {
-                    console.log(value)
                     return (<div class="admin-organism-container">
                         <span>ORGANISME :</span>
                         <p>NOM : {value.name}</p>

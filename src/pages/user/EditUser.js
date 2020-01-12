@@ -19,25 +19,18 @@ export class EditUser extends Component {
     }
 
     addInterest(id, name) {
-        console.log('hoppity hippity you parenty')
         var mid = 'm' + id;
-        console.log(this.state.interests[mid] == undefined)
-
         if(this.state.interests[mid] == undefined) {
-            console.log(this.state);
             this.setState((state) => {
                 state.interests[mid] = name;
                 return {interests: state.interests}
             }, () => {
-                console.log(JSON.stringify(this.state.interests))
             })
         } else {
-            console.log('deleted')
             var newInterest = this.state.interests;
             delete newInterest[mid]
             this.setState({interests: newInterest})
         }
-        console.log(this.state.interests)
     }
 
     componentDidMount() {
@@ -77,7 +70,6 @@ export class EditUser extends Component {
         }, (error) => {
             this.setState({'errors' : error.response.data.data})
         });
-        console.log(this.state.errors)
     }
     render() {
         return (
